@@ -1,0 +1,4 @@
+# Eksempel på epostgrupper: 
+test: [ henrik@domene.no, henrik.ormasen@domene.no ]
+testgruppe2: [ henrik@domene.no ]
+testgruppe2: [ henrik@domene.no ]

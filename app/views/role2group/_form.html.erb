@@ -1,0 +1,70 @@
+<%#= error_messages_for 'role2group' %>
+
+<!--[form:article]-->
+
+<%
+# Information of creator, updator and times
+#--------------------------------------------
+if @creator || @updater %>
+  <p><label for="article_created_of: ">Created of: </label>
+    <%= @creator %>
+  
+    <br/>
+    <label for="article_created_on">Created on: </label>
+    <%= @article.created_on %>
+  
+    <br/>
+    <label for="article_updated_of:">Updated of: </label>
+    <%= @updater %>
+    <br/>
+  
+    <label for="article_updated_on">Updated on: </label>
+    <%= @article.updated_on %>
+  </p>
+<% end
+
+
+# END  
+#------
+%>
+
+
+<br/>
+<%= #----------------------------------------------------------------------
+# Lag
+#----------------------------------------------------------------------
+%>
+
+<% for @group in @lags %>
+  |
+
+  <% if authorized_to?(:controller => 'admin', :action => @group.name) %> 
+  <% treff = 0 %>  
+  <% if @role2group.group_roles.each {|x|
+      if (x.group_id == @group.group_id) %>
+        <input checked="checked" id="group_<%= @group.group.id %>_id" name="group[<%= @group.group.id %>]" value="<%= @group.group.id %>" type="checkbox">
+
+        <% treff = 1 %>
+      <% end %>
+      <% } %>
+      <% end %>
+
+
+      <% if treff == 0 %>
+        <input id="group_<%= @group.group.id %>_id" name="group[<%= @group.group.id %>]" value="<%= @group.group.id %>" type="checkbox">
+      <% end %>
+      <%= @group.name %>
+    <%# } %>
+  <% end %>
+<% end %>
+
+
+<!--[eoform:role]-->
+
+
+<div id="itemlist">
+  <%#= render(:partial => '/shared/item', :collection => @items) %>
+</div>
+
+
+

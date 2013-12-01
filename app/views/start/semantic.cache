@@ -1,0 +1,42 @@
+;; Object start/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "start/"
+  :tables (list 
+   (semanticdb-table "_links.rhtml"
+    :major-mode 'html-mode
+    :tags '(("Les mer" section nil nil [265 268]))
+    :file "_links.rhtml"
+    :pointmax 1179
+    )
+   (semanticdb-table "index.rhtml"
+    :major-mode 'html-mode
+    :tags '(("article) %>" section nil nil [34 37]))
+    :file "index.rhtml"
+    :pointmax 509
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "view.rhtml"
+    :major-mode 'html-mode
+    :tags '(("@article) %>" section nil nil [3 6]))
+    :file "view.rhtml"
+    :pointmax 318
+    )
+   (semanticdb-table "group.rhtml"
+    :major-mode 'html-mode
+    :tags '(("|
+  <%= render(:partial => '/start/links', :object => article) %>" section nil nil [75 78]))
+    :file "group.rhtml"
+    :pointmax 459
+    )
+   (semanticdb-table "lag.rhtml"
+    :major-mode 'html-mode
+    :tags '(("article) %>" section nil nil [34 37]))
+    :file "lag.rhtml"
+    :pointmax 620
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre3"
+  :semanticdb-version "2.0pre3"
+  )

@@ -1,0 +1,129 @@
+ActionController::Routing::Routes.draw do |map|
+  map.resources :stylesheets
+  map.resources :helps
+
+
+  # Add your own custom routes here.
+  # The priority is based upon order of creation: first created -> highest priority.
+
+  # Here's a sample route:
+  # map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+  # Keep in mind you can assign values other than :controller and :action
+
+  # You can have the root of your site routed by hooking up ''
+  # -- just remember to delete public/index.html.
+  # map.connect '', :controller => "welcome"
+
+  # Allow downloading Web Service WSDL as a file with an extension
+  # instead of a file named 'wsdl'
+
+
+  # Install the default route as the lowest priority.
+  map.connect ':controller/:action/:id'
+
+  map.resources :lag, :collection => { :id => :get }
+  map.resources 'start', :collection => { :id => :get }
+
+  map.connect ':lag/:id.:format',
+    :controller => "lag",
+    :action => 'index'
+
+  map.connect ':lag.:format',
+     :controller => "lag",
+     :action => 'index',
+     :id => '10'
+
+
+  map.connect 'blimedlem',
+    :controller => 'start',
+    :action => 'view',
+    :id => '9539'
+  map.connect 'pekere',
+    :controller => 'start',
+    :action => 'view',
+    :id => '9554'
+
+  map.connect 'finnes_ikke',
+    :controller => 'start',
+    :action => 'view',
+    :id => '10079'
+
+  map.connect 'frankrike',
+     :controller => "lag",
+     :action => 'index',
+     :lag => 'Sentralt',
+     :id => '262'
+
+  map.connect ':lag/view/:id',
+     :controller => "start",
+     :action => 'view'
+
+  map.connect ':controller/service.wsdl', :action => 'wsdl'
+
+  map.connect ':lag',
+     :controller => "lag",
+     :action => 'index',
+     :id => '10'
+
+  map.connect 'start/view/:id/:lagid',
+     :controller => "start",
+     :action => 'view'
+
+# Til temaet Sentralt:
+  map.connect '',
+     :controller => "lag",
+     :action => 'index',
+     :lag => 'Sentralt',
+     :id => '10'
+
+# Til Sentralt forsiden (10522)
+#  map.connect '',
+#     :controller => "start",
+#     :action => 'view',
+#     :id => '10522'
+
+
+
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
+
+  map.connect ':lag/:id/:page',
+    :controller => 'lag',
+    :action => 'index',
+    :requirements => { :page => /\d+/, :id => /\d+/ },
+    :page => nil,
+    :lag => nil,
+    :id => nil
+#    :id => /\d+/
+
+
+
+
+#  map.connect ':page',
+#    :controller => "lag",
+#    :requirements => { :page => /\d+/},
+#    :page => /\d+/
+
+
+
+
+#  map.connect ':lag', :controller => 'lag', :action => 'index'
+
+
+#  map.connect 'lag/:action/:lag/:id/:page',
+#    :controller => 'lag',
+#    :action => 'lag',
+#    :requirements => { :page => /\d+/},
+#    :page => nil,
+#    :lag => nil,
+#    :id => /\d+/
+
+#  map.connect 'lag/index/:lag/:id/:page',
+
+  #  map.connect 'lag/lag/:id/:lag/:page',
+#  map.connect 'lag/lag/:lag/:id/:page',
+
+#  map.connect ':id', :controller => 'lag', :action => 'index'
+
+
+end

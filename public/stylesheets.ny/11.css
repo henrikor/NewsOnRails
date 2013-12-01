@@ -1,0 +1,1615 @@
+body   { 
+	margin:0;
+	padding:0;
+	/* thanks to http://blog.fakedarren.com/2010/01/cross-browser-css-gradients/ */
+	/* and http://www.puremango.co.uk/2010/04/css-gradient/ */
+	/* fallback (Opera) */
+	background: #DEEDF3;
+	/* Mozilla: */
+	background: -moz-linear-gradient(top, #99C8DC, #DEEDF3);
+	/* Chrome, Safari:*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#99C8DC), to(#DEEDF3));
+	/* MSIE */
+	filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#99C8DC', EndColorStr='#DEEDF3', GradientType=0);
+
+        background-attachment: fixed;
+
+        color: #243034;
+}
+
+#innhold {
+	position: relative;
+	width:1000px;
+	margin:10px auto 10px auto;
+	border:0;
+}
+
+/* 1b - Lenker */
+
+a:link {color:blue; text-decoration: none;}
+a:visited {color:blue; text-decoration: none;}
+a:hover {text-decoration: underline;}
+a:focus {color:red; text-decoration: none;}
+a:active {color:red; text-decoration: underline;}
+
+#hovedinnhold {
+	padding: 0;
+	margin: 0;
+}
+
+/* banner - toppen */
+
+#banner {
+	border: 0; 
+	margin: 0;
+        margin-top: 50px; 
+	padding: 0; 
+//	display: block; 
+	position: absolute;
+	background: #8BB8C8 ;
+	background-image:url('http://tjen-folket.no/uploaded_images/1255-full.png');
+	width: 100%; 
+	height: 175px; 
+	z-index: 2;
+}
+
+#banner-logo span {
+        visibility: hidden;
+        display: block;
+        width: 1000px;
+        height: 215px;
+        margin-top: -60px;
+        z-index: 10;
+//        position: absolute;
+//        top: 0;
+}
+
+#banner-logo a:hover {
+        text-decoration: none;
+}
+
+#banner-bilde {
+//        display: none;
+        position: absolute;
+        top: -49px;
+        left: 0px;
+        height: 60px;
+        width: 1000px;
+        background-image: url('http://tjen-folket.no/uploaded_images/1256-full.png');
+        background-repeat: no-repeat;
+}
+
+
+
+#banner img {
+	float: left;
+}
+
+#toppmeny .editmeny {
+	display: none;
+}
+
+#cse-search-box-1 {
+	margin-top: 4px;
+        display: none;
+}
+
+
+#toppmeny ul {
+  font-family: Arial, Verdana;
+  font-size: 14px;
+  margin-top: 30px;
+  padding: 0;
+  list-style: none;
+  height: 30px;
+}
+
+#toppmeny ul li {
+  display: block;
+  position: relative;
+  float: left;
+}
+
+#toppmeny li ul { display: none; }
+
+#toppmeny ul li a {
+  display: block;
+  text-decoration: none;
+  background: #98C8DB;
+  white-space: nowrap;
+  height: 30px;
+}
+
+#toppmeny ul li a:hover {
+	background: #8BB8C8;
+}
+
+#toppmeny li:hover ul {
+  display: block;
+  position: absolute;
+  margin-top: 30px;
+}
+
+#toppmeny li:hover ul a {
+  display: block;
+  min-width: 155px;
+  margin-left: -12px;
+//  border-left: 1px solid #8BB8C8;
+//  border: 1px solid #8BB8C8;
+}
+
+#toppmeny li:hover li {
+  float: none;
+  font-size: 11px;
+}
+
+#toppmeny li:hover a {
+	background: #98C8DB;
+}
+
+#toppmeny li:hover li a:hover {
+	background: #8BB8C8;
+}
+
+#toppmeny { 
+	margin: 0;
+	border: 0; 
+	height: 30px;
+	position: absolute;
+	top: 225px;
+	display: block;
+	background-color: #99C8DC;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	width: 100%;
+	text-align: left;
+	z-index: 5;
+}
+
+#flags p {
+        height: 24px;
+        width: 170px;
+        float: left;
+        padding: 0px 0px 0px 0px;
+        position: absolute;
+        top: -13px;
+        left: 440px;
+}
+
+#flags p a {
+        height: 24px;
+        width: 24px;
+        padding: 0px 0px 0px 0px;
+        margin-right: 10px;
+//        opacity: 0.5;
+
+}
+
+#flags p a:hover {
+        background-color: inherit;
+        opacity: 1;
+}
+
+/* Flagghovring */
+
+#flags #ru {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1110-full.png');
+}
+
+#flags #ru:hover,
+#flags #ru:active {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1106-full.png');
+}
+
+#flags #gr {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1109-full.png');
+}
+
+#flags #gr:hover {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1104-full.png');
+}
+
+#flags #ge {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1115-full.png');
+}
+
+#flags #ge:hover {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1103-full.png');
+}
+
+#flags #sp {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1116-full.png');
+}
+
+#flags #sp:hover {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1107-full.png');
+}
+
+#flags #uk {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1117-full.png');
+}
+
+#flags #uk:hover {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1108-full.png');
+}
+
+#flags #it {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1118-full.png');
+}
+
+#flags #it:hover {
+        background-image: url('http://test.tjen-folket.no/uploaded_images/1105-full.png');
+}
+
+/* ******* */
+#flags img {
+        visibility: hidden;
+}
+
+#sokknapp {
+        position: absolute;
+        z-index: 40;
+        top: 0px;
+        right: 0px;
+        height: 30px;
+        width: 50px;
+        border: none;
+        background-color: #99C8DC;
+        font-weight: bold;
+        font-size: 10pt;
+}
+
+#sokknapp:hover {
+        background-color: #8BB8C8;
+}
+
+#soktekst {
+        position: absolute;
+        top: 3px;
+        right: 55px;
+        width: 160px;
+        height: 15px;
+        z-index: 40;
+}
+
+#toppmeny a {
+	color: #243034;
+	font-family: arial;
+	text-decoration: none;
+	display: block;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	font-size: 11pt;
+	padding: 0px 15px 0px 5px;
+        margin: none;
+        margin-left: -7px;
+        margin-right: -7px;
+}
+
+#toppmeny a.search {
+	float: right;
+}
+
+#toppmeny a:hover {
+	color: white;
+	background-color: #9ce9e9;
+}
+
+#navigasjon { 
+	margin: 0; 
+	border: 0; 
+	position: absolute; 
+	top: 255px;
+	height: 15px;
+	display: block;
+	background: #8CB8C9 none repeat scroll 0%;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #243034;
+	padding: .2em 0 0 0;
+	width: 100%;
+	text-align: left;
+	text-indent:5px;
+	z-index: 4;
+} 
+
+#navigasjon a, #navigasjon a:visited {
+	color: #243034;
+}
+
+#navigasjon a:hover, #navigasjon a:active {
+	text-decoration: underline;
+}
+
+#navigasjon p {
+	margin: 0;
+	padding: 0 0 0 .5em;
+}
+
+#navigasjon-sok {
+	margin: 0 .5em;
+	position: relative;
+	top: -2px;
+	float: right;
+	font-size: 80%;
+}
+
+#navigasjon li, #toppmeny li {
+        display: inline;
+        margin: 0 .5em;
+        padding: 0;
+        line-height: 1em;
+}
+
+#navigasjon ul,  #toppmeny ul {
+        width: 80%;
+        margin: 0;
+        padding: 0;
+        line-height: 1em;
+}
+
+/* Venstre spalte - meny */
+
+#side {
+	position: absolute;
+	border:0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	float: left;
+	padding: 230px 0 0 0;
+	width: 0px;	z-index: 1;
+}
+
+#side * {
+	font-family: arial, helvetica,sans-serif;
+	line-height: 1.4em;          
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+#side a {
+	color: #243034;
+	font-family: arial, helvetica,sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-size: normal;
+	text-decoration: none; 
+}
+
+#side a:hover {
+	color:  #000;
+	text-decoration: underline;
+}
+
+#side ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: rgb(100, 87, 37);
+	left: 0;
+}                  
+
+#side li { 
+	border-bottom: 1px solid #243034;
+	padding:0 0 0 5px;
+}
+
+#side hr {
+	border: 0;  color: #243034;
+	background-color: black;
+	height: 1px;
+}
+
+
+#side a:visited.vmeny-hlink, #side a:link.vmeny-hlink {
+	color: white;
+	font-weight: bold;
+	padding-left: -1pt;
+}
+
+.v-aktiv {
+        display: none;
+}
+
+.v-aktiv2 {
+	height: 415px;
+        width: 169px;
+	//margin-bottom: 15px;
+	background-color: #8BB8C8;
+        position: absolute;
+        top: 287px;
+        left: 0px;
+        padding-left: 3px;
+        padding-right: 3px;
+}
+
+.v-aktiv2 a {
+        color: #243034;
+        font-weight: bold;
+}
+
+.v-aktiv2 .inkludert-bilde {
+	height: 225px;
+        width: 175px;
+	background-color: #98C7DB;
+        margin-left: -5px;
+        margin-top: -5px;
+}
+
+.v-sitat2 {
+	min-height: 315px;
+        width: 175px;
+	font-weight: normal;
+        position: absolute;
+        top: 717px;
+        left: 0px;
+}
+
+.v-sitat2 a {
+        color: #243034;
+        text-decoration: underline;
+}
+
+.v-sitat {
+
+     display: none;
+
+}
+
+
+
+.v-sitat .inkludert-ingress p {
+
+	font-size: 9pt;
+
+	font-weight: normal;
+
+}
+
+
+
+.v-sitat sup {
+
+        display: block;
+
+        width: auto;
+
+        margin-top: 10px;
+
+        font-size: 10%
+
+}
+
+
+
+.sitat-link {
+
+        text-align: right;
+
+        margin-top: 80px;
+
+}
+
+
+
+/* Hoyre spalte */
+
+#hmeny {
+	width: 170px;
+	height: auto;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	padding-top: 287px;
+}
+
+#hmeny .tk .inkludert-ingress {
+	display: none;
+}
+
+#hmeny .tk {
+	height: 250px;
+	width: 100%;
+	background-color: #8BB8C8;
+	margin-bottom: 15px;
+	position: inline;
+}
+
+#tkbilde {
+        margin-top: -10px;
+}
+
+.h-plakater {
+	height: 150px;
+	margin-bottom: 15px;
+	background-color: #8BB8C8;
+}
+
+#plakatbilde {
+        margin-top: -9px;
+}
+
+.h-nyhetsbrev {
+        display: block;
+	height: 70px;
+	background-color: #8BB8C8;
+	margin-bottom: 10px;
+        padding: 0px;
+}
+
+#nyhetsbrev-bilde {
+        height: 70px;
+        margin-top: -9px;
+}
+
+.h-dikt {
+	height: 70px;
+	background-color: #8BB8C8;
+	margin-bottom: 15px;
+}
+
+.h-kommunist {
+	height: 150px;
+	background-color: #8BB8C8;
+}
+
+/* Midtspalten - hovedinnhold */
+
+#temaside {
+	padding: 120px 0 0 5px;
+}
+
+#main img {
+	padding: 0;
+}
+
+#main {
+	padding: 150px 0px 0px 0px;
+}
+
+#main p, #o-tekst p {
+	margin: 0;
+	font-size: 13px;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#o-tekst ul, #o-tekst li { 
+	margin: 0 0 0 15px;
+	font-size: 13px;
+	padding: 0;
+	font-family:Arial, Helvetica, sans-serif;
+	text-indent:1pt;
+}	  
+
+#main blockquote, #main q {
+/*	border-left: 1em solid #D5E8EF; */
+	margin: 1em 2em 1em 2em;
+	padding: 3pt 16pt 6pt 3pt;
+/*	background: #D5E8EF; */
+	quotes: "\00AB" "\00BB";
+}
+
+#main blockquote:before, 
+#main q:before {
+	content: '\00AB';
+	font-size: 14pt;
+	font-weight: bold;
+	color: #000;
+	float: left;
+	text-indent: -13pt;
+	border-left: 0;
+}
+
+#main blockquote:after, 
+#main q:after {
+	content: '\00BB';
+	font-size: 14pt;
+	font-weight: bold;
+	color: #000;
+	float: right;
+	margin-right: -11pt;
+	margin-top: -1em;
+}
+
+#main h1, #o-tekst h1 {
+	font-family: arial, helvetica, sans-serif;
+	font-weight: bold;
+	margin: 11px 0 0 0;
+	padding-left: 0;
+}
+
+#main h2, #o-tekst h2 {
+	font-family: arial, helvetica, sans-serif;
+	font-weight: bold;
+	margin: 1em 0 0 0;
+	padding-left: 0;
+}
+
+#main h3, #o-tekst h3 {
+	font-family: arial, helvetica, sans-serif;
+	margin: 1em 0 0 0;
+	padding-left: 0;
+}
+
+#main ul, #o-tekst ul {
+	margin-top: 0;
+	margin-bottom: 0; 
+	margin-left: 1em;
+	list-style-type: disc;
+	font-size: 13px;
+}                  
+
+#main li, #o-tekst li {
+	text-indent: 2pt; 
+	font-size: 13px;
+}
+
+#main pre, #o-tekst pre {
+	border: 1px dashed rgb(140, 127, 57);
+	padding: .5em;
+}
+
+#main hr, #o-tekst hr {
+	border: 0;
+	width: 90%;
+	color: #243034;
+	background-color: black;
+	height: 1px;
+}
+
+/* Midspalte-overst */
+
+#right_column_bunn {
+	display:none;
+}
+
+/* - 8 - Forside / nyhetsside 
+
+------------------------------------------------------------------------------*/
+
+.link-par, .link-odd {
+	padding: 4px 2px 0px 2px;
+	margin: 0;
+}
+
+.link-par p, .link-odd p {
+	padding: 0;
+	margin: 0;
+}
+
+.grid-100 {
+	display: inline;
+	float: left;
+	width: 100%;
+	border-top: 1px solid #DDD;
+	margin:0;
+	padding-left: 0;
+} 
+
+.grid-100 img {
+	width:795px;
+} 
+
+.grid-100 h2 {
+	font-size: 55px; 
+	line-height: 1.05;
+}
+
+/* ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+.grid-66 h2 {
+	font-size: 25px;
+	position: inline;
+}
+
+.grid-33 h2 {font-size: 16px;}
+
+#main .helesaken .grid-33 h2,
+#main .helesaken .grid-66 h2,
+#main .helesaken .grid-100 h2 {
+	padding: 0;
+	margin:0 0 2px 0;
+}
+
+#main .helesaken .grid-33 p,
+#main .helesaken .grid-66 p,
+#main .helesaken .grid-100 p {
+	padding: 0x;
+	margin:0x;
+}
+
+.grid-66.first {
+	position: inline;
+	width: 100%;
+	min-height: 250px;
+	display: block;
+	margin-bottom: 20px;
+}
+
+.grid-66.first .inkludert-bilde {
+	position: inline;
+	width: 640px;
+	min-height: 250px;
+	margin-left: -3px;
+	margin-top: -4px;
+}
+
+.grid-33.info {
+	visibility: hidden;
+	width: 45%;
+	height: 150px;
+	display: block;
+	float: right;
+	background-color: #C3F0F0;
+}
+
+.grid-100 .temalinker ul {
+	margin: 0;
+	padding: 0;
+	font-size:9px;
+}
+
+.grid-100 .temalinker li {
+	display: inline;
+	font-size: 12px;
+	font-family: sans-serif;
+	padding: 0 5px;
+	border-left: 1px solid #DDD; 
+}
+
+.grid-33 .temalinker li.temalink2, .grid-66 .temalinker li.temalink2, .grid-100 .temalinker li.temalink2 {
+	border-left: 0;
+}
+
+.grid-33 .temalinker ul, .grid-66 .temalinker ul {
+	margin: 0;
+	padding: 0;
+}
+
+.grid-33 .temalinker li, .grid-66 .temalinker li {
+	display: inline;
+	font-size: 10px;
+	font-family: sans-serif;
+	padding: 0 2px;	
+	border-left: 1px solid #DDD;
+}
+
+
+.link-par img, .link-odd img {
+	float: left;
+	border: 0;
+	margin: 0 10px 2px 0;
+}
+
+.grid-100 h2, 
+.grid-66 h2, 
+.grid-33 h2 {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-family: arial, helvetica, sans-serif;
+        font-size: 14px;
+}
+	
+.info2 {
+	width:200px;
+	margin-left:70px;
+	visibility: hidden;
+}
+
+.inkludert-link {
+	font-family: sans-serif;
+	font-size: 10px;
+}
+
+.inkludert-ingress {
+	font-size:13px;
+	font-family:Arial, Helvetica, sans-serif;
+	margin-bottom:10px;
+} 
+
+/* //////////////////////////////////  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+.grid-66 .inkludert-ingress {
+	position: absolute;
+	top: 90px;
+	left: 20px;
+	display: none;
+}
+
+.grid-a .grid-100,
+.grid-a .grid-66,
+.grid-a .grid-33 {
+	border-top: none;
+}
+
+.grid-a:after,
+.grid-b:after,
+.grid-c:after,
+.grid-d:after,
+.grid-e:after,
+.grid-f:after,
+.grid-g:after,
+.grid-h:after,
+.grid-i:after,
+.grid-j:after  {
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+
+.grid-a,
+.grid-b,
+.grid-c,
+.grid-d,
+.grid-e,
+.grid-f,
+.grid-g,
+.grid-h,
+.grid-i,
+.grid-j {
+	margin-right: 0; 
+	padding-right: 0;
+	width: 100%;
+	zoom: 1;  /* IE */
+}
+
+.forside {
+	position: relative;
+        width: 640px;
+        margin-left: 182px;
+}
+
+.grid-b,
+.grid-c,
+.grid-d {
+	width: 100%;
+	height: 150px;
+	margin-bottom: 15px;
+}
+
+.grid-e {
+	visibility: hidden;
+}
+
+.grid-33.first {
+	width: 49%;
+	height: 150px;
+	display: block:
+	position: absolute;
+	left: 0;
+	background-color: #8BB7C7;
+}
+
+.grid-33 {
+	width: 49%;
+	height: 150px;
+	display: block;
+	position: absolute;
+	right: 0;
+	background-color: #8BB7C7;
+}
+
+.grid-b .inkludert-ingress,
+.grid-c .inkludert-ingress,
+.grid-d .inkludert-ingress {
+	font-size: 70%;
+}
+
+
+/* 8b - Forside - lenker */
+
+.forside a:link, 
+.forside a:visited,
+.forside a:hover,
+.forside a:active {
+	color: #243034;
+}
+
+.forside a img {
+	border: 0;
+}
+
+/* Slideshow */
+
+#slideshow {
+        width: 640px;
+        height: 265px;
+}
+
+#slideshow ul {
+        margin: 0;
+        margin-left: -15px;
+        padding: 0;
+        list-style-type: none;
+        height: 1%; /* IE Fix */
+}
+
+#slideshow ul:after {
+        content: ".";
+        clear: both;
+        display: block;
+        height: 0;
+        visibility: hidden;
+}
+
+/* Slides */
+
+#slideshow .slides {
+       overflow: hidden;
+       width: 640px;
+}
+
+#slideshow .slides ul {
+        width: 1280px; /* 640px mutiplisert med antall bilder */
+        height: 250px;
+        overflow: hidden;
+}
+
+#slideshow .slides li {
+        width: 640px;
+//        height: 250px;
+        overflow: hidden;
+        float: left;
+//        position: absolute;
+//        margin-left: -15px;
+}
+
+/* Slideshow Navbuttons */
+
+#slideshow .slides-nav {
+        position: absolute;
+        top: 197px;
+        left: 620px;
+        z-index: 10;
+}
+
+#slideshow .slides-nav li a {
+        display: block;
+//        padding: 5x;
+        height: 15px;
+        width: 15px;
+        text-align: center;
+        margin-bottom: 2px;
+        outline: none;
+        text-decoration: none;
+        background-color: #9ED1E4;
+        font-weight: bold;
+        transition: background-color 1s;
+        -moz-transition: background-color 1s; /* Firefox 4 */
+        -webkit-transition: background-color 1s; /* Safari and Chrome */
+        -o-transition: background-color 1s; /* Opera */
+}
+
+#slideshow .slides-nav li a:hover {
+        text-decoration: none:
+}
+
+#slideshow .slides-nav li.on,  
+#slideshow .slides-nav li.on a {  
+        background-color: #6D909C;
+}
+
+#slideshow .slides-nav li.on,  
+#slideshow .slides-nav li.on a:hover {  
+        background-color: #6D909C;
+        text-decoration: none;
+}
+
+.js #slideshow .slides-nav li.on,  
+.js #slideshow .slides-nav li.on a {  
+        background-color: #6D909C;
+}
+
+/* Andre ting */
+
+.tekst {
+	margin-top: 0px ! important;
+	margin-bottom: 0px;
+}
+
+#ErrorExplanation {
+	border: 2px solid red;
+	padding: 7px 7px 12px;
+	width: 400px;
+	margin-bottom: 20px;
+	background-color: rgb(240, 240, 240);
+}
+
+#ErrorExplanation h2 {
+	margin: -7px;
+	padding: 5px 5px 5px 15px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 12px;
+	background-color: rgb(204, 0, 0);
+	color: rgb(255, 255, 255);
+}
+
+#ErrorExplanation p {
+	padding: 5px;
+	color: rgb(51, 51, 51);
+	margin-bottom: 0pt;
+}
+
+#ErrorExplanation ul li {
+	font-size: 12px;
+	list-style-type: square;
+	list-style-image: none;
+	list-style-position: outside;
+}
+
+#notice {
+	border: 2px solid red;
+	padding: 0.5em;
+	margin-bottom: 2em;
+	background-color: rgb(240, 240, 240);
+	font-family: arial, helvetica, sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: smaller;
+	line-height: normal;
+	font-size-adjust: none;
+	font-stretch: normal;
+}
+
+
+/* Formatering av spesielle element */
+
+/* Sudoku */
+
+.sudoku-t table {
+	border-collapse: collapse;
+}
+
+table.sudoku-t {
+	border-collapse: collapse;
+}
+
+.sudoku-t td {
+	text-align: center;
+	width: 2em;
+	font-weight: bold;
+	font-family: sans-serif, arial, helvetica;
+}
+
+.sudoku-t tr {
+	vertical-align: middle;
+	height: 2em;
+}
+
+.sudoku-t em {
+	font-weight: normal;
+}
+
+.sudoku-a {
+	border-collapse: collapse;
+	border: 1px solid #243034;
+	text-align: center;
+}
+
+.sudoku-b  {
+	border-collapse: collapse;
+	border: 2px solid #243034;
+	background: rgb(235,235,200);
+	text-align: center;
+}
+
+/* Formatering av oppforinger */
+
+#o-tekst p {
+	padding-top: 0.7em;
+}
+
+.o-ingress {
+	font-family: arial, helvetica,sans-serif;
+	font-weight: bold;
+	font-size: 110%;
+	line-height: 1.4em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.o-kilde  { 
+	font-family: arial, helvetica, sans-serif;
+	font-weight: normal;
+	font-variant: small-caps;
+	font-size: 80%;
+	margin:10px 10px 0 0;
+}
+
+.b-kilde {
+	display: none;
+}
+
+.a-kilde, .a-kilde * { 
+	display: none;
+	font-family: arial, helvetica,sans-serif;
+	font-weight: normal;
+	font-size: 8pt;
+	margin-bottom: -1.8em;
+}
+
+
+.o-dato, #a-dato, .a-dato, .a-dato *, a-dato p, o-dato p { 
+	font-size: 80&; 
+	margin-bottom: 1.8em;
+	font-variant: small-caps;
+	font-family: arial, helvetica,sans-serif;
+}
+
+.o-table {
+	border:1px solid #243034;
+	border-collapse: collapse;
+}
+
+.o-table * {
+	border:1px solid #243034;
+	border-collapse: collapse;
+	padding: 2pt
+}
+
+.b-dato * {
+	font-size: 80%;
+	margin-bottom: 2pt;
+	font-family: arial, helvetica,sans-serif;
+}
+
+.o-pekere, #a-pekere, .a-pekere, .a-pekere * {
+	font-size: 8pt; 
+	font-family: arial, helvetica,sans-serif;
+}
+
+.b-pekere {
+	font-size: 80%; 
+	font-family: arial, helvetica,sans-serif;
+}
+
+/* Formatering av meny */
+
+
+#m-tjafs, .vmeny  {  
+	padding:0;
+	margin:0;
+}
+
+#vmeny first {
+}
+
+.vmeny-h { 
+	background: #8CB8C9;
+	padding: 3pt;
+	margin: 0;
+	font-family: arial, helvetica,sans-serif; 
+        font-size: 11pt;
+	color: #243034;
+	font-weight: bold;
+}
+
+.editmeny { 
+	float: right; 
+	background-color: white;
+	border: #243034 solid 1px;
+	padding: 0 4pt;
+	margin-top: -.5em;
+	margin-right: -.2em; 
+	moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+        display: none;
+}
+
+#vmeny0 {
+	position: fixed;
+/*      display: none; */
+        left: -145px;
+        min-width: 140px;
+        bottom: 20px;
+        padding: 5px;
+        background-color: #9AC9DC;
+        border: 2px solid #83ACBC;
+        transition: left 0.5s;
+        -moz-transition: left 0.5s; /* Firefox 4 */
+        -webkit-transition: left 0.5s; /* Safari and Chrome */
+        -o-transition: left 0.5s; /* Opera */
+}
+
+#vmeny0:hover {
+
+
+        left:0px;
+
+}
+
+#vmeny0 a,
+#vmeny0 li {
+	display:block;
+	height: 15px;
+	padding-left: 5px;
+	border: none;
+        font-size: 10pt;
+        font-weight: bold;
+}
+
+#vmeny0 a:hover {
+        text-decoration: none;
+        background-color: #83ACBC;
+}
+
+.blue {
+	color: blue;
+}
+
+.green {
+	color: green;
+}
+
+.red {
+	color: red;
+}
+
+/*.error {
+	text-align: center; 
+	margin: 0 0 0.5em 0;
+	border: 0.5em solid #243034;
+	padding: 0.2em 0.5em 0 8em; 
+	font-family: helvetica, sans-serif; 
+	font-size: 100%; 
+	font-weight: bold;
+}*/
+
+.error {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-top: 3px solid #B8D8E5;
+        border-left: 3px solid #B8D8E5;
+        border-bottom: 3px solid #A0CBDD;
+        border-right: 3px solid #A0CBDD;
+        width: 600px;
+        padding: 3px;
+        text-align: center;
+}
+
+#bunntekst {
+	clear: both;
+	color:  #243034;
+//        background-color: #8BB7C7;
+	font-size: 12px;
+	font-family: arial, helvetica, sans-serif;
+	padding: 5px 0 0 0;
+	margin: 0px 0 5px 0;
+}
+
+#bunntekst p {
+	margin: 0;
+}
+
+#bunntekst a:hover {
+        text-decoration: none;
+}
+
+.timeplan td {
+	width:20%;
+}
+
+#main .helesaken .print-link,
+#main .helesaken .edit-link {
+	float: right;
+	padding: 0 6px 0 6px;
+	letter-spacing: 1px;
+	font-size: 11px;
+	text-transform: uppercase;
+        color: #243034;
+}
+
+#main .helesaken .o-pekere {
+	display:none;
+}
+
+.helesaken {
+	padding:137px 230px 0 0px;
+	margin:0;
+	min-height:800px;
+}
+
+.grid-33.info {
+	padding: 3px;
+	border: 3px solid #243034;
+	background: #FFCC00;
+}
+
+.grid-33.info p {
+	font-weight:bold;
+}
+
+.grid-33.info .inkludert-bilde {
+	float: right;
+	position: inline;
+}
+
+.grid-33:after {
+	clear: both;
+}
+
+.grid-33.info2 .inkludert-bilde {
+	float: right;
+	position: inline;
+}
+
+#main .grid-33.info2 {
+	font-family: arial, sans-serif;
+	font-size: 10px;
+}
+
+.sitat {
+	font-size: 9px;
+}
+
+#main .forside h2 {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+#right_column {
+	padding-left: 5px;
+        padding-top: 50px;
+}
+
+.grid-b .inkludert-bilde,
+.grid-c .inkludert-bilde,
+.grid-d .inkludert-bilde {
+	width: 130px;
+	height:150px;
+	float: left;
+        margin-left: -2px;
+        margin-top: -4px;
+        margin-right: 3px;
+}
+
+sup,
+sub {
+	height: 0;
+	line-height: 1;
+	vertical-align: baseline;
+	_vertical-align: bottom;
+	position: relative;
+}
+
+sup {
+	bottom: 1ex;
+}
+
+sub {
+	top: .5ex;
+}
+
+.forside .temalinker {
+	visibility: hidden;
+}
+
+/* Greyscale
+Table Design by Scott Boyle, Two Plus Four
+www.twoplusfour.co.uk
+----------------------------------------------- */
+
+.timeplan table {
+	border-collapse: collapse;
+	border: 2px solid #000;
+	font: normal 80%/140% arial, helvetica, sans-serif;
+	color: #555;
+	background: #fff;
+}
+
+.timeplan td, th {
+	border: 1px dotted #bbb;
+	padding: .5em;
+}
+
+.timeplan caption {
+	padding: 0 0 .5em 0;
+	text-align: left;
+	font-size: 1.4em;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #333;
+	background: transparent;
+}
+
+/* =links
+----------------------------------------------- */
+
+.timeplan table a {
+	padding: 1px;
+	text-decoration: none;
+	font-weight: bold;
+	background: transparent;
+}
+
+.timeplan table a:link {
+	border-bottom: 1px dashed #ddd;
+	color: #000;
+}
+
+.timeplan table a:visited {
+	border-bottom: 1px dashed #ccc;
+	text-decoration: line-through;
+	color: #808080;
+}
+
+.timeplan table a:hover {
+	border-bottom: 1px dashed #bbb;
+	color: #666;
+}
+
+/* =head =foot
+
+----------------------------------------------- */
+
+.timeplan thead th, .timeplan tfoot th {
+	border: 2px solid #000;
+	text-align: left;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #333;
+	background: transparent;
+}
+
+.timeplan tfoot td {
+	border: 2px solid #000;
+}
+
+
+/* =body
+
+----------------------------------------------- */
+
+.timeplan tbody th, tbody td {
+	vertical-align: top;
+	text-align: left;
+}
+
+.timeplan tbody th {
+	white-space: nowrap;
+}
+
+.timeplan .odd {
+	background: #fcfcfc;
+}
+
+.timeplan tbody tr:hover {
+	background: #fafafa;
+}
+
+/* .timeplan */
+
+.nobreak {
+	white-space: nowrap; 
+}
+
+.materiell {
+	margin-top: 1em;
+	border-collapse: collapse;
+}
+
+.materiell td {
+	border: 1px solid gray;
+}
+
+.materiell th {
+	border: 1px solid gray;
+	background: #CCC;
+}
+
+.hstilt {
+	float: right;
+	margin: -15pt 5pt 0 5pt;
+	border: 0;
+}
+
+.hstilt img {
+	border: 0;
+}            
+
+.vstilt {
+	float: left;
+	margin: 0 5pt 0 5pt;
+	border: 0;
+}
+
+.vstilt img {
+	border: 0;
+}            
+
+#hboks {
+	display: inline;
+	float: right;
+	width: 30%;
+	margin: 0 0 5px 5px;
+	padding: 3px;
+	border: 1px solid #BBB;
+	background: #DDD;
+}
+
+#hboks ul, #hboks ul li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+} 
+
+#sok-bunn {
+        display: none;
+}
+
+#link-rss {
+        float: right;
+        margin-right: 10px;
+        font-weight: bold;
+        display: block;
+        height: 15px;
+        width: 30px;
+        line-height: 1.6;
+        background-color: #98C8DB;
+}
+
+#link-rss:hover {
+        text-decoration: none;
+        background-color: #DDECF2;
+}
+
+#newslink a {
+        margin-top: -10px;
+        margin-bottom: -20px;
+        display: block;
+        width: 1000px;
+//        height: 50px;
+        background-color: #8BB7C7;
+        text-align: center;
+//        line-height: 1;
+        letter-spacing: 2px;
+        color: #3C4F56;
+        padding: 5px 0px 5px 0px;
+        font-weight: bold;
+        -moz-border-radius-bottomright: 15px;
+        -moz-border-radius-bottomleft: 15px;
+        -webkit-border-bottom-right-radius: 15px;
+        -webkit-border-bottom-left-radius: 15px;
+}
+
+#newslink a:hover {
+        text-decoration: none;
+        background-color: #98C8DB;
+}
+
+#postboks {
+        border-top: 2px solid #DCECF1;
+        border-left: 2px solid #DCECF1;
+        border-bottom: 2px solid #607F8A;
+        border-right: 2px solid #607F8A;
+        width: 150px;
+        height: 110px;
+        position: absolute;
+        right: 0px;
+        padding-left: 10px;
+        line-height: 1.3;
+}
+
+#postboks h2 {
+        font-size: 14pt;
+}
+
+#hovedinnhold h1 p {
+        font-size: 20pt;
+}
+
+#vmeny1,
+#vmeny2 { display: none; }

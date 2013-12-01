@@ -1,0 +1,43 @@
+
+    <% #= item.posted_on.strftime("%H:%M:%S") %>:
+    <%=
+# if item.body =~ /\?/
+#   h(item.body)
+# end
+%>
+
+<div id="error"><% @flash[:error] %></div>
+    <%  #if item 
+          @fakbasevar = h(item.body) 
+        #end 
+%>
+    <%#= @fakbasevar 
+%>
+<%    @itemdb = Group.find(:all,
+                         :conditions => "id = '#{@fakbasevar}'").map {|u| [u.name] }
+
+%>
+
+   <% #= button_to @fakbasevar, {
+#                          :url       => { :action => :del_item },
+#			  :action => "del_item",
+#			  :id => 1
+#			  :id => @fakbasevar[id]
+#			}
+ %>    
+
+   <%= #if item
+         button_to @fakbasevar, {
+			  :action => 'del_item',
+			  :id => h(item.body)
+      		   }
+
+       #end
+ -%> <%= @itemdb -%>
+
+<%#= check_box 'item', h(item.body) %>
+
+    <% #= hidden_field :item, :body %>
+
+
+

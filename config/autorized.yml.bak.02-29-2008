@@ -1,0 +1,11 @@
+## YAML Template.
+
+AdminController:
+ index: "RoleAdmin or UserAdmin"
+ list: "test"
+ show: "test2"
+
+LagController:
+ index: "RoleAdmin or UserAdmin"
+ list: "test"
+ show: "test2"

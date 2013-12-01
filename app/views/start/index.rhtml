@@ -1,0 +1,15 @@
+<% for article in @articles %>
+
+  <h1> <%= article.headline %> </h1>
+  <p>  <%= text2html(article.ingress, article.cloth) %> </p>
+  <p>
+  <%= render(:partial => '/start/links', :object => article) %>
+  </p>
+
+<% end %>
+<% if @no_paginating != 1 %>
+<%= link_to 'Previous page', { :page => @article_pages.current.previous } if @article_pages.current.previous %>
+<%= pagination_links(@article_pages) %>
+<%= link_to 'Next page', { :page => @article_pages.current.next } if
+@article_pages.current.next %>
+<% end %>

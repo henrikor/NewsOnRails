@@ -1,0 +1,87 @@
+<h1>Brukere</h1>
+
+<%
+   user = Noruser.find(1)
+   name = user.login
+
+ -%>
+<%= name %>
+<table class="articlesliste">
+  <tr>
+
+
+  <% for column in Noruser.content_columns %>
+  <%
+
+if @not_show.include?(column.human_name)
+       next
+     end
+   %>
+    <th><%= link_to column.human_name, { :action => "userlist", :sort => column.name, :order => @order, :page => params[:page] } %>
+       <% if column.name == @sort -%>
+          <% if @order == "desc" -%>
+             <
+          <% else -%>
+             ^
+          <% end %>
+       <% end %>
+  <% end %>
+    </th>
+  </tr>
+
+  <% nr = "1" -%>
+<% for user in @users %>
+  <tr class="articleslistetr<%= nr -%>">
+    <% if nr == "1"
+        nr = "0"
+       else
+        nr = "1"
+       end -%>
+  <% for column in Noruser.content_columns %>
+
+  <%
+     if @not_show.include?(column.human_name)
+       next
+     end
+
+    if ((column.human_name == "Created of" || column.human_name == "Updated of") && user.send(column.name) != 0)
+    begin
+     user = Noruser.find(user.send(column.name))
+     name = user.login
+      raise "Kunne ikke finne bruker" if !user
+    rescue
+      if !user
+        name = "ingen"
+      else
+        name = user.login
+      end
+      flash[:error] = "Kunne ikke finne bruker med id: #{user.send(column.name)}"
+    end
+  %>
+   <td>
+    <%=h (name) %></td>
+  <% else -%>
+    <td>
+    <% if column.name == "created_on" || column.name == "updated_on" && user.send(column.name) != nil -%>
+       <%=h user.send(column.name).strftime("%d.%m.%Y kl. %I:%M") %>
+    <% else -%>
+      <%=h user.send(column.name) %>
+    <% end -%>
+    </td>
+
+
+  <% end %>
+  <% end %>
+
+    <td><%= link_to 'Show', :action => 'usershow', :id => user %></td>
+    <td><%= link_to 'Edit', :action => 'useredit', :id => user %></td>
+
+
+   <td><%= button_to 'Destroy', {:action => 'userdestroy', :id => user}, :confirm => 'Are you sure?' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate %>
+
+<br />

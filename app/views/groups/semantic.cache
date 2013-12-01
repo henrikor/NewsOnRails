@@ -1,0 +1,27 @@
+;; Object groups/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "groups/"
+  :tables (list 
+   (semanticdb-table "new.rhtml"
+    :major-mode 'html-mode
+    :tags '(("New group" section nil nil [1 4]))
+    :file "new.rhtml"
+    :pointmax 185
+    )
+   (semanticdb-table "_form.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "_form.rhtml"
+    :pointmax 2505
+    )
+   (semanticdb-table "edit.rhtml"
+    :major-mode 'html-mode
+    :tags '(("Editing group" section nil nil [1 4]))
+    :file "edit.rhtml"
+    :pointmax 260
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre3"
+  :semanticdb-version "2.0pre3"
+  )

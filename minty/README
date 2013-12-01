@@ -1,0 +1,29 @@
+MintyRails
+==========
+
+This plugin will enable Mint (http://www.haveamint.com/) support in your application.
+By Tomislav Filipčić (tomislav@filipcic.com). Based on code by Graeme Mathieson.
+
+By default it will output the mint code as if mint is installed in /mint .
+This can be changed by adding the following code to your 'config/environment.rb'.
+    
+    MintyRails::Mint.mint_path = '/someotherpath'
+    
+Also, by default, it is enabled for the production environment only. To change this
+add the following code to your 'config/enviroment.rb'
+
+    MintyRails::Mint.environments = 'development'
+
+If you want to disable the code insertion for particular pages, add the
+following to the controller that don't want it:
+
+    skip_after_filter :add_mint_code
+
+To disable it only for some actions add the following code:
+
+    skip_after_filter :add_mint_code, :only => [ 'login', 'authorize' ]
+    
+or
+
+    skip_after_filter :add_mint_code, :except => [ 'success' ]
+  

@@ -1,0 +1,241 @@
+!!! Strict
+%html{:lang => "no", "xml:lang" => "no", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    / to correct the unsightly Flash of Unstyled Content. http://www.bluerobot.com/web/css/fouc.asp
+    = javascript_include_tag :defaults
+    - unless @content_submission.nil?
+    = javascript_include_tag "jquery-1.3.2.min.js"
+    = javascript_include_tag "markitup/jquery.markitup"
+    = javascript_include_tag "markitup/sets/textile/set"
+    = csrf_meta_tag
+    %link{:href => "/javascripts/markitup/skins/markitup/style.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/javascripts/markitup/sets/textile/style.css", :rel => "stylesheet", :type => "text/css"}/
+    - if @kalendercss
+    = calendar_date_select_includes "red"
+    :javascript
+      //
+      _translations = {
+        "OK": "OK",
+        "Now": "Nå",
+        "Today": "I dag"
+      }
+
+      Date.weekdays = $w("Ma Ti O To Fr Lø Sø");
+      Date.first_day_of_week = 1;
+      Date.months = $w("Januar Februar Mars April Mai Juni Juli August September Oktober November Desember" );
+      //
+        %title
+      - if @groupname
+      = @groupname
+      \-
+      - if @article
+      = @article.headline
+      \-
+      = @organization
+      - if @lag_name
+      = @lag_name
+      = @motto
+    = raw @htmlmeta
+    %style{:media => "all", :type => "text/css"}
+      </haml:block><haml:silent>
+      </haml:silent><haml:block>
+    = stylesheet_link_tag '1', :media => 'all'
+    - if @nor_stylesheet
+    - @nor_stylesheet.each{|x|
+    - if x.id == 1
+    - next
+    - end
+    = stylesheet_link_tag "#{x.id}", :media => 'all'
+    - }
+    - elsif @adm_stylesheet
+    = stylesheet_link_tag '3', :media => 'all'
+    - if @cssblokk
+      :css
+        #{@cssblokk}
+          %link{:href => "http://#{@domene}/Sentralt.rss", :rel => "alternate", :title => "#{@domene}  RSS Feed", :type => "application/rss+xml"}/
+  %body
+    #innhold
+      #banner
+        #banner-logo
+          \&nbsp;
+          %a{:href => "/"}
+            %span Forside
+        #banner-bilde
+          \&nbsp;
+        \&nbsp;
+      #toppmeny
+        #navigasjon-sok
+          %form#cse-search-box-1{:action => "http://www.google.no/cse"}
+            %div
+              %input{:name => "cx", :type => "hidden", :value => @googlesok}/
+              %input{:name => "ie", :type => "hidden", :value => "UTF-8"}/
+              %input{:name => "q", :size => @googlesok_str1, :title => "navigasjonssok-text", :type => "text"}/
+              %input{:name => "sa", :type => "submit", :value => "S\303\270k"}/
+          %script{:src => "http://www.google.no/cse/brand?form=cse-search-box&amp;lang=no", :type => "text/javascript"}
+          %div{:style => "display:none"}
+            %a{:href => "#meny"} G&aring; til meny
+        - nr = 0
+        - if !@lagid
+        - if session[:lagid]
+        - @lagid = session[:lagid]
+        - else
+        - @lagid = 8
+        - end
+        - end
+        - @temaid = 5 unless defined?(@temaid)
+        - topplinker = Start.topplinker(@temaid, @lagid)
+        - for article in topplinker
+        - nr = nr + 1
+        = raw text2html(article.ingress, article.cloth)
+        - if defined?(session[:noruser])
+        - if authorized_to?(:controller => 'articles', :action => 'edit')
+        - linkon = 1
+          %span.editmeny
+            = link_to "Edit", :controller => 'articles', :action => 'edit', :id => article.id
+      #navigasjon
+        = @domenelink
+        - if @lag_name  ## Start controller, lag method
+          >
+          %a{:href => "/#{@lag_name}"}= @lag_name
+        - if @group_name
+          >
+          %a{:href => "/#{@lag_name}/#{@groupid}"}= @groupname
+        - if @page
+          > Side
+        = @page
+        - if @article
+          >
+        = @article.headline
+        - if (session[:noruser])
+          Du er logget inn som
+          %i= Noruser.find(session[:noruser]).login
+        %span#link-rss
+          = link_to "RSS", "/#{@lag_name}/#{@temaid}.rss" if defined?(@temaid) && defined?(@lag_name)
+      #hovedinnhold
+        %h1 TEST
+        - if flash[:notice] || flash[:warning] || flash[:error]
+          .error
+            %p.green= flash[:notice]
+            %p.blue= flash[:warning]
+            %p.red= flash[:error]
+        - if @right_column == 1
+          #right_column_bunn
+            - if @temaid && @temaid == "10"
+            - elsif @description
+            = text2html(@description, "r")
+      #main
+        = @content_for_layout
+      - if @right_column == 1
+        #right_column
+          #right_column_innhold
+      - article = Article.find(1)
+      .tema-artikkel
+        %h1 TEST
+        - if article.source
+          %p.a-kilde= article.source
+        %a{:name => text2a_name(article.headline)}
+        %h2= article.headline
+        .a-ingress= text2html(article.ingress, article.cloth, "temaside", article.id, article.url)
+        %p.a-pekere= render(:partial => '/start/links', :object => article)
+        %p.a-dato= article.created_on.strftime("%d.%m.%Y")
+    #columns
+      #side
+        %a{:name => "meny"}
+        #vmeny0.vmeny
+          %ul
+            %li.first
+              %a{:href => "/"} Sentral forside
+            - if authorized_to?(:controller => 'groups', :action => 'home')
+              %li
+                = link_to "Hjem", :controller => "groups", :action => "home"
+            - if logged_in?
+              %li
+                = link_to "Logg ut", :controller => "account", :action => "logout"
+            - else
+              %li
+                = link_to 'Logg inn', :controller => 'account', :action => 'login'
+            - if authorized_to?(:controller => 'lister', :action => 'list')
+              %li
+                = link_to "E-post lister", :controller => "lister", :action => "list"
+            - if authorized_to?(:controller => 'articles', :action => 'list')
+              %li
+                = link_to "Artikler", :controller => "articles", :action => "list"
+            - if authorized_to?(:controller => 'articles', :action => 'new')
+              %li
+                = link_to "Legg til artikkel", :controller => "articles", :action => "new"
+            - if authorized_to?(:controller => 'groups', :action => 'list')
+              %li
+                = link_to "Stilark", :controller => "stylesheets"
+            - if authorized_to?(:controller => 'groups', :action => 'list')
+              %li
+                = link_to "Grupper", :controller => "groups", :action => "list"
+            - if authorized_to?(:controller => 'groups', :action => 'new')
+              %li
+                = link_to "Legg til gruppe", :controller => "groups", :action => "new"
+            - if authorized_to?(:controller => 'admin', :action => 'userlist')
+              %li
+                = link_to "Brukerkontoer", :controller => "admin", :action => "userlist"
+            - if authorized_to?(:controller => 'presse', :action => 'index')
+              %li
+                = link_to "Send pressemelding", :controller => "presse", :action => "index"
+            - if authorized_to?(:controller => 'admin', :action => 'list')
+              %li
+                = link_to "Roller", :controller => "admin", :action => "list"
+            - if authorized_to?(:controller => 'role2group', :action => 'list')
+              %li
+                = link_to "Roller til Grupper", :controller => "role2group", :action => "list"
+            - if authorized_to?(:controller => 'sendpost', :action => 'admin')
+              %li
+                = link_to "E-post grupper", :controller => "sendpost", :action => "admin"
+          / ###############################################################################################
+          / SLUTT
+          / ###############################################################################################
+        - nr = 0
+        - venstremeny = Start.venstre_meny(@temaid, @lagid)
+        - for article in venstremeny
+        - nr = nr + 1
+        .vmeny{:id => "vmeny#{nr}"}
+          = text2html(article.ingress, article.cloth)
+          - if defined?(session[:noruser])
+          - if authorized_to?(:controller => 'articles', :action => 'edit')
+          - linkon = 1
+            %span.editmeny
+              = link_to "Edit", :controller => 'articles', :action => 'edit', :id => article.id
+          %form#cse-search-box-2{:action => "http://www.google.no/cse"}
+            #sok-bunn
+              %div
+                %input{:name => "cx", :type => "hidden", :value => @googlesok}/
+                %input{:name => "ie", :type => "hidden", :value => "UTF-8"}/
+                %input{:name => "q", :size => @googlesok_str2, :title => "sokbunn-text", :type => "text"}/
+                %input{:name => "sa", :type => "submit", :value => "S\303\270k"}/
+          %script{:src => "http://www.google.no/cse/brand?form=cse-search-box&amp;lang=no", :type => "text/javascript"}
+    #bunntekst
+      - nr = 0
+      - bunntekst = Start.bunntekst(@temaid, @lagid)
+      - for article in bunntekst
+      - nr = nr + 1
+      .bunntekstboks{:id => "bunntekst#{nr}"}
+        - testtekst = text2html(article.ingress, article.cloth)
+        = testtekst
+        - if defined?(session[:noruser])
+        - if authorized_to?(:controller => 'articles', :action => 'edit')
+        - ##  linkon = 1
+          .editmeny
+            = link_to "Edit", :controller => 'articles', :action => 'edit', :id => article.id
+      \&nbsp;
+    #ekstradiv1
+      %span
+    #ekstradiv2
+      %span
+    #ekstradiv3
+      %span
+    - ## Google analystics:
+    - if defined?(@googleanalytics)
+      :javascript
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          :javascript
+        try {
+          var pageTracker = _gat._getTracker("#{@googleanalytics}");
+          pageTracker._trackPageview();
+        } catch(err) {}

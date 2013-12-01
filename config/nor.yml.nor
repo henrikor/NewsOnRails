@@ -1,0 +1,43 @@
+#-*- encoding : utf-8 -*-
+SYSTEMGROUPS: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 22, 30, 31, 171 ]
+SYSTEMARTICLES: [ 1 ]
+troll: [292, 10, 29, 36, 37]
+ANTALL: 2
+LAGGROUP: 4
+PRINTSTILARKID: 3
+BILDER:
+  view: 400
+  bilde-li: 400x200
+  bilde-st: 200x400
+  temaside: 250
+  right_column: 150
+DOMENELINK: >
+  Du er her: <a href="http://domene.no/">domene.no</a>
+ORGANIZATION: >
+  News On Rails
+MOTTO: >
+  - Motto
+#DOMENE: > nor-domene.no
+DOMENE: >
+  sos-rasisme.no
+list_path: >
+  /var/www/sites/sos/sos-rasisme.no/lists/
+#mlmmj_path: > /usr/bin/
+
+META: >
+      <meta name="keywords" content="Stikkord om sidene"/>
+      <meta name="description" content="Beskrivelse av organisasjonen"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+#GOOGLEANALYTICS: > UA-8421272-2
+
+# Googlesøk:
+# SOS:
+#GOOGLESOK: partner-pub-0797033268278314:h8oxv8prrzh
+GOOGLESOK: 013140647919714813262:bkmdpe2jghw
+GOOGLESOK_STR1: 31
+GOOGLESOK_STR2: 10
+# TF:
+#GOOGLESOK: 013140647919714813262:n7o5vildera
+# RKU:
+#GOOGLESOK: 013140647919714813262:kcutinvfa34

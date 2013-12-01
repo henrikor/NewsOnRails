@@ -1,0 +1,8 @@
+<h1>Editing groups for role <i><%= @role2group.name %></i></h1>
+<%= form_tag :action => 'update', :id => @role2group %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<%= form_tag %>
+
+<%= link_to 'Show', :action => 'show', :id => @role2group %> |
+<%= link_to 'Back', :action => 'list' %>

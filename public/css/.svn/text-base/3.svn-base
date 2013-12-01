@@ -1,0 +1,33 @@
+#checkedgroup {background: green}
+#sentralgroup {background: red}
+#oftenusedgroup {background: yellow}
+
+ #versjontable { background: rgb(255, 235, 104);
+    border-top: 1px solid rgb(34, 136, 34);
+    font-family: "helvetica",sans-serif;
+    border-bottom: 2px solid rgb(34, 136, 34);
+    font-weight: normal;
+    text-align: center;
+    }
+
+ #aktivversjon { background: red;
+    font-weight: bold;
+    }
+
+ #versjontable { background: rgb(148, 255, 153);
+    border-top: 1px solid rgb(34, 136, 34);
+    font-family: "helvetica",sans-serif;
+    border-bottom: 2px solid rgb(34, 136, 34);
+    font-weight: normal;
+    text-align: center;
+    }
+.articlesliste{ background: rgb(207,248,209);
+    border-top: 1px solid rgb(34, 136, 34);
+    font-family: "helvetica",sans-serif;
+    font-size: 80%;
+    border-bottom: 2px solid rgb(34, 136, 34);
+    font-weight: normal;
+    text-align: center;
+    }
+.articleslistetr1{background: rgb(207, 248, 209);}
+.articleslistetr0{background: rgb(237, 250, 122);}

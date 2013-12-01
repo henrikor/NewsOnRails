@@ -1,0 +1,38 @@
+- if defined?(@dager_totalt) && defined?(@inn) && @dager_totalt > 0
+  - if @dager_totalt == @inn
+    #kursdager
+      %p Du har valgt: <i>Kurs <b>alle</b> dager i perioden</i>
+
+- if session[:antalldager] && defined?(@inn) && session[:antalldager] > @inn
+  #kursdager
+    %p Du har valgt: <i>Kurs i: <b>#{@inn}</b> dager over en periode på <b>#{session[:antalldager]}</b> dager</i>
+
+- if defined?(@dager_totalt) && @dager_totalt < 1
+  #feil
+    %p Ups... <i>Til</i> dato må komme etter <i>fra</i> dato!
+- else
+  - if @vis_innledning || (session[:Konferanse] && session[:Konferanse] == 1 && session[:antalldager] < 10)
+    #innledninger
+      %h2 Innledninger
+      %p I standardprogrammet har vi en innledning pr. dag. Du kan justere programmet etterpå. Ta i tilfellet kontakt med studieansvarlig.
+      %table
+        %tr
+          %td Tema:
+          %td
+            %input(id="tema" name="tema" size="40" type="text")
+        - x = 1
+        - while x <= @inn
+          
+          %tr
+            %td
+              Innledning dag #{x}:
+            %td
+              - if x == 1
+                %input(id="forste_dag" name="forste_dag" size="40" type="text")
+
+              - elsif x == @inn
+                %input(id="siste_dag" name="siste_dag" size="40" type="text")
+              - else
+                %input(id="innledning_#{x}" name="innledning[#{x}]" size="40" type="text")
+            - x = x + 1
+      

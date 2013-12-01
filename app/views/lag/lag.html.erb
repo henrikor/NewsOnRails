@@ -1,0 +1,29 @@
+<% if @description -%>
+  <%= @description %>
+<% end -%>
+<%= link_if_authorized_to?"Edit group", :controller => "groups", :action => "edit", :id => @groupid %>
+
+<br/>
+
+<h1>test2</h1>
+<% for article in @articles %>
+  <a name="<%= text2a_name(article.headline) %>"><h1> <%= article.headline %> </h1>
+  <p>  <%= text2html(article.ingress, article.cloth) %> </p>
+  <p>
+  <%= render(:partial => '/start/links', :object => article) %>
+  </p>
+  <p><%= article.created_on %>
+  </p>
+<% end %>
+<% if @no_paginating != 1 %>
+<%= link_to 'Previous page', {:page => @article_pages.current.previous, :lag => @lag, :id => @groupid } if @article_pages.current.previous %>
+
+
+<%= pagination_links(@article_pages, options = { :name => :page, :window_size => 2, :always_show_anchors => true, :link_to_current_page => false, :params => {:lag => @lag, :id => @groupid}}) %>
+
+
+<% au = "au" %>
+<%= link_to('Next page', {:page => @article_pages.current.next, :lag => @lag, :id => @groupid}) if
+@article_pages.current.next %>
+<% end %>
+

@@ -1,0 +1,25 @@
+<p>test haml</p>
+#TilFra
+  = "<b>NB! Velg <i>fra</i> dato!</b>" if session[:Til] and not session[:Fra]
+  = "<b>NB! Velg <i>til</i> dato!</b>" if session[:Fra] and not session[:Til]
+
+- if @dager_totalt
+  
+
+  %p Antall dager med kurs: #{select(:antalldager, :first, @select)}
+
+  = observe_field(:antalldager_first, |
+  :frequency => 0.5, |
+  :update    => :innledninger, |
+  :url       => { :action => :innledninger }) |
+
+  - unless session[:sirkel]
+    %p
+    = link_to("Kurs alle dager i perioden", |
+    :update    => :innledninger, |
+    :url       => { :action => :innledninger, :alledager => @dager_totalt }) if @dager_totalt >= 10 |
+
+#innledninger
+  - if defined?(@dager_totalt)
+    - @inn = @dager_totalt
+    = render :partial => 'innledninger'

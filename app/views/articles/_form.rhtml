@@ -1,0 +1,379 @@
+<%= error_messages_for 'article' %>
+
+<% if autorized_to_article?(@article2.id)|| @new_article -%>
+  <%# if member_of_role?(@article2.owner)|| @new_article -%>
+  <!-- Klær -->
+
+  <%# @article2 = Article.find('10513') %>
+  <p><label for="article_clothing">Velg bekledning. (Hvis du er usikker, s&aring; la det v&aelig;re som det er)</label><br/>
+    <%= select(:article, :cloth, @cloth) %>
+    <br/>
+
+
+  <% end -%>
+  <%= observe_field(:article_cloth,
+    :frequency => 0.5,
+    :update    => :syntaxmenue,
+    :url       => { :action => :clothsyntaxmenue }) -%>
+
+  <!--[form:article]-->
+
+<div class="infoboks">
+  <%
+  # Information of creator, updator and times
+  #--------------------------------------------
+  if @creator || @updater -%>
+    <p><label for="article_created_of: ">Created of: </label>
+      <%= @creator %>
+
+      <br/>
+      <label for="article_created_on">Created on: </label>
+      <%= @article.created_on %>
+
+    <table id="versjontable">
+      <tr><th>Versjon:</th><th>Tidspunkt</th><th>Oppdatert av:</th><th>Rediger</th></tr>
+      <% Article.versioned_class.find(:all,
+        :conditions => ["article_id = '#{@article2.id}'"]).collect do |version|
+        if version.updated_of > 0
+          #         if Noruser.find(version.updated_of)
+          begin
+            user = Noruser.find(version.updated_of)
+            login = user.login
+            #         else
+          rescue
+            login = "Antagelig oppdatert i gammel NOR"
+          end
+        else
+          login = "Ikke oppdatert"
+        end -%>
+
+        <tr <% if @article.version == version.version -%> id="aktivversjon" <% end -%> >
+          <td><%= version.version -%> </td>
+          <td><%= version.updated_on -%> </td>
+          <td><%= login -%> <%#= version.updated_of %> </td>
+          <td><%= link_to 'Rediger', :action => 'edit', :id => @article2.id, :versjon => version.version -%>
+        </tr>
+      <% end -%>
+    </table>
+
+  <% end
+  # END
+  #------
+  %>
+
+
+  <% if autorized_to_article?(@article2.id)|| @new_article -%>
+  <%# if member_of_role?(@article2.owner)|| @new_article -%>
+
+
+    <p><label for="article_created_on">Created</label><br/>
+      <%= datetime_select 'article', 'created_on'  %></p>
+
+    <p><label for="article_source">Source</label><br/>
+      <%= text_field 'article', 'source'  %>
+  <%#= text_field_with_auto_complete 'article', 'source', :autocomplete => "off" %></p>
+  <%#= text_field_with_auto_complete :article, :source, :autocomplete => "off" %>
+
+
+    <p><label for="article_headline">Headline</label><br/>
+      <%= text_field 'article', 'headline'  %></p>
+
+
+    <p><label for="article_url">Url</label><br/>
+      <%= text_field 'article', 'url'  %></p>
+
+    <br/>
+
+    <p>
+      <%= link_to "Legg til bilde / vedlegg", { :controller => "images", :action => "new" }, :popup => ['new_window', 'height=750,width=1000,scrollbars=yes'] %>
+    </p>
+    <br/>
+    <p><label for="article_ingress">Ingress</label><br/>
+
+      <script type="text/javascript" >
+        $(document).ready(function() {
+          <%#*$("#ingress").markItUp(setingress);%>
+          $("#ingress").markItUp(mySettings);
+        });
+      </script>
+
+  <%#= text_area 'article', 'ingress', :rows=>7, :cols=>85 %></p>
+    <%= text_area 'article', 'ingress', :id=>"ingress", :rows=>15, :cols=>85 %></p>
+
+  <script type="text/javascript" >
+    $(document).ready(function() {
+      $("#story").markItUp(mySettings);
+    });
+  </script>
+
+  <p><label for="article_story_text">Story text</label><br/>
+  <%= text_area 'article', 'story_text', :id=>"story", :rows=>25, :cols=>85 %></p>
+
+
+
+
+  </div>
+
+  <div id="syntaxmenue"><%= @syntax -%></div>
+
+
+  <!--
+          <p><label for="article_expires_date">Expires date</label><br/>
+  <%= datetime_select 'article', 'expires_date'  %></p>
+
+          <p><label for="article_suspend">Suspend</label><br/>
+  <%= datetime_select 'article', 'suspend'  %></p>
+  -->
+
+  <div class="infoboks">
+    <h3><%=norsk2html("Ikke gjør noe i denne boksen, med mindre du veit hvorfor") %> </h3>
+    <p><%= text_field 'article', 'pri'  %> <label for="article_pri">Prioritet</label></p>
+
+
+    <p><%= check_box 'article', 'un_published'  %><label for="article_un_published">Avpubliser</label></p>
+
+    <!--    #########################################################        -->
+
+    <p>
+      <span class="nobreak">
+        <% if @hide_headline == 1  -%>
+          <input checked="checked" id="hide_headline" name="hide[headline]" value="1" type="checkbox">
+        <% else -%>
+          <input id="hide_headline" name="hide[headline]" value="1" type="checkbox">
+        <% end -%>
+        <%= norsk2html("Skjul overskriften") %>
+      </span>
+
+      <span class="nobreak">
+        <% if @hide_source == 1 -%>
+          <input checked="checked" id="hide_source" name="hide[source]" value="1" type="checkbox">
+        <% else -%>
+          <input id="hide_source" name="hide[source]" value="1" type="checkbox">
+        <% end -%>
+        <%= norsk2html("Skjul kilden") %>
+      </span>
+
+      <span class="nobreak">
+        <% if @hide_ingress == 1 -%>
+          <input checked="checked" id="hide_ingress" name="hide[ingress]" value="1" type="checkbox">
+        <% else -%>
+          <input id="hide_ingress" name="hide[ingress]" value="1" type="checkbox">
+        <% end -%>
+        <%= norsk2html("Skjul ingressen") %>
+      </span>
+
+      <span class="nobreak">
+        <% if @hide_story_text == 1 -%>
+          <input checked="checked" id="hide_storytext" name="hide[storytext]" value="1" type="checkbox">
+        <% else -%>
+          <input id="hide_storytext" name="hide[storytext]" value="1" type="checkbox">
+        <% end -%>
+        <%= norsk2html("Skjul hoveddelen av teksten") %>
+      </span>
+
+      <span class="nobreak">
+        <% if @hide_dato == 1 -%>
+          <input checked="checked" id="hide_dato" name="hide[dato]" value="1" type="checkbox">
+        <% else -%>
+          <input id="hide_dato" name="hide[dato]" value="1" type="checkbox">
+        <% end -%>
+        <%= norsk2html("Skjul dato") %>
+      </span>
+
+    </p>
+  </div>
+  <br/>
+  <!--    #########################################################        -->
+
+  <br/>
+  <% #----------------------------------------------------------------------
+  # Themes
+  #----------------------------------------------------------------------
+  %>
+
+
+
+  <div class="infoboks">
+
+    <h3>Temasider</h3>
+
+    <p><label for="autogroup_name" >Tema</label><br/>
+      <%= text_field 'autogroup', 'name', :size => "80"%>
+    </p>
+    <div class="auto_complete"
+         id="autogroup_name_auto_complete"></div>
+         <%= auto_complete_field :autogroup_name,
+           :url=>{:action=>'auto_complete_for_autogroup_name'},
+           :tokens => ',' %>
+
+
+    <p><i><%= norsk2html(%{Sentrale temaer og temaer denne siden er med i fra før:}) %>
+      </i></p>
+
+    <% for @group in @groups3
+      vist = []
+    %>
+
+      <% @article2.article_groups.each {|x|
+        if (x.group_id == @group.group_id)
+          vist << x.group_id
+        %>
+
+          <strong id="checkedgroup"><span class="nobreak"><input checked="checked" id="group_<%= @group.group.id %>_id" name="group[<%= @group.group.id %>]" value="<%= @group.group.id %>" type="checkbox">&nbsp;<acronyme title=" <%= h(@group.group.description) %> "><%= @group.name %></acronyme>
+          </strong>
+        <% end %>
+
+      <% } %>
+      <% if @sentral_group.include?(@group.group.id) &! vist.include?(@group.group.id)-%>
+        <strong id="sentralgroup"><span class="nobreak"><input id="group_<%= @group.group.id %>_id" name="group[<%= @group.group.id %>]" value="<%= @group.group.id %>" type="checkbox">&nbsp;<acronyme title=" <%= h(@group.group.description) %> "><%= @group.name %></acronyme></strong>
+      <% end %>
+
+    <% end %>
+
+    <br />
+    <br />
+
+    <strong>
+      <%= link_to "Vis flere temaer", "/articles/temaboksen/#{@article.id}",
+        #        :url_for(:action => "temaboksen", :id => "13994"),
+      :remote => true
+      # link_to"Vis flere temaer", :update => 'temaboksen', :remote => true
+      #:url => { :action => "temaboksen", :id => @article.id},
+      #link_to"Vis flere temaer", :update => 'temaboksen',
+      #  :url => { :action => "temaboksen", :id => @article.id}
+      #:url => { :action => "temaboksen", :group => @group, :group2 => @group2, :group3 => @groups3, :article2 => @article2 }
+      %>
+    </strong>
+
+
+    <div id="temaboksen">
+
+
+    </div>
+
+
+    <br/>
+
+
+
+  <% else -%>
+
+    <% ########################################################################################
+    # IKKE AUTORISERT TIL Å REDIGERE                                                       #
+    ########################################################################################
+    -%>
+
+    <% @article2.article_groups.each {|x|
+      if (Group.laggroup?(x.group_id) && !autorized_to_group?(x.group_id)) || !Group.laggroup?(x.group_id)
+      %>
+        <span class="nobreak"><input id="group_<%= x.group_id %>_id" name="group[<%= x.group_id %>]" value="<%= x.group_id %>" type="hidden">
+        <% end } %>
+
+      <p><label for="article_source">Source</label><br/>
+        <%= @article.source  %>
+
+      </p>
+
+      <p><label for="article_headline">Headline</label><br/>
+        <%= @article.headline  %></p>
+
+      <p><label for="article_url">Url</label><br/>
+        <%= @article.url  %></p>
+
+      <p><label for="article_ingress">Ingress</label><br/>
+        <%= text2html(@article.ingress) %></p>
+
+      <p><label for="article_story_text">Story text</label><br/>
+        <%= text2html(@article.story_text) %></p>
+
+      <p><label for="article_picture">Picture</label><br/>
+        <%= @article.picture  %></p>
+
+      <!--
+            <p><label for="article_expires_date">Expires date</label><br/>
+      <%= @article.expires_date  %></p>
+
+            <p><label for="article_suspend">Suspend</label><br/>
+      <%= @article.suspend  %></p>
+      -->
+      <p><label for="article_pri">Priority</label><br/>
+        <%= @article.pri  %></p>
+
+      <p> Owner: <%= @article.owner %> </p>
+    <% end %>
+
+</div>
+<%= #----------------------------------------------------------------------
+# Lag
+#----------------------------------------------------------------------
+%>
+<div class="infoboks">
+  <h3>Lag</h3>
+  <p><i><%= norsk2html(%{Du må krysse av minst ett kryss her. De fleste har kun en mulighet her, husk og kryss av der!}) %></i></p>
+
+  <div id="lags">
+    <% for @lag in @lags %>
+      <% treff = 0 %>
+      <% if @article2.article_groups.each {|x|
+          if (x.group_id == @lag.group_id) %>
+            <span class="nobreak"><input checked="checked" id="group_<%= @lag.group.id %>_id" name="group[<%= @lag.group.id %>]" value="<%= @lag.group.id %>" type="checkbox">&nbsp;<%= @lag.name %>
+
+              <% treff = 1 %>
+            <% end %>
+          <% } %>
+        <% end %>
+        <% if treff == 0 %>
+
+          <% if @husk && @used_groups && @used_groups.include?("#{@lag.group.id}")-%>
+            <strong id="oftenusedgroup"><span class="nobreak"><input checked="checked" id="group_<%= @lag.group.id %>_id" name="group[<%= @lag.group.id %>]" value="<%= @lag.group.id %>" type="checkbox">&nbsp;<%= @lag.name %></strong>
+
+              <% elsif @used_groups && @used_groups.include?("#{@lag.group.id}")-%>
+                <strong id="oftenusedgroup"><span class="nobreak"><input id="group_<%= @lag.group.id %>_id" name="group[<%= @lag.group.id %>]" value="<%= @lag.group.id %>" type="checkbox">&nbsp;<%= @lag.name %></strong>
+
+                  <% elsif @sentral_group.include?(@lag.group.id)-%>
+                    <strong id="sentralgroup">
+                      <span class="nobreak"><input id="group_<%= @lag.group.id %>_id" name="group[<%= @lag.group.id %>]" value="<%= @lag.group.id %>" type="checkbox">&nbsp;<%= @lag.name %></strong>
+
+
+                      <% else %>
+                        <span class="nobreak"><input id="group_<%= @lag.group.id %>_id" name="group[<%= @lag.group.id %>]" value="<%= @lag.group.id %>" type="checkbox">&nbsp;<%= @lag.name %>
+                        <% end %>
+                      <% end %>
+                      |
+                    </span>
+                  <% end %>
+                  </div>
+
+                  </div>
+
+                  <br/><br/>
+
+                  <p>Husk avkrysninger:
+                    <% if @husk -%>
+                      <span class="nobreak"><input checked="checked" id="husk" name="husk" value="1" type="checkbox">
+                      <% else -%>
+                        <span class="nobreak"><input id="husk" name="husk" value="1" type="checkbox">
+                        <% end -%>
+                      </span>
+                  </p>
+
+                  <br/>
+
+                  <% if autorized_to_article?(@article2.id) -%>
+  <%# if member_of_role?(@article.owner) -%>
+                    <p><label for="article_owner"><i><%= norsk2html(%{Eier, hvem skal ha tilgang til å redigere denne <strong>NB!</strong> her må det ikke stå "User", velg laget ditt i stede!}) %>
+                        </i>
+                      </label><br/>
+                      <%= select(:article, :owner, @roles) %>
+                      <br/>
+
+                    <% end -%>
+                    <!--[eoform:article]-->
+
+
+                  <div id="itemlist">
+<%#= render(:partial => '/shared/item', :collection => @items) %>
+                  </div>
+
+
+
