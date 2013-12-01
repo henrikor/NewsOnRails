@@ -14,7 +14,7 @@ capybara-*.html
 /public/tex2img
 /coverage/
 /spec/tmp/*
-/config/database.yml
+/config/database.yml*
 /config/nor.yml
 *.old
 *.slett
