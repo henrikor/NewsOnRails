@@ -1,4 +1,0 @@
-
-UPDATE article_groups ag JOIN articles a ON ag.article_id = a.id SET group_id = '292' where ag.group_id = '10' AND a.story_text REGEXP "[[:alnum:]]+";
-
-

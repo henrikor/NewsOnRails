@@ -1,9 +1,0 @@
-Here's the current customizer. Some of the hints are not enabled by
-default, so you should inspect these yourself and enable those you are
-interested in. One hint I definitely didn't want to enable by default
-is the "constant name" warning. I was under the impression that
-constants should use all upper-case letters separated by underscores,
-and this is indeed the case in lots and lots of Ruby code. But there
-are quite a few exceptions, where constants are just capitalized - so
-this seems like a warning that may need some tweaking or is an
-individual preference. Here's the customize

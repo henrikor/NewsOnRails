@@ -1,8 +1,0 @@
-<% for column in GroupGroup.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> <%=h @group_group.send(column.name) %>
-</p>
-<% end %>
-
-<%= link_to 'Edit', :action => 'edit', :id => @group_group %> |
-<%= link_to 'Back', :action => 'list' %>

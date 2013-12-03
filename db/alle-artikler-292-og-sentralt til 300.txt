@@ -1,9 +1,0 @@
-
-#UPDATE article_groups ag JOIN articles a ON ag.article_id = a.id SET group_id = '292' where ag.group_id = '10' AND a.story_text REGEXP "[[:alnum:]]+";
-UPDATE article_groups ag JOIN articles a ON ag.article_id = a.id SET group_id = '292' where ag.group_id = '10' AND a.story_text REGEXP "[[:alnum:]]+";
-
-INSERT INTO article_groups (group_id, article_id) SELECT '300', id FROM articles WHERE id IN
-(SELECT a.id from articles a JOIN article_groups ag ON a.id = ag.article_id WHERE group_id = '10')
-AND id IN
-(SELECT a.id from articles a JOIN article_groups ag ON a.id = ag.article_id WHERE group_id = '8')
-AND id NOT IN (SELECT article_id from article_groups where group_id = '300');

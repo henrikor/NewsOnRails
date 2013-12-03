@@ -1,8 +1,0 @@
-<% for column in Noruser.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> <%=h @user.send(column.name) %>
-</p>
-<% end %>
-
-<%= link_to 'Rediger', :action => 'useredit', :id => @user %> |
-<%= link_to 'Tilbake', :action => 'userlist' %>
