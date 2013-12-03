@@ -1,0 +1,16 @@
+<%= error_messages_for 'role' %>
+
+<!--[form:role]-->
+<p><label for="role_name">Name</label><br/>
+<%= text_field 'role', 'name'  %></p>
+
+<p><label for="role_authorizable_type">Authorizable type</label><br/>
+<%= text_field 'role', 'authorizable_type'  %></p>
+
+<p><label for="role_created_at">Created at</label><br/>
+<%= datetime_select 'role', 'created_at'  %></p>
+
+<p><label for="role_updated_at">Updated at</label><br/>
+<%= datetime_select 'role', 'updated_at'  %></p>
+<!--[eoform:role]-->
+

@@ -1,0 +1,15 @@
+<h1>E-post grupper for sendpost:</h1>
+<p><label for="sendpost">Sendpost</label><br/>
+
+<%= form_tag({:action => 'lagre'}, :multipart => true) %>
+
+<textarea cols="90" rows="25" id="sendpost_ymldata" name="sendpost[ymldata]" class="app_input">
+<%=@sendpost["ymldata"]%>
+</textarea>
+
+<%#= text_area 'sendpost', 'ymldata', :class=>"yml", :rows=>25, :cols=>85 %></p>
+<br/>
+<%= submit_tag 'Lagre' %>
+
+<%= form_tag %>
+

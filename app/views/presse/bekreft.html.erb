@@ -1,0 +1,61 @@
+<% unless @feil_email.empty? %>
+
+  <h1>Feil med e-post adresser!</h1>
+<b>  <%=  text2html("Følgende e-post adresser er ikke korrekte:") %> <br /><br />
+</b>
+
+<% @feil_email.each{|x| %>
+   <%= x %> <br />
+<%  } %>
+
+<% else %>
+
+<h1>Presse#bekreft</h1>
+
+<div id="presse_ingress">
+  <p> Send pressemeldingen til <%= @til_antall %> e-post adresser </p>
+</div>
+
+
+<%= form_tag({:action => 'sender'}, :multipart => true) %>
+
+<input type="hidden" id="presse_fra" name="presse[fra]" value="<%=@presse['fra']%>" />
+<input type="hidden" id="presse_temafelt" name="presse[temafelt]" value="<%=@presse['temafelt']%>" />
+<input type="hidden" id="presse_melding" name="presse[melding]" value="<%=@ptekst%>" />
+<input type="hidden" id="presse_ymlfil" name="presse[ymlfil]" value="<%=@ymlfil%>" />
+
+<div id ="presse_adresser">
+<p><label for="presse_adresser">Adresser</label><br/>
+<textarea cols="40" rows="5" id="presse_adresser" name="presse[adresser]" class="presse_adresser_boks">
+<%= @adresser.each{|x|
+  x.chomp if is_email?(x)}%>
+</textarea>
+</div>
+
+<div id="presse_notis"><p>
+<%= text2html('Trykker du "send" vil du få rapporter tilsendt til adressa du oppgav som "fra-adresse" etterhvert som pressemeldingen sendes ut.
+  Mottar du ikke noe av dette, må du straks gi beskjed til driftsansvarlig. Pressemeldingen er allerde lagret, og kan sendes
+  i etterkant, dersom det oppstår feil.
+  <br/>
+  <b>NB!</b> Selv om noen adresser kan bli feil på denne siden, så skal det fungere bedre fra daemonen som faktisk sender e-postene') %>
+</p></div>
+<h2>Pressemelding:</h2>
+
+<div id="presse_melding">
+<p><label for="presse_melding">Melding</label><br/>
+
+  <div id="presse_melding">
+    <pre>
+    <p><%= @ptekst %></p>
+    </pre>
+    
+<!--
+<textarea cols="100" rows="30" id="presse_melding" name="presse[melding]" class="presse_melding_boks">
+<%= @ptekst %>
+</textarea>
+-->
+</div>
+
+<%= submit_tag "Send" %>
+<%= form_tag %>
+<%end%>

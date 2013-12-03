@@ -1,0 +1,90 @@
+<!--
+ ! Excerpted from "Rails Recipes"
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/fr_rr for more book information.
+-->
+<div id='new-image' class='section'>
+  <h2>Bilder/ vedlegg</h2>
+  <%= form_for @image, :html => { :multipart => true }, :url=> {:action => @action} do |f| %>
+    <label for='image_name'>Navn:</label>
+    <%= f.text_field :name %><br/>
+    <label for='image_file_data'>Fil:</label>
+    <%= f.file_field :file_data %><br/>
+    <label for='image_bane'>Lagre i mappe:</label>
+    <%= f.text_field :bane %><br/>
+    <label for='image_description'>Beskrivelse:</label><br/>
+    <%= f.text_area :description, :cols => 80, :rows => 5 %><br/>
+    <% if @image.id -%>
+      <input type="hidden" id="id" name="id" value="<%= @image.id %>" />
+
+    <% end -%>
+    <%= submit_tag "Save" %>
+  <% end %>
+  <% @dirs.each {|d| -%>
+    <%= link_to d, :action => "new", :mappe => d %>
+    <p>Mappe: <%= d %></p>
+
+  <% } -%>
+
+
+</div>
+
+<% if @images.any? %>
+  <div id='existing-images' class='section'>
+    <h2><%= pluralize(@images.size, "Image") %></h2>
+
+    <%= will_paginate %>
+
+    <p> Under hvert bilde er det en tekst i gr&aring;tt. Du skal n&aring; kopiere linjen under bildet, og lime den
+      inn i teksten:<br/></p>
+
+    <% if authorized_to?(:controller => 'images', :action => 'clean') %>
+
+      <%# = button_to("Destroy All",:action=>'clean') %>
+        <%= button_to 'Destroy All', {:action => 'clean'}, :confirm => 'Er du ikke litt teit hvis du trykker OK? Du vil slette ALLE bildene i databasa...' %>
+      
+    <% end %>
+
+
+    <table><tr>
+        <% @images.each_with_index do |image,index| %>
+          <td>
+            <% if bilde?(image.extension) -%>
+              <%= thumbnail image %>
+<div id='ingenimageurl'>
+[[bilde-li:<%= image.id %>]] [[bilde-st:<%= image.id %>]] <br/>
+[[image:<%= image.id %>]]
+<% else -%>
+Vedlegg: <%= image.name %>
+<div id='ingenimageurl'>[[vedlegg:<%= image.id %>]]
+<% end -%>
+<div id='imageurl'>/uploaded_images/<%= image.id %>-full.<%= image.extension %>
+
+                  <br/>
+                </div>
+
+<div id='beskrivelse'><%= image.description %>
+                  <% if image.description && image.description =~ /\w/ -%>
+                    <br/>
+                  <% end -%>
+                  <%= link_to "Rediger", :action => "edit", :id => image.id %>
+                </div>
+
+
+                <% if authorized_to?(:controller => 'images', :action => 'destroy') %>
+
+                  <div id='deletebutton'>
+                    <%= button_to 'Destroy', {:action => 'destroy', :id => image}, :confirm => 'Sikker?' %>
+                  </div>
+                <% end %>
+
+
+                </td>
+                <% if (index + 1) % 5 == 0 %></tr><tr> <% end %>
+
+
+                <% end %>
+              </tr></table>
+            </div>
+          <% end %>
+

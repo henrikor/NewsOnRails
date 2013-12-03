@@ -1,0 +1,51 @@
+<div class="helesaken">
+
+  <% unless @bildeview == nil || @bilderetning == nil %>
+    <%= raw hentbilde(@bildeview, @bilderetning, "nei", 0)  %>
+  <% end %>
+
+  <% if authorized_to?(:controller => 'articles', :action => 'edit')  %>
+    <p class="edit-link"><%= link_to "Edit", :controller => 'articles', :action => 'edit', :id => @article.id %></p>
+  <% end %>
+
+
+  <% if @article.story_text =~ /\w/ && @visstory_text != 1 -%>
+    <% unless @print == 1 %>
+      <p class="print-link"><%= link_to "Skriv ut", :controller => 'start', :action => 'print', :id => @article.id %> </p>
+    <% end -%>
+  <% end %>
+
+    <% unless @visingress == 1 -%>
+
+      <% unless @visheadline == 1 -%>
+        <%#= norsk2html("<h1>#{@article.headline}</h1>", @article.cloth) %>
+      <h1><%= text2html(@article.headline, @article.cloth, "view").html_safe %></h1>
+      <% end -%>
+      <div class="o-ingress">      <%     logger.debug "Problembarn002 tekst: \n #{text2html(@article.ingress, @article.cloth, "view")} \n\n"
+             %>
+      <%= text2html(@article.ingress, @article.cloth, "view").html_safe %></div>
+
+    <% end -%>
+      <% if @article.story_text && @article.story_text != nil %>
+    <div id="o-tekst">
+      <%  @article.story_text = text2html(@article.story_text, @article.cloth, "view")
+      if @article.story_text =~ /\[\[innholdsliste\]\]/
+        @article.story_text = Article.innholdsliste(@article.story_text)
+      end  %>
+
+      <%= @article.story_text.html_safe %>
+      <%#= @article.story_text %>
+    </div>
+<% end %>
+  <% if @article.source && @vissource != 1 -%>
+    <div class="o-kilde"><p><%= raw @article.source %></p></div>
+  <% end %>
+
+  <div class="o-pekere"><%= render(:partial => 'links', :object => @article) %></div>
+
+  <% if @visdato != 1 -%>
+    <div class="o-dato"><p>
+        <%= @article.created_on.strftime("%d.%m.%Y") %>
+    </p></div>
+  <% end %>
+</div>

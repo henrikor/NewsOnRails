@@ -1,0 +1,13 @@
+<p>Group = <%= params[:id] %>
+<br/>
+</p>
+<% for article in @articles %>
+  <h1> <%= article.headline %> </h1>
+  <p>  <%= text2html(article.ingress) %> </p>
+  <p>|
+  <%# = render(:partial => '/start/links', :object => article) %>
+  </p>
+
+<% end %>
+<%#= link_to 'Previous page', { :page => @article_pages.current.previous } if @article_pages.current.previous %>
+<%#= link_to 'Next page', { :page => @article_pages.current.next } if @article_pages.current.next %>

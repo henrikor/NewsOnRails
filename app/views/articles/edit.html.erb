@@ -1,0 +1,27 @@
+<h1>Editing article</h1>
+
+
+
+<table>
+  <tr>
+<td><%= button_to 'Copy', :action => 'new', :id => @article %></td>
+<%# if @user_has_role %>
+<%# if member_of_role?(@article.owner) -%>
+<% if autorized_to_article?(@article.id)-%>
+<td><%= button_to 'Destroy', {:action => 'destroy', :id => @article}, :confirm => 'Are you sure?' %></td>
+<td><%= button_to 'Un publish', :action => 'un_publish', :id => @article %></td>
+<% end %>
+  </tr>
+</table>
+
+
+
+<%= form_tag({:action => 'update', :id => @article2}, :multipart => true) %>
+<%= render :partial => 'form' %>
+<%= submit_tag 'Lagre' %>
+
+<%= form_tag %>
+
+
+<%= link_to 'Show', :action => 'show', :id => @article2 %> |
+<%= link_to 'Back', :action => 'list' %>

@@ -1,0 +1,44 @@
+<h1>Kvittering</h1>
+<br/>
+<p><b>Din oppgitte e-postadresse:</b><%=@fraepost%></p>
+<br/>
+<% unless @mangler_arg.empty? %>
+<p><b>Følgende felter er påkrevd:</b></p>
+<ul>
+<% @mangler_arg.each{|key, val| %>
+<li><%= key.gsub(/§/,"") %>  </li>
+<%  } %>
+</ul>
+
+<%#= button_to "Back", :back %>
+<br/>
+<p><%=  link_to_function "Gå tilbake", "history.back()" %> og prøv igjen.
+</p>
+<%else%>
+
+<p><b>Skjemaet er sendt</b></p>
+
+<%#*<p><b>Skjemaet er sendt til følgende e-post adresser:</b></p>%>
+<%#*<ul>%>
+  <%# @ymldata[@epostg].each{|x|%>
+<%#*<li> %><%#  x %> <%#</li>%>
+<%#  } %>
+<%#*</ul>%>
+
+<p><b>Personinfo:</b></p>
+<ul>
+<% @sentrale_arg.each{|key, val| %>
+<li><%= key %> - <%= val %>  </li>
+<%  } %>
+</ul>
+
+<p><b>Andre utfylte felter:</b></p>
+<ul>
+<% @rest_arg.each{|key, val| %>
+<li><%= key %> - <%= val %>  </li>
+<%  } %>
+</ul>
+
+<%end%>
+
+

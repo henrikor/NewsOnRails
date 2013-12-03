@@ -1,0 +1,119 @@
+    <% if @flash['error'] %>
+      <div id="message1"><%= @flash['error'] %></div>
+    <% end %>
+
+    <% if @flash['notice'] %>
+      <div id="message3"><%= @flash['notice'] %></div>
+    <% end %>
+
+    <% if @flash['warning'] %>
+      <div id="message2"><%= @flash['warning'] %></div>
+    <% end %>
+
+
+<%= error_messages_for 'user' %>
+
+
+<!--[form:user]-->
+
+<%
+# Information of creator, updator and times
+#--------------------------------------------
+ if @creator || @updater %>
+<p><label for="user_created_of: ">Created of: </label>
+<%= @creator %>
+
+<br/>
+<label for="user_created_on">Created on: </label>
+<%= @user.created_on %>
+
+<br/>
+<label for="user_updated_of:">Updated of: </label>
+<%= @updater %>
+<br/>
+
+<label for="user_updated_on">Updated on: </label>
+<%= @user.updated_on %>
+</p>
+<% end
+
+
+# END  
+#------
+%>
+
+<p><label for="user_login">Username / login</label><br/>
+<%= text_field 'user', 'login'  %></p>
+
+<div id ="ressetpswd">
+   <%=  link_to("Reset password", 
+			  :url => { :action => 'resset_passwd'},
+                          :confirm => 'Reset password: Are you sure?',
+                          :update => 'ressetpswd')
+ -%>
+
+
+<% if !@user.password || error_message_on(:user, :password) || error_message_on(:user, :password_confirmation) %>
+
+<div id="pswd">
+  <label for="user_password">Choose password:</label><br/>
+  <%= password_field "user", "password", :size => 30 %><br/>
+  <label for="user_password_confirmation">Confirm password:</label><br/>
+  <%= password_field "user", "password_confirmation", :size => 30 %><br/>
+</div>
+
+<% end %>
+</div>
+
+<p><label for="user_realname">Realname</label><br/>
+<%= text_field 'user', 'realname'  %></p>
+
+<p><label for="user_email">Email</label><br/>
+<%= text_field 'user', 'email'  %></p>
+
+<p><label for="user_expires_date">Expires date</label><br/>
+<%= datetime_select 'user', 'expires_date'  %></p>
+
+<p><label for="user_suspend">Suspend</label><br/>
+<%= datetime_select 'user', 'suspend'  %></p>
+
+
+
+
+<%= ################################################################################
+    # Item thing
+%>
+
+
+<%=
+  if @groups2
+     select(:groups, :id, @groups2) 
+  end
+%>
+
+</p>
+
+<%= observe_field(:groups_id,
+                  :frequency => 0.5, 
+                  :update    => :itemlist,
+                  :url       => { :action => :add_item },
+		  :complete  => "new Insertion.Top('itemlist', '<i>Adding group... </i>')") %>
+
+
+
+
+
+<%= periodically_call_remote(:update    => :itemlist,
+                             :url       => { :action => :list_item },
+                             :frequency => 10 )%>
+
+
+<!--[eoform:user]-->
+
+  <%= submit_tag 'Edit' %>
+<%= form_tag %>
+
+
+<div id="itemlist">
+<%= render(:partial => '/shared/item', :collection => @items) %>
+</div>

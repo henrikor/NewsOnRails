@@ -1,0 +1,1457 @@
+Script started on tir 09-01-2007 16:41:04 CET
+]0;henrik@Lenin: /var/www/newsonrails/trunk/apphenrik@Lenin:/var/www/newsonrails/trunk/app$ 
+]0;henrik@Lenin: /var/www/newsonrails/trunk/apphenrik@Lenin:/var/www/newsonrails/trunk/app$ script/serve[K[K[K[K[Kserver
+bash: script/server: No such file or directory
+]0;henrik@Lenin: /var/www/newsonrails/trunk/apphenrik@Lenin:/var/www/newsonrails/trunk/app$ cd ..
+]0;henrik@Lenin: /var/www/newsonrails/trunkhenrik@Lenin:/var/www/newsonrails/trunk$ script/server 
+=> Booting lighttpd (use 'script/server webrick' to force WEBrick)
+=> Rails application started on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server (see config/lighttpd.conf for options)
+  [4;36;1mRole Columns (0.031460)[0m   [0;1mSHOW FIELDS FROM roles[0m
+  [4;35;1mSQL (0.061178)[0m   [0mSELECT count(*) AS count_all FROM roles [0m
+  [4;36;1mRole Load (0.000534)[0m   [0;1mSELECT * FROM roles WHERE (roles.`omnipotent` = 1 ) [0m
+  [4;35;1mStylesheet Load (0.051958)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000557)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing LagController#index (for 127.0.1.1 at 2007-01-09 16:41:52) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"action"=>"index", "id"=>"10", "controller"=>"lag", "lag"=>"Sentralt"}
+  [4;35;1mGroup Load (0.046948)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000593)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroup Columns (0.002593)[0m   [0mSHOW FIELDS FROM groups[0m
+  [4;36;1mGroupGroup Columns (0.002378)[0m   [0;1mSHOW FIELDS FROM group_groups[0m
+  [4;35;1mGroupGroup Load Including Associations (0.045739)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Columns (0.008654)[0m   [0;1mSHOW FIELDS FROM article_groups[0m
+  [4;35;1mArticleGroup Load Including Associations (0.113755)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mStylesheet Load (0.000349)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000172)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;36;1mGroup Load (0.000165)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000162)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000262)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000312)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mGroup Load (0.000649)[0m   [0;1mSELECT * FROM groups WHERE (groups.id = '10') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000546)[0m   [0mSELECT * FROM groups WHERE (groups.id = 8) LIMIT 1[0m
+  [4;36;1mGroup Load (0.000683)[0m   [0;1mSELECT * FROM groups WHERE (name = 'Sentralt') LIMIT 1[0m
+  [4;35;1mGroupGroup Load (0.000447)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and group_id2 = '4') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000181)[0m   [0;1mSELECT * FROM groups WHERE (groups.id = '10') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000158)[0m   [0mSELECT * FROM groups WHERE (groups.id = 8) LIMIT 1[0m
+  [4;36;1mGroup Load (0.000161)[0m   [0;1mSELECT * FROM groups WHERE (groups.id = 8) LIMIT 1[0m
+  [4;35;1mArticle Load (0.666969)[0m   [0mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN ('10', 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;36;1mArticleGroup Count (0.038077)[0m   [0;1mSELECT FOUND_ROWS()[0m
+  [4;35;1mArticle Load (1.067916)[0m   [0mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN ('10', 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc limit 0, 10[0m
+Rendering controllerindexactionindexlayoutfalse within layouts/application
+Rendering lag/index
+checking guest authorisation for groups/edit
+  [4;36;1mPermission Load (0.000948)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'groups'
+AND permissions.action = 'edit'
+[0m
+  [4;35;1mArticle Columns (0.001398)[0m   [0mSHOW FIELDS FROM articles[0m
+  [4;36;1mArticleGroup Load (0.029747)[0m   [0;1mSELECT * FROM article_groups WHERE (article_groups.article_id = 10076) [0m
+  [4;35;1mGroupGroup Load (0.000933)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '170' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000674)[0m   [0;1mselect name from groups where id = 170[0m
+  [4;35;1mGroupGroup Load (0.000697)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '170' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000499)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;35;1mGroupGroup Load (0.000668)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000281)[0m   [0;1mselect name from groups where id = 8[0m
+  [4;35;1mGroupGroup Load (0.000692)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000882)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.04525)
+  [4;35;1mImage Load (0.025005)[0m   [0mSELECT * FROM images WHERE (images.id = '49') LIMIT 1[0m
+  [4;36;1mImage Columns (0.001234)[0m   [0;1mSHOW FIELDS FROM images[0m
+  [4;35;1mArticle Load (0.000754)[0m   [0mSELECT * FROM articles WHERE (articles.id = '10051') LIMIT 1[0m
+  [4;36;1mArticle Load (0.000163)[0m   [0;1mSELECT * FROM articles WHERE (articles.id = '10051') LIMIT 1[0m
+  [4;35;1mImage Load (0.000331)[0m   [0mSELECT * FROM images WHERE (images.id = '27') LIMIT 1[0m
+  [4;36;1mImage Load (0.000072)[0m   [0;1mSELECT * FROM images WHERE (images.id = '27') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000218)[0m   [0mSELECT * FROM groups WHERE (groups.id = '36') LIMIT 1[0m
+  [4;36;1mArticle Load (0.000433)[0m   [0;1mSELECT * FROM articles WHERE (articles.id = '10051,headline,link=|DETTE ER EN TEST|') LIMIT 1[0m
+  [4;35;1mArticle Load (0.000355)[0m   [0mSELECT * FROM articles WHERE (articles.id = '10008,headline,link=|headline|') LIMIT 1[0m
+  [4;36;1mArticle Load (0.000305)[0m   [0;1mSELECT * FROM articles WHERE (articles.id = '10008,headline, ingress, story_text, link=|TEST LINK|') LIMIT 1[0m
+  [4;35;1mArticle Load (0.278525)[0m   [0m
+ SELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN ('36', 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc limit 0, 10 [0m
+  [4;36;1mArticle Load (0.012646)[0m   [0;1m
+ SELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN ('36', 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc limit 0, 10 [0m
+  [4;35;1mArticleGroup Load (0.026968)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 10073) [0m
+  [4;36;1mGroupGroup Load (0.000128)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;35;1mGroupGroup Load (0.000387)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '177' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000187)[0m   [0;1mselect name from groups where id = 177[0m
+  [4;35;1mGroupGroup Load (0.000298)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '177' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000069)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000054)[0m   [0mselect name from groups where id = 8[0m
+  [4;36;1mGroupGroup Load (0.000061)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000067)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.03169)
+  [4;36;1mArticle Load (0.000384)[0m   [0;1mSELECT * FROM articles WHERE (articles.id = '10040,ingress') LIMIT 1[0m
+  [4;35;1mArticleGroup Load (0.023291)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 10051) [0m
+  [4;36;1mGroupGroup Load (0.000130)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;35;1mGroupGroup Load (0.000416)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '40' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000251)[0m   [0;1mselect name from groups where id = 40[0m
+  [4;35;1mGroupGroup Load (0.000311)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '40' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000291)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '144' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000148)[0m   [0mselect name from groups where id = 144[0m
+  [4;36;1mGroupGroup Load (0.000274)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '144' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000324)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '154' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000157)[0m   [0;1mselect name from groups where id = 154[0m
+  [4;35;1mGroupGroup Load (0.000490)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '154' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000340)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000164)[0m   [0mselect name from groups where id = 36[0m
+  [4;36;1mGroupGroup Load (0.000283)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000326)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '162' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000162)[0m   [0;1mselect name from groups where id = 162[0m
+  [4;35;1mGroupGroup Load (0.000314)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '162' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000087)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000054)[0m   [0mselect name from groups where id = 8[0m
+  [4;36;1mGroupGroup Load (0.000063)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000352)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '128' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000173)[0m   [0;1mselect name from groups where id = 128[0m
+  [4;35;1mGroupGroup Load (0.000281)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '128' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000371)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '7' and
+ group_id2 = '30') [0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000076)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.03874)
+  [4;36;1mArticleGroup Load (0.021473)[0m   [0;1mSELECT * FROM article_groups WHERE (article_groups.article_id = 10050) [0m
+  [4;35;1mGroupGroup Load (0.000432)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '161' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000169)[0m   [0;1mselect name from groups where id = 161[0m
+  [4;35;1mGroupGroup Load (0.000278)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '161' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000087)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000053)[0m   [0mselect name from groups where id = 8[0m
+  [4;36;1mGroupGroup Load (0.000064)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000433)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '92' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000173)[0m   [0;1mselect name from groups where id = 92[0m
+  [4;35;1mGroupGroup Load (0.000277)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '92' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000318)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '167' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000165)[0m   [0mselect name from groups where id = 167[0m
+  [4;36;1mGroupGroup Load (0.000292)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '167' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000110)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;36;1mGroupGroup Load (0.000361)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '147' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000178)[0m   [0mselect name from groups where id = 147[0m
+  [4;36;1mGroupGroup Load (0.000295)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '147' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000101)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.03224)
+  [4;36;1mArticleGroup Load (0.022679)[0m   [0;1mSELECT * FROM article_groups WHERE (article_groups.article_id = 10049) [0m
+  [4;35;1mGroupGroup Load (0.000152)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000067)[0m   [0;1mselect name from groups where id = 8[0m
+  [4;35;1mGroupGroup Load (0.000083)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000075)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000258)[0m   [0mselect name from groups where id = 36[0m
+  [4;36;1mGroupGroup Load (0.000080)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000101)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;36;1mGroupGroup Load (0.000436)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '103' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000193)[0m   [0mselect name from groups where id = 103[0m
+  [4;36;1mGroupGroup Load (0.000325)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '103' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000380)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000175)[0m   [0;1mselect name from groups where id = 180[0m
+  [4;35;1mGroupGroup Load (0.000298)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000109)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.03477)
+  [4;35;1mArticleGroup Load (0.020270)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 10048) [0m
+  [4;36;1mGroupGroup Load (0.000411)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000058)[0m   [0mselect name from groups where id = 8[0m
+  [4;36;1mGroupGroup Load (0.000065)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000067)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000053)[0m   [0;1mselect name from groups where id = 36[0m
+  [4;35;1mGroupGroup Load (0.000066)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000450)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '156' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000168)[0m   [0mselect name from groups where id = 156[0m
+  [4;36;1mGroupGroup Load (0.000304)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '156' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000130)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;36;1mGroupGroup Load (0.000067)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000056)[0m   [0mselect name from groups where id = 180[0m
+  [4;36;1mGroupGroup Load (0.000065)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000087)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.02907)
+  [4;36;1mArticleGroup Load (0.020248)[0m   [0;1mSELECT * FROM article_groups WHERE (article_groups.article_id = 10047) [0m
+  [4;35;1mGroupGroup Load (0.000095)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000053)[0m   [0;1mselect name from groups where id = 8[0m
+  [4;35;1mGroupGroup Load (0.000064)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000067)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000053)[0m   [0mselect name from groups where id = 36[0m
+  [4;36;1mGroupGroup Load (0.000065)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000139)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '156' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000057)[0m   [0;1mselect name from groups where id = 156[0m
+  [4;35;1mGroupGroup Load (0.000062)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '156' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000081)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;35;1mGroupGroup Load (0.000067)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000055)[0m   [0;1mselect name from groups where id = 180[0m
+  [4;35;1mGroupGroup Load (0.000064)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000084)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.02681)
+  [4;35;1mArticleGroup Load (0.020814)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 10044) [0m
+  [4;36;1mGroupGroup Load (0.000103)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000056)[0m   [0mselect name from groups where id = 8[0m
+  [4;36;1mGroupGroup Load (0.000064)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000066)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000053)[0m   [0;1mselect name from groups where id = 36[0m
+  [4;35;1mGroupGroup Load (0.000155)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000445)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '100' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000175)[0m   [0mselect name from groups where id = 100[0m
+  [4;36;1mGroupGroup Load (0.000290)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '100' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000331)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '63' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000151)[0m   [0;1mselect name from groups where id = 63[0m
+  [4;35;1mGroupGroup Load (0.000285)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '63' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000095)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;35;1mGroupGroup Load (0.000066)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000057)[0m   [0;1mselect name from groups where id = 180[0m
+  [4;35;1mGroupGroup Load (0.000064)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000076)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.03017)
+  [4;35;1mArticleGroup Load (0.021041)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 10043) [0m
+  [4;36;1mGroupGroup Load (0.000773)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '139' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000189)[0m   [0mselect name from groups where id = 139[0m
+  [4;36;1mGroupGroup Load (0.000290)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '139' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000092)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000054)[0m   [0;1mselect name from groups where id = 8[0m
+  [4;35;1mGroupGroup Load (0.000066)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000066)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000052)[0m   [0mselect name from groups where id = 36[0m
+  [4;36;1mGroupGroup Load (0.000059)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000077)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;36;1mGroupGroup Load (0.000062)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000052)[0m   [0mselect name from groups where id = 180[0m
+  [4;36;1mGroupGroup Load (0.000061)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000703)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '159' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000200)[0m   [0;1mselect name from groups where id = 159[0m
+  [4;35;1mGroupGroup Load (0.000290)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '159' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000083)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.03114)
+  [4;35;1mArticleGroup Load (0.022285)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 10041) [0m
+  [4;36;1mGroupGroup Load (0.000170)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000061)[0m   [0mselect name from groups where id = 8[0m
+  [4;36;1mGroupGroup Load (0.000066)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000071)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;36;1mGroupGroup Load (0.000067)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000056)[0m   [0mselect name from groups where id = 180[0m
+  [4;36;1mGroupGroup Load (0.000065)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '180' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000082)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.02653)
+  [4;36;1mJoin Table Columns (0.001407)[0m   [0;1mSHOW FIELDS FROM groups_stylesheets[0m
+  [4;35;1mStylesheet Load (0.007199)[0m   [0mSELECT * FROM stylesheets INNER JOIN groups_stylesheets ON stylesheets.id = groups_stylesheets.stylesheet_id WHERE (groups_stylesheets.group_id = 8 ) [0m
+  [4;36;1mStylesheet Columns (0.001090)[0m   [0;1mSHOW FIELDS FROM stylesheets[0m
+Start rendering component ({:params=>{:temaid=>"10", :lagid=>8}, :controller=>"start", :action=>"topplinker"}): 
+  [4;35;1mStylesheet Load (0.000201)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000071)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#topplinker (for 127.0.1.1 at 2007-01-09 16:41:57) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>8, "action"=>"topplinker", "temaid"=>"10", "id"=>nil, "controller"=>"start"}
+  [4;35;1mGroup Load (0.000108)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000064)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000105)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000159)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000150)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000073)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;35;1mGroup Load (0.000063)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000061)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000151)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000709)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mArticle Load (0.002089)[0m   [0mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN ('10', 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;36;1mArticleGroup Count (0.000229)[0m   [0;1mSELECT FOUND_ROWS()[0m
+  [4;35;1mArticle Load (0.270348)[0m   [0mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 5)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc limit 0,1[0m
+Rendering start/topplinker
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000153)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Completed in 0.82783 (1 reqs/sec) | Rendering: 0.28518 (34%) | DB: 0.86434 (104%) | 200 OK [http://localhost/]
+
+
+End of component rendering
+Start rendering component ({:params=>{:temaid=>"10", :lagid=>8}, :controller=>"start", :action=>"right_column"}): 
+  [4;35;1mStylesheet Load (0.000199)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000076)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#right_column (for 127.0.1.1 at 2007-01-09 16:41:58) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>8, "action"=>"right_column", "temaid"=>"10", "id"=>nil, "controller"=>"start"}
+  [4;35;1mGroup Load (0.000093)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000079)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000131)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000141)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000186)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000076)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;35;1mGroup Load (0.000080)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000071)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000122)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000165)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mGroup Load (0.000098)[0m   [0mSELECT * FROM groups WHERE (groups.id = 8) LIMIT 1[0m
+  [4;36;1mArticle Load (0.002440)[0m   [0;1mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN ('10', 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;35;1mArticleGroup Count (0.000217)[0m   [0mSELECT FOUND_ROWS()[0m
+  [4;36;1mArticle Load (0.417835)[0m   [0;1mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 7)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc limit 0, 2[0m
+Rendering start/lag
+  [4;35;1mArticleGroup Load (0.585219)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 10054) [0m
+  [4;36;1mGroupGroup Load (0.001281)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '177' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000387)[0m   [0mselect name from groups where id = 177[0m
+  [4;36;1mGroupGroup Load (0.000127)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '177' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000077)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000063)[0m   [0;1mselect name from groups where id = 8[0m
+  [4;35;1mGroupGroup Load (0.000085)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000077)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '7' and
+ group_id2 = '30') [0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000082)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.59181)
+  [4;36;1mArticle Load (0.000448)[0m   [0;1mSELECT * FROM articles WHERE (articles.id = '10040,ingress') LIMIT 1[0m
+  [4;35;1mArticleGroup Load (0.000192)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 10051) [0m
+  [4;36;1mGroupGroup Load (0.000094)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;35;1mGroupGroup Load (0.000076)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '40' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000065)[0m   [0;1mselect name from groups where id = 40[0m
+  [4;35;1mGroupGroup Load (0.000082)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '40' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000076)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '144' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000147)[0m   [0mselect name from groups where id = 144[0m
+  [4;36;1mGroupGroup Load (0.000072)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '144' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000090)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '154' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000066)[0m   [0;1mselect name from groups where id = 154[0m
+  [4;35;1mGroupGroup Load (0.000083)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '154' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000237)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000067)[0m   [0mselect name from groups where id = 36[0m
+  [4;36;1mGroupGroup Load (0.000077)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '36' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000097)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '162' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000072)[0m   [0;1mselect name from groups where id = 162[0m
+  [4;35;1mGroupGroup Load (0.000082)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '162' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000093)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;35;1mGroup Load (0.000069)[0m   [0mselect name from groups where id = 8[0m
+  [4;36;1mGroupGroup Load (0.000086)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+  [4;35;1mGroupGroup Load (0.000077)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '128' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000090)[0m   [0;1mselect name from groups where id = 128[0m
+  [4;35;1mGroupGroup Load (0.000084)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '128' and
+ group_id2 = '4') [0m
+  [4;36;1mGroupGroup Load (0.000109)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '7' and
+ group_id2 = '30') [0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000078)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.01289)
+Completed in 1.14603 (0 reqs/sec) | Rendering: 0.02902 (2%) | DB: 1.01222 (88%) | 200 OK [http://localhost/]
+
+
+End of component rendering
+Start rendering component ({:controller=>"start", :action=>"advertisement"}): 
+  [4;36;1mStylesheet Load (0.000207)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000141)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#advertisement (for 127.0.1.1 at 2007-01-09 16:41:59) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"action"=>"advertisement", "id"=>nil, "controller"=>"start"}
+  [4;36;1mGroup Load (0.000095)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000076)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000125)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000152)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mStylesheet Load (0.000163)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000076)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;36;1mGroup Load (0.000211)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000084)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000125)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000143)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mArticle Load (0.000667)[0m   [0;1mSELECT * FROM articles WHERE (1) LIMIT 1[0m
+Rendering start/lag
+  [4;35;1mArticleGroup Load (0.022023)[0m   [0mSELECT * FROM article_groups WHERE (article_groups.article_id = 1) [0m
+  [4;36;1mGroupGroup Load (0.000273)[0m   [0;1mSELECT * FROM group_groups WHERE (group_id = '10' and
+ group_id2 = '30') [0m
+  [4;35;1mGroupGroup Load (0.000175)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '30') [0m
+  [4;36;1mGroup Load (0.000065)[0m   [0;1mselect name from groups where id = 8[0m
+  [4;35;1mGroupGroup Load (0.000086)[0m   [0mSELECT * FROM group_groups WHERE (group_id = '8' and
+ group_id2 = '4') [0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000080)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Rendered /start/_links (0.02555)
+Completed in 0.05632 (17 reqs/sec) | Rendering: 0.01787 (31%) | DB: 0.02497 (44%) | 200 OK [http://localhost/]
+
+
+End of component rendering
+Start rendering component ({:params=>{:temaid=>"10", :lagid=>8}, :controller=>"start", :action=>"venstre_meny"}): 
+  [4;35;1mStylesheet Load (0.000220)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000075)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#venstre_meny (for 127.0.1.1 at 2007-01-09 16:41:59) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>8, "action"=>"venstre_meny", "temaid"=>"10", "id"=>nil, "controller"=>"start"}
+  [4;35;1mGroup Load (0.000090)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000076)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000135)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000140)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000165)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000158)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;35;1mGroup Load (0.000075)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000080)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000298)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000152)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mArticle Load (0.003335)[0m   [0mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN ('10', 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;36;1mArticleGroup Count (0.000235)[0m   [0;1mSELECT FOUND_ROWS()[0m
+  [4;35;1mArticle Load (1.171851)[0m   [0mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 168)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc[0m
+Rendering start/venstre_meny
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.003429)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000153)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000112)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000153)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000124)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000089)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000112)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Completed in 1.30346 (0 reqs/sec) | Rendering: 0.03121 (2%) | DB: 1.18126 (90%) | 200 OK [http://localhost/]
+
+
+End of component rendering
+Start rendering component ({:params=>{:temaid=>"10", :lagid=>8}, :controller=>"start", :action=>"bunntekst"}): 
+  [4;35;1mStylesheet Load (0.000221)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000097)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#bunntekst (for 127.0.1.1 at 2007-01-09 16:42:00) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>8, "action"=>"bunntekst", "temaid"=>"10", "id"=>nil, "controller"=>"start"}
+  [4;35;1mGroup Load (0.000107)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000089)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000288)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000184)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000170)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000094)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;35;1mGroup Load (0.000105)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000102)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000160)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000183)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mArticle Load (0.002733)[0m   [0mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN ('10', 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;36;1mArticleGroup Count (0.000241)[0m   [0;1mSELECT FOUND_ROWS()[0m
+  [4;35;1mArticle Load (1.374421)[0m   [0mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 171)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc[0m
+Rendering start/bunntekst
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000158)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Completed in 1.51447 (0 reqs/sec) | Rendering: 0.01699 (1%) | DB: 1.37935 (91%) | 200 OK [http://localhost/]
+
+
+End of component rendering
+Completed in 10.33925 (0 reqs/sec) | Rendering: 6.11222 (59%) | DB: 2.14356 (20%) | 200 OK [http://localhost/]
+
+
+Processing Base#index (for 127.0.1.1 at 2007-01-09 16:42:07) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {}
+
+
+ActionController::RoutingError (Recognition failed for "/uploaded_images/37-full.png"):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:522:in `recognition_failed'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:512:in `recognize!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:150:in `process_request'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:54:in `process!'
+    /usr/lib/ruby/1.8/fcgi.rb:612:in `each_cgi'
+    /usr/lib/ruby/1.8/fcgi.rb:117:in `session'
+    /usr/lib/ruby/1.8/fcgi.rb:104:in `each_request'
+    /usr/lib/ruby/1.8/fcgi.rb:36:in `each'
+    /usr/lib/ruby/1.8/fcgi.rb:609:in `each_cgi'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:53:in `process!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:23:in `process!'
+    /var/www/newsonrails/trunk/public/dispatch.fcgi:24
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing Base#index (for 127.0.1.1 at 2007-01-09 16:42:07) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {}
+
+
+ActionController::RoutingError (Recognition failed for "/uploaded_images/44-full.png"):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:522:in `recognition_failed'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:512:in `recognize!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:150:in `process_request'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:54:in `process!'
+    /usr/lib/ruby/1.8/fcgi.rb:612:in `each_cgi'
+    /usr/lib/ruby/1.8/fcgi.rb:117:in `session'
+    /usr/lib/ruby/1.8/fcgi.rb:104:in `each_request'
+    /usr/lib/ruby/1.8/fcgi.rb:36:in `each'
+    /usr/lib/ruby/1.8/fcgi.rb:609:in `each_cgi'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:53:in `process!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:23:in `process!'
+    /var/www/newsonrails/trunk/public/dispatch.fcgi:24
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing Base#index (for 127.0.1.1 at 2007-01-09 16:42:08) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {}
+
+
+ActionController::RoutingError (Recognition failed for "/uploaded_images/36-full.gif"):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:522:in `recognition_failed'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:512:in `recognize!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:150:in `process_request'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:54:in `process!'
+    /usr/lib/ruby/1.8/fcgi.rb:612:in `each_cgi'
+    /usr/lib/ruby/1.8/fcgi.rb:117:in `session'
+    /usr/lib/ruby/1.8/fcgi.rb:104:in `each_request'
+    /usr/lib/ruby/1.8/fcgi.rb:36:in `each'
+    /usr/lib/ruby/1.8/fcgi.rb:609:in `each_cgi'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:53:in `process!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:23:in `process!'
+    /var/www/newsonrails/trunk/public/dispatch.fcgi:24
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+  [4;35;1mStylesheet Load (0.000283)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000155)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing UserController#login (for 127.0.1.1 at 2007-01-09 16:42:31) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"action"=>"login", "controller"=>"user"}
+  [4;35;1mGroup Load (0.000230)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000140)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroup Columns (0.002305)[0m   [0mSHOW FIELDS FROM groups[0m
+  [4;36;1mGroupGroup Columns (0.004010)[0m   [0;1mSHOW FIELDS FROM group_groups[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000259)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Columns (0.002855)[0m   [0;1mSHOW FIELDS FROM article_groups[0m
+  [4;35;1mArticleGroup Load Including Associations (0.000248)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mStylesheet Load (0.000266)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000149)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;36;1mUser Columns (0.002885)[0m   [0;1mSHOW FIELDS FROM users[0m
+Rendering  within layouts/application
+Rendering user/login
+Start rendering component ({:params=>{:temaid=>nil, :lagid=>nil}, :controller=>"start", :action=>"topplinker"}): 
+  [4;35;1mStylesheet Load (0.000282)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000153)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#topplinker (for 127.0.1.1 at 2007-01-09 16:42:31) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>nil, "action"=>"topplinker", "temaid"=>nil, "id"=>nil, "controller"=>"start"}
+  [4;35;1mGroup Load (0.000173)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000144)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000214)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000241)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000217)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000150)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;35;1mGroup Load (0.000142)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000137)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000203)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000234)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mArticle Load (0.221975)[0m   [0mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (NULL, 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;36;1mArticleGroup Count (0.000344)[0m   [0;1mSELECT FOUND_ROWS()[0m
+  [4;35;1mArticle Load (0.000422)[0m   [0mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 5)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc limit 0,1[0m
+Rendering start/topplinker
+  [4;36;1mArticle Columns (0.008724)[0m   [0;1mSHOW FIELDS FROM articles[0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.027796)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Completed in 0.33587 (2 reqs/sec) | Rendering: 0.02984 (8%) | DB: 0.26155 (77%) | 200 OK [http://localhost/user/login]
+
+
+End of component rendering
+Start rendering component ({:params=>{:temaid=>nil, :lagid=>nil}, :controller=>"start", :action=>"venstre_meny"}): 
+  [4;36;1mStylesheet Load (0.000996)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000316)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#venstre_meny (for 127.0.1.1 at 2007-01-09 16:42:31) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>nil, "action"=>"venstre_meny", "temaid"=>nil, "id"=>nil, "controller"=>"start"}
+  [4;36;1mGroup Load (0.004770)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.002872)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000870)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.001263)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mStylesheet Load (0.001416)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.001250)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;36;1mGroup Load (0.000223)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000144)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000216)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000310)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mArticle Load (0.000158)[0m   [0;1mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (NULL, 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;35;1mArticleGroup Count (0.000223)[0m   [0mSELECT FOUND_ROWS()[0m
+  [4;36;1mArticle Load (0.000208)[0m   [0;1mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 168)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc[0m
+Rendering start/venstre_meny
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000220)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000210)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000208)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000206)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000203)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;36;1mPermission Load (0.000139)[0m   [0;1mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000167)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Completed in 0.08779 (11 reqs/sec) | Rendering: 0.04466 (50%) | DB: 0.01659 (18%) | 200 OK [http://localhost/user/login]
+
+
+End of component rendering
+Start rendering component ({:params=>{:temaid=>nil, :lagid=>nil}, :controller=>"start", :action=>"bunntekst"}): 
+  [4;36;1mStylesheet Load (0.000265)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000150)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#bunntekst (for 127.0.1.1 at 2007-01-09 16:42:31) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>nil, "action"=>"bunntekst", "temaid"=>nil, "id"=>nil, "controller"=>"start"}
+  [4;36;1mGroup Load (0.000307)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000138)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000209)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000264)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mStylesheet Load (0.000259)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000151)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;36;1mGroup Load (0.000141)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000139)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000244)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000272)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mArticle Load (0.000174)[0m   [0;1mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (NULL, 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;35;1mArticleGroup Count (0.000219)[0m   [0mSELECT FOUND_ROWS()[0m
+  [4;36;1mArticle Load (0.000197)[0m   [0;1mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 171)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc[0m
+Rendering start/bunntekst
+checking guest authorisation for articles/edit
+  [4;35;1mPermission Load (0.000208)[0m   [0mSELECT DISTINCT permissions.* 
+FROM permissions, roles, 
+ permissions_roles
+WHERE roles.name = 'Guest'
+AND roles.id = permissions_roles.role_id
+AND permissions_roles.permission_id = permissions.id
+AND permissions.controller = 'articles'
+AND permissions.action = 'edit'
+[0m
+Completed in 0.05640 (17 reqs/sec) | Rendering: 0.01881 (33%) | DB: 0.00334 (5%) | 200 OK [http://localhost/user/login]
+
+
+End of component rendering
+Completed in 0.59360 (1 reqs/sec) | Rendering: 0.53778 (90%) | DB: 0.01378 (2%) | 200 OK [http://localhost/user/login]
+
+
+Processing Base#index (for 127.0.1.1 at 2007-01-09 16:42:32) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {}
+
+
+ActionController::RoutingError (Recognition failed for "/uploaded_images/37-full.png"):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:522:in `recognition_failed'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:512:in `recognize!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:150:in `process_request'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:54:in `process!'
+    /usr/lib/ruby/1.8/fcgi.rb:612:in `each_cgi'
+    /usr/lib/ruby/1.8/fcgi.rb:117:in `session'
+    /usr/lib/ruby/1.8/fcgi.rb:104:in `each_request'
+    /usr/lib/ruby/1.8/fcgi.rb:36:in `each'
+    /usr/lib/ruby/1.8/fcgi.rb:609:in `each_cgi'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:53:in `process!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:23:in `process!'
+    /var/www/newsonrails/trunk/public/dispatch.fcgi:24
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing Base#index (for 127.0.1.1 at 2007-01-09 16:42:33) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {}
+
+
+ActionController::RoutingError (Recognition failed for "/uploaded_images/36-full.gif"):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:522:in `recognition_failed'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:512:in `recognize!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:150:in `process_request'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:54:in `process!'
+    /usr/lib/ruby/1.8/fcgi.rb:612:in `each_cgi'
+    /usr/lib/ruby/1.8/fcgi.rb:117:in `session'
+    /usr/lib/ruby/1.8/fcgi.rb:104:in `each_request'
+    /usr/lib/ruby/1.8/fcgi.rb:36:in `each'
+    /usr/lib/ruby/1.8/fcgi.rb:609:in `each_cgi'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:53:in `process!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:23:in `process!'
+    /var/www/newsonrails/trunk/public/dispatch.fcgi:24
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+  [4;36;1mStylesheet Load (0.000197)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000074)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing UserController#login (for 127.0.1.1 at 2007-01-09 16:42:34) [POST]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"user"=>{"login"=>"admin", "password"=>"Jup1teR1814"}, "commit"=>"Login", "action"=>"login", "controller"=>"user"}
+  [4;36;1mGroup Load (0.000169)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000102)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroup Columns (0.001227)[0m   [0;1mSHOW FIELDS FROM groups[0m
+  [4;35;1mGroupGroup Columns (0.006800)[0m   [0mSHOW FIELDS FROM group_groups[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000157)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Columns (0.001404)[0m   [0mSHOW FIELDS FROM article_groups[0m
+  [4;36;1mArticleGroup Load Including Associations (0.003150)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000183)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000071)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;35;1mUser Columns (0.001412)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mUser Load (0.000854)[0m   [0;1mSELECT * FROM users WHERE (login = 'admin' AND verified = 1 AND deleted = 0) LIMIT 1[0m
+  [4;35;1mUser Load (0.000398)[0m   [0mSELECT * FROM users WHERE (login = 'admin' AND salted_password = '1c09ebcfc0ee0fe1194347bf64375aa79d19e401' AND verified = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.022574)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.011809)[0m   [0mSELECT * FROM users WHERE (users.email = 'henrik@localhost' AND users.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.001612)[0m   [0;1mSELECT * FROM users WHERE (users.login = 'admin' AND users.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (0.064078)[0m   [0mUPDATE users SET `created_at` = '2006-01-28 21:30:36', `deleted` = 0, `login` = 'admin', `lastname` = 'Administrator', `delete_after` = NULL, `role` = NULL, `salt` = 'daf95d64b846176823fb92b97283a093cf7f4235', `salted_password` = '1c09ebcfc0ee0fe1194347bf64375aa79d19e401', `verified` = 1, `security_token` = NULL, `token_expiry` = NULL, `email` = 'henrik@localhost', `logged_in_at` = '2007-01-09 16:42:34', `firstname` = 'System', `updated_at` = '2007-01-09 16:42:34' WHERE id = 1[0m
+  [4;36;1mSQL (0.181491)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/user/home
+Completed in 0.32783 (3 reqs/sec) | DB: 0.29776 (90%) | 302 Found [http://localhost/user/login]
+  [4;35;1mStylesheet Load (0.000177)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000066)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;35;1mUser Columns (0.001371)[0m   [0mSHOW FIELDS FROM users[0m
+
+
+Processing UserController#home (for 127.0.1.1 at 2007-01-09 16:42:34) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"action"=>"home", "controller"=>"user"}
+  [4;36;1mGroup Load (0.000134)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000061)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroup Columns (0.002097)[0m   [0;1mSHOW FIELDS FROM groups[0m
+  [4;35;1mGroupGroup Columns (0.001181)[0m   [0mSHOW FIELDS FROM group_groups[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000135)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Columns (0.001217)[0m   [0mSHOW FIELDS FROM article_groups[0m
+  [4;36;1mArticleGroup Load Including Associations (0.000742)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000190)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000082)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+required_perm is user/home
+  [4;35;1mJoin Table Columns (0.001173)[0m   [0mSHOW FIELDS FROM norusers_roles[0m
+  [4;36;1mRole Load (0.000514)[0m   [0;1mSELECT * FROM roles INNER JOIN norusers_roles ON roles.id = norusers_roles.role_id WHERE (norusers_roles.noruser_id = 1 ) [0m
+  [4;35;1mRole Columns (0.001248)[0m   [0mSHOW FIELDS FROM roles[0m
+Rendering  within layouts/application
+Rendering user/home
+Start rendering component ({:params=>{:temaid=>nil, :lagid=>nil}, :controller=>"start", :action=>"topplinker"}): 
+  [4;36;1mStylesheet Load (0.000228)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000084)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#topplinker (for 127.0.1.1 at 2007-01-09 16:42:34) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>nil, "action"=>"topplinker", "temaid"=>nil, "id"=>nil, "controller"=>"start"}
+  [4;36;1mGroup Load (0.000151)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000077)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000141)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000149)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mStylesheet Load (0.000175)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000084)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;36;1mGroup Load (0.000075)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000073)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000122)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000166)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mArticle Load (0.000151)[0m   [0;1mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (NULL, 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;35;1mArticleGroup Count (0.000140)[0m   [0mSELECT FOUND_ROWS()[0m
+  [4;36;1mArticle Load (0.000258)[0m   [0;1mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 5)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc limit 0,1[0m
+Rendering start/topplinker
+  [4;35;1mArticle Columns (0.001725)[0m   [0mSHOW FIELDS FROM articles[0m
+checking user:1 authorisation for articles/edit
+Completed in 0.03739 (26 reqs/sec) | Rendering: 0.00916 (24%) | DB: 0.00380 (10%) | 200 OK [http://localhost/user/home]
+
+
+End of component rendering
+checking user:1 authorisation for groups/home
+checking user:1 authorisation for lister/list
+checking user:1 authorisation for articles/list
+checking user:1 authorisation for articles/new
+checking user:1 authorisation for groups/list
+checking user:1 authorisation for groups/list
+checking user:1 authorisation for groups/new
+checking user:1 authorisation for user/list
+checking user:1 authorisation for roles/list
+checking user:1 authorisation for role2groups/list
+checking user:1 authorisation for permission/list
+Start rendering component ({:params=>{:temaid=>nil, :lagid=>nil}, :controller=>"start", :action=>"venstre_meny"}): 
+  [4;36;1mStylesheet Load (0.000234)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000084)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#venstre_meny (for 127.0.1.1 at 2007-01-09 16:42:34) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>nil, "action"=>"venstre_meny", "temaid"=>nil, "id"=>nil, "controller"=>"start"}
+  [4;36;1mGroup Load (0.000091)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000073)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000119)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000154)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mStylesheet Load (0.000184)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000082)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;36;1mGroup Load (0.000077)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000074)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroupGroup Load Including Associations (0.000121)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Load Including Associations (0.000136)[0m   [0mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;36;1mArticle Load (0.000115)[0m   [0;1mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (NULL, 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;35;1mArticleGroup Count (0.000138)[0m   [0mSELECT FOUND_ROWS()[0m
+  [4;36;1mArticle Load (0.000504)[0m   [0;1mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 168)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc[0m
+Rendering start/venstre_meny
+checking user:1 authorisation for articles/edit
+checking user:1 authorisation for articles/edit
+checking user:1 authorisation for articles/edit
+checking user:1 authorisation for articles/edit
+checking user:1 authorisation for articles/edit
+checking user:1 authorisation for articles/edit
+checking user:1 authorisation for articles/edit
+Completed in 0.03712 (26 reqs/sec) | Rendering: 0.01977 (53%) | DB: 0.00219 (5%) | 200 OK [http://localhost/user/home]
+
+
+End of component rendering
+Start rendering component ({:params=>{:temaid=>nil, :lagid=>nil}, :controller=>"start", :action=>"bunntekst"}): 
+  [4;35;1mStylesheet Load (0.000205)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000080)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+
+
+Processing StartController#bunntekst (for 127.0.1.1 at 2007-01-09 16:42:34) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"lagid"=>nil, "action"=>"bunntekst", "temaid"=>nil, "id"=>nil, "controller"=>"start"}
+  [4;35;1mGroup Load (0.000090)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000072)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000114)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000138)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000145)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000084)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;35;1mGroup Load (0.000074)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000072)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000113)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000162)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mArticle Load (0.000085)[0m   [0mSELECT a.id FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (NULL, 8)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2[0m
+  [4;36;1mArticleGroup Count (0.000134)[0m   [0;1mSELECT FOUND_ROWS()[0m
+  [4;35;1mArticle Load (0.000099)[0m   [0mSELECT a.* FROM articles a
+ JOIN article_groups ag ON ag.article_id = a.id
+ WHERE
+ a.un_published != '1' AND
+ ag.group_id IN (8, 171)
+ GROUP BY a.id
+ HAVING COUNT(DISTINCT ag.group_id) = 2
+ ORDER BY a.pri desc,
+ a.created_on desc[0m
+Rendering start/bunntekst
+checking user:1 authorisation for articles/edit
+Completed in 0.02443 (40 reqs/sec) | Rendering: 0.00930 (38%) | DB: 0.00167 (6%) | 200 OK [http://localhost/user/home]
+
+
+End of component rendering
+Completed in 0.27536 (3 reqs/sec) | Rendering: 0.12152 (44%) | DB: 0.01039 (3%) | 200 OK [http://localhost/user/home]
+  [4;36;1mUser Columns (0.001634)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mRole Columns (0.005497)[0m   [0mSHOW FIELDS FROM roles[0m
+
+
+Processing Base#index (for 127.0.1.1 at 2007-01-09 16:42:35) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {}
+
+
+ActionController::RoutingError (Recognition failed for "/uploaded_images/37-full.png"):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:522:in `recognition_failed'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:512:in `recognize!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:150:in `process_request'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:54:in `process!'
+    /usr/lib/ruby/1.8/fcgi.rb:612:in `each_cgi'
+    /usr/lib/ruby/1.8/fcgi.rb:117:in `session'
+    /usr/lib/ruby/1.8/fcgi.rb:104:in `each_request'
+    /usr/lib/ruby/1.8/fcgi.rb:36:in `each'
+    /usr/lib/ruby/1.8/fcgi.rb:609:in `each_cgi'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:53:in `process!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:23:in `process!'
+    /var/www/newsonrails/trunk/public/dispatch.fcgi:24
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+  [4;36;1mUser Columns (0.001661)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mRole Columns (0.001195)[0m   [0mSHOW FIELDS FROM roles[0m
+
+
+Processing Base#index (for 127.0.1.1 at 2007-01-09 16:42:35) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {}
+
+
+ActionController::RoutingError (Recognition failed for "/uploaded_images/36-full.gif"):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:522:in `recognition_failed'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/routing.rb:512:in `recognize!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:150:in `process_request'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:54:in `process!'
+    /usr/lib/ruby/1.8/fcgi.rb:612:in `each_cgi'
+    /usr/lib/ruby/1.8/fcgi.rb:117:in `session'
+    /usr/lib/ruby/1.8/fcgi.rb:104:in `each_request'
+    /usr/lib/ruby/1.8/fcgi.rb:36:in `each'
+    /usr/lib/ruby/1.8/fcgi.rb:609:in `each_cgi'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:53:in `process!'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/fcgi_handler.rb:23:in `process!'
+    /var/www/newsonrails/trunk/public/dispatch.fcgi:24
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+  [4;36;1mStylesheet Load (0.000269)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;35;1mStylesheet Load (0.000187)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+  [4;36;1mUser Columns (0.002853)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mRole Columns (0.002005)[0m   [0mSHOW FIELDS FROM roles[0m
+
+
+Processing ArticlesController#edit (for 127.0.1.1 at 2007-01-09 16:42:40) [GET]
+  Session ID: 817c712aa0ff9a693be67956e6f93596
+  Parameters: {"action"=>"edit", "id"=>"9802", "controller"=>"articles"}
+  [4;36;1mGroup Load (0.000847)[0m   [0;1mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;35;1mGroup Load (0.000158)[0m   [0mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;36;1mGroup Columns (0.002310)[0m   [0;1mSHOW FIELDS FROM groups[0m
+  [4;35;1mGroupGroup Columns (0.002601)[0m   [0mSHOW FIELDS FROM group_groups[0m
+  [4;36;1mGroupGroup Load Including Associations (0.004600)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;35;1mArticleGroup Columns (0.002572)[0m   [0mSHOW FIELDS FROM article_groups[0m
+  [4;36;1mArticleGroup Load Including Associations (0.000839)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mStylesheet Load (0.000258)[0m   [0mSELECT * FROM stylesheets WHERE (stylesheets.id = 1) LIMIT 1[0m
+  [4;36;1mStylesheet Load (0.000202)[0m   [0;1mSELECT * FROM stylesheets WHERE (stylesheets.id = 3) LIMIT 1[0m
+required_perm is articles/edit
+  [4;35;1mGroup Load (0.000188)[0m   [0mSELECT * FROM groups WHERE (name = 'LEFTCOLUMN') LIMIT 1[0m
+  [4;36;1mGroup Load (0.000140)[0m   [0;1mSELECT * FROM groups WHERE (name = 'leftcolumn_stori') LIMIT 1[0m
+  [4;35;1mGroupGroup Load Including Associations (0.000214)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = 22) [0m
+  [4;36;1mArticleGroup Load Including Associations (0.000275)[0m   [0;1mSELECT article_groups.`id` AS t0_r0, article_groups.`created_of` AS t0_r1, article_groups.`created_on` AS t0_r2, article_groups.`updated_of` AS t0_r3, article_groups.`updated_on` AS t0_r4, article_groups.`description` AS t0_r5, article_groups.`expires_date` AS t0_r6, article_groups.`suspend` AS t0_r7, article_groups.`group_id` AS t0_r8, article_groups.`article_id` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM article_groups LEFT OUTER JOIN groups ON groups.id = article_groups.group_id WHERE (article_groups.group_id = 31) [0m
+  [4;35;1mArticle Load (0.000704)[0m   [0mSELECT * FROM articles WHERE (articles.id = '9802') LIMIT 1[0m
+  [4;36;1mArticle Columns (0.003251)[0m   [0;1mSHOW FIELDS FROM articles[0m
+  [4;35;1mArticleShow Columns (0.012223)[0m   [0mSHOW FIELDS FROM article_shows[0m
+  [4;36;1mArticle Load Including Associations (0.023203)[0m   [0;1mSELECT articles.`id` AS t0_r0, articles.`created_of` AS t0_r1, articles.`created_on` AS t0_r2, articles.`updated_of` AS t0_r3, articles.`updated_on` AS t0_r4, articles.`source` AS t0_r5, articles.`headline` AS t0_r6, articles.`url` AS t0_r7, articles.`ingress` AS t0_r8, articles.`story_text` AS t0_r9, articles.`picture` AS t0_r10, articles.`expires_date` AS t0_r11, articles.`suspend` AS t0_r12, articles.`un_published` AS t0_r13, articles.`pri` AS t0_r14, articles.`owner` AS t0_r15, articles.`version` AS t0_r16, articles.`cloth` AS t0_r17, article_shows.`id` AS t1_r0, article_shows.`article_id` AS t1_r1, article_shows.`headline` AS t1_r2, article_shows.`source` AS t1_r3, article_shows.`ingress` AS t1_r4, article_shows.`story_text` AS t1_r5, article_shows.`dato` AS t1_r6 FROM articles LEFT OUTER JOIN article_shows ON article_shows.article_id = articles.id WHERE (articles.id = '9802') [0m
+  [4;35;1mUser Load (0.000632)[0m   [0mSELECT * FROM users WHERE (users.id = 1) LIMIT 1[0m
+  [4;36;1mJoin Table Columns (0.001739)[0m   [0;1mSHOW FIELDS FROM norusers_roles[0m
+  [4;35;1mRole Load (0.000224)[0m   [0mSELECT * FROM roles INNER JOIN norusers_roles ON roles.id = norusers_roles.role_id WHERE (norusers_roles.noruser_id = 1 ) [0m
+  [4;36;1mGroupGroup Load Including Associations (0.008580)[0m   [0;1mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = '2') ORDER BY groups.name [0m
+  [4;35;1mGroupGroup Load Including Associations (0.003108)[0m   [0mSELECT group_groups.`id` AS t0_r0, group_groups.`created_of` AS t0_r1, group_groups.`created_on` AS t0_r2, group_groups.`updated_of` AS t0_r3, group_groups.`updated_on` AS t0_r4, group_groups.`description` AS t0_r5, group_groups.`expires_date` AS t0_r6, group_groups.`suspend` AS t0_r7, group_groups.`group_id` AS t0_r8, group_groups.`group_id2` AS t0_r9, groups.`id` AS t1_r0, groups.`created_of` AS t1_r1, groups.`created_on` AS t1_r2, groups.`updated_of` AS t1_r3, groups.`updated_on` AS t1_r4, groups.`name` AS t1_r5, groups.`description` AS t1_r6, groups.`expires_date` AS t1_r7, groups.`suspend` AS t1_r8 FROM group_groups LEFT OUTER JOIN groups ON groups.id = group_groups.group_id WHERE (group_groups.group_id2 = '4') ORDER BY groups.name [0m
+  [4;36;1mGroupGroup Load (0.060739)[0m   [0;1mSELECT DISTINCT gt.* FROM group_groups gt # Distinct for kun unike treff
+ JOIN groups g ON g.id = gt.group_id
+ JOIN group_roles gr ON g.id = gr.group_id
+ JOIN norusers_roles ur ON gr.role_id = ur.role_id
+ WHERE
+ gt.group_id2 = 4 # lag group. Ikke tull med denne
+ AND
+ gr.role_id IN (SELECT role_id FROM norusers_roles WHERE noruser_id = 1)[0m
+  [4;35;1mUser Load (0.000782)[0m   [0mSELECT * FROM users WHERE (users.id = 3) LIMIT 1[0m
+  [4;36;1mUser Load (0.000259)[0m   [0;1mSELECT * FROM users WHERE (users.id = 1) LIMIT 1[0m
+Rendering  within layouts/application
+Rendering articles/edit
+  [4;35;1mArticle Load (0.000652)[0m   [0mSELECT * FROM articles WHERE (articles.id = 9802) LIMIT 1[0m
+  [4;36;1mRole Load (0.000558)[0m   [0;1mSELECT DISTINCT noruser_id FROM norusers_roles WHERE noruser_id =
