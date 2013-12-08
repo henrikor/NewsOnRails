@@ -1,8 +1,9 @@
-/* >>>>>>> CSS for kommunisme.no <<<<<<<<
+/* >>>>>>> CSS for nyesos.no <<<<<<<<
 
 Innhold
 =======
 
+0 - Reset code
 1 - Overordnet
   1b - Lenker
 2 - Hovedinnhold
@@ -10,8 +11,8 @@ Innhold
 3 - Banner
 4 - Toppmeny 
   4b - Navigasjon
-  4c - Navigasjon-søkeskjema
-5 - Sidemeny (nederst på kommunisme.no)
+  4c - Navigasjon-sokeskjema
+5 - Sidemeny (nederst)
 6 - Bunn
 7 - Standard
   7b - Edit-knapper
@@ -19,24 +20,131 @@ Innhold
   8b - Forside - lenker
 9 - Temaside
 10 - Hele saken - view
+11 - Sosiale medier
 
 */
+
+/* START OF RESET CODE */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* END OF RESET CODE */
 
 
 /* 1 - Overordnet 
 ------------------------------------------------------------------------------*/
 
-body {background: black;
-	margin: 0;
-	padding: 0;
-	}
+body {
+  background-color: #eee;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  padding: 0;
+  margin: 0;
+  transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+}
 
-#innhold {background: black; 
-	position: absolute;
-	left: 50%;
-	width: 1299px;
-	margin-left: -650px;
-	} 
+body a {
+  color: black;
+  text-decoration: none;
+  outline: none;
+}
+
+body strong {
+  font-weight: 800;
+}
+
+body em {
+  text-decoration: underline;
+}
+
+body a:hover,
+body a:active,
+body a:visited {
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+}
+
+body input {
+  outline: none;
+}
+
+.edit-link {
+  position: absolute;
+  right: 3px;
+}
+
+.gr {
+  color: #CCCCCC;
+  font-family: arial;
+  /* font-stretch: wider; */
+}
+
+.noselect {
+  -webkit-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#innhold {
+  width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  padding: 0;
+  background-color: #fcfcfc;
+} 
 
 #side, 
 #innhold:after, 
@@ -64,66 +172,225 @@ a:active {color:red; text-decoration: underline;}
 
 /* - 2 - Hovedinnhold
 ------------------------------------------------------------------------------*/
+#hovedinnhold {
+  margin-top: 3px;
+}
 
-#main { background: white;
-	margin-left: 251px;
-	width: 797px;
-	color: black; 
-	}
+#main {
+  width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  padding: 0;
+  background-color: #fcfcfc;
+}
 
-  #main h1 {font-family: arial, helvetica, sans-serif;
-            font-weight: bold;
-/*            font-size: 24px; */
-        }
+#main h1 {
+  font-family: arial, helvetica, sans-serif;
+  font-weight: bold;
+  height: 1.3em;
+}
 
-  #main h2 {font-family: arial, helvetica, sans-serif;
-            font-weight: bold;
-/*            font-size: 18px; */
-        }
+#main h2 {
+  font-family: arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14pt;
+  height: 1.3em;
+}
 
-  #main h3 {font-family: arial, helvetica, sans-serif;
-/*            font-size: 14px;*/
-            }
+#main h3 {
+  font-family: arial, helvetica, sans-serif;
+  font-weight: bold;
+  height: 1.3em;
+}
 
 
-  #main .o-kilde,   #main div.o-kilde p {font-family: arial, helvetica, sans-serif; 
-            font-size: 11px; 
-            letter-spacing: +0.15em;
-            padding: 1em 0 0 0;
-            margin: 0;
-            line-heigth: 0;
-            color: #333; 
-            }
+#main .o-kilde,
+#main div.o-kilde p {
+  font-family: arial, helvetica, sans-serif; 
+  font-size: 11px; 
+  letter-spacing: +0.15em;
+  padding: 1em 0 0 0;
+  margin: 0;
+  line-height: 0;
+  color: #333; 
+}
 
-  #main .o-pekere, #main .o-dato {font-family: arial, helvetica, sans-serif; 
-            font-size: 11px; 
-            padding: 0;
-            margin: 0;
-            line-height: 1;
-            letter-spacing: +0.05em;
-            color: #333; 
-            }
+#main .o-pekere,
+#main .o-dato {
+  font-family: arial, helvetica, sans-serif; 
+  font-size: 11px; 
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: +0.05em;
+  color: #333; 
+}
+
+#main .o-dato {
+  text-align: right;
+}
+
+#main li {
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 5px;
+}
 
 
 /* - 3 - Banner 
 ------------------------------------------------------------------------------*/
 
-#banner {background: black url(/uploaded_images/131-full.png) no-repeat top center;
-	padding-top: 230px; 
-	}
+#toppen {
+  position: relative;
+  margin-top: 0px;
+  width: 850px;
+  height: 40px;
+  background-color: #FFCC33;
+  z-index: 20;
+}
 
-#banner-logo {height: 230px;
-width: 230px; 
-top: 0;
-left: 65%;
-position: absolute;
+#sok {
+  width: 270px;
+  float: right;
+  height: 40px;
+}
+
+#sok .sokfelt {
+  margin-left: 5px;
+  margin-top: 8px;
+  width: 215px;
+}
+
+#sok .sokknapp {
+  height: 40px;
+  background: none;
+  float: right;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+#slideshow {
+  height: 220px;
+  width: 100%;
+}
+
+#slideshow ul,
+#slideshow li{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slides li {
+  background-color: #ccc;
+  position: absolute;
+  top: 40px;
+  z-index: 10;
+  height: 220px;
+  width: 850px;
+  padding: 0;
+  border-bottom: 3px solid white;
+}
+
+#slide-one,
+#slite-two,
+#slide-three,
+#slide-four {
+  padding: 0;
+  position: absolute;
+  top: 0px;
+}
+
+#slide-one {
+  background-image: url("../uploaded_images/481-full.png");
+}
+
+#slide-two {
+  background-image: url("../uploaded_images/482-full.png");
+}
+
+#slide-three {
+  background-image: url("../uploaded_images/483-full.png");
+}
+
+#slide-four {
+  background-image: url("../uploaded_images/484-full.png");
 }
 
 
-#banner-logo a {position: absolute; height: 230px; width: 230px;
+/* NAVBUTTONS */
+
+#slideshow .slides-nav {
+  position: absolute;
+  z-index: 20;
+  top: 225px;
 }
 
-#banner-logo span {display: none;}
+#slideshow .slides-nav li,
+#slideshow .slides-nav a {
+  margin: none;
+  padding: none;
+  margin-left: 15px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  float: left;
+  text-decoration: none;
+  background-color: white;
+  /* Eyecandy */
+  /* border: 1px solid #CCCCCC; */
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  transition: background-color 0.5s;
+  -moz-transition: background-color 0.5s; /* Firefox 4 */
+  -webkit-transition: background-color 0.5s; /* Safari and Chrome */
+  -o-transition: background-color 0.5s; /* Opera */
+}
+
+#slideshow .slides-nav a {
+  margin: none;
+  visibility: hidden;
+}
+
+#slideshow .slides-nav a:first-child {
+  margin-left: 20px;
+}
+
+#slideshow .slides-nav li.on {
+  background-color: #CC3333;
+}
+
+.js #slideshow .slides-nav li.on a {
+  background-color: #CC3333;
+}
+
+#banner {
+  display: none;
+}
+
+#banner-logo {
+  height: 230px;
+  width: 230px; 
+  top: 0;
+  left: 65%;
+  position: absolute;
+  display: none;
+}
+
+
+#banner-logo a {
+  position: absolute;
+  height: 230px;
+  width: 230px;
+  display: none;
+}
+
+#banner-logo span {
+  display: none;
+}
 
 /* - 4 - Elementer som gjemmes
 ------------------------------------------------------------------------------*/
@@ -132,155 +399,168 @@ position: absolute;
 #banner-bilde, 
 #right_column, 
 #right_column_bunn,
-#sok-bunn {display: none;
-	}
+#sok-bunn {
+  display: none;
+}
 
-      /* #navigasjon gjemmes under 
-      - 4 - Toppmeny - 4b - Navigasjon 
-      */
+/* #navigasjon gjemmes under 
+- 4 - Toppmeny - 4b - Navigasjon 
+*/
 
 
 
 /* - 4 - Toppmeny
 ------------------------------------------------------------------------------*/
 
-#toppmeny { margin: -10px 0 0 251px;
-	background: white;
-	width: 787px;
-	color: #555;    
-	padding: 0 0 0 10px;
-	border-bottom: 1px solid #EEE;
-	}
+#toppmeny-links {
+  height: 50px;
+  width: 850px;
+}
 
-  #toppmeny form {margin: 0;}
+#toppmeny-links a {
+  display: block;
+  float: left;
+  height: 50px;
+  width: 140px;
+  background-color: #CC3333;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+  border-left: 2px solid white;
+  text-align: center;
+  line-height: 3.8;
+  text-transform: uppercase;
+  transition: all 0.5s;
+  -moz-transition: all 0.5s; /* Firefox 4 */
+  -webkit-transition: all 0.5s; /* Safari and Chrome */
+  -o-transition: all 0.5s; /* Opera */
+}
 
-  #toppmeny ul {margin: 0; padding: 0; display: inline;
-	}
+#toppmeny-links a:first-child {
+  border: none;
+  width: 140px;
+}
 
-  #toppmeny ul#bear {display: inline; position: relative; left: 50px;}
+#toppmeny-links a:hover,
+#toppmeny-links a.current {
+  background-color: #993333;
+}
 
-  #toppmeny li {display: inline;
-	font-size: 12px;
-	font-family: sans-serif;
-	text-transform: uppercase;
-	font-weight: bold;
-	margin-right: 10px;
-	padding-bottom: 0;
-	}
 
-  /* Toppmeny linker */
-
-  #toppmeny a:link,
-  #toppmeny a:visited,
-  #toppmeny a:hover { color: #555;    
-	}
-
-  #toppmeny a:focus,
-  #toppmeny a:active { color: #AAA;
-	}
+#toppmeny-links .editmeny a {
+  display: none;
+}
 
 
 /* 4b - Navigasjon */
 
-#navigasjon {display: none;
-	}
+#navigasjon {
+  display: none;
+}
 
-/* 4c - Navigasjon-søkeskjema */
+/* 4c - Navigasjon-sokeskjema */
 
-#navigasjon-sok { margin: 0 .5em;
-	font-family: sans-serif;
- 	position: relative;
- 	top: -2px;
-	font-size: 8px;
-	float: right;
-	display: inline;
-	}
+#navigasjon-sok {
+  margin: 0 .5em;
+  font-family: sans-serif;
+  position: relative;
+  top: -2px;
+  font-size: 8px;
+  float: right;
+  display: inline;
+}
 
-#navigasjon-sok input { font-size: 8px; 
-	font-family: sans-serif;
-	line-height: 1;
-	}
+#navigasjon-sok input {
+  font-size: 8px; 
+  font-family: sans-serif;
+  line-height: 1;
+}
 
 
 /* - 5 - Sidemeny
 ------------------------------------------------------------------------------*/
 
-/* Sidemenyen er nederst på kommunisme.no */
+/* Sidemenyen er nederst */
 
-#side { position: static;
-	margin-left: 251px;
-	width: 797px;
-	border-top: 1px solid #999;
-	margin-bottom: 0; 
-	padding: 0; }
+#side {
+  position: static;
+  margin-left: 0px;
+  width: 850px;
+  margin-bottom: 0; 
+  padding: 0;
+}
 
-.vmeny { font-family: sans-serif;
-	font-size: 10px;
-	}
+.vmeny {
+  font-family: sans-serif;
+  font-size: 10px;
+}
 
-  .vmeny li { display: inline; 
-	padding-left: 3px;
-	padding-right: 3px;
-	border-left: 1px solid #DDD;
-	}
+.vmeny li {
+  display: inline; 
+  padding-left: 3px;
+  padding-right: 3px;
+  border-left: 1px solid #DDD;
+}
 
-  .vmeny ul {margin: 0; 
-	padding-left: 0;
-	border-top: 1px solid #DDD;
-	}
+.vmeny ul {
+  margin: 0; 
+  padding-left: 0;
+  border-top: 1px solid #DDD;
+  background-color: white
+}
 
-  .vmeny li.first {margin-left: 0; 
-	padding-left: 0; 
-	border-left: none; 
-	}
+.vmeny li.first {
+  margin-left: 0; 
+  padding-left: 0; 
+  border-left: none; 
+}
 
 #vmeny0 ul, 
 #vmeny0 li,
 #vmeny1 ul, 
-#vmeny1 li {text-align: center; 
-	margin-top: 0; 
-	padding-top: 0; 
-	background: #EEE;
-	}
+#vmeny1 li {
+  text-align: center; 
+  margin-top: 0; 
+  padding-top: 0; 
+  background: #EEE;
+}
 
-  #vmeny0 li.first,
-  #vmeny1 li.first {margin-left: 0; 
-	padding-left: 0;
-	}
+ #vmeny0 li.first,
+ #vmeny1 li.first {
+   margin-left: 0; 
+  padding-left: 0;
+}
 
 
 
 /* - 6 - Bunn
 ------------------------------------------------------------------------------*/
 
-#bunntekst { background: url(/bunn.png) no-repeat bottom center;
-	height: 30px;
-	padding-top: 0;
-	padding-bottom: 0;
-	margin-bottom: 0;
-        clear: both;
-	}
+#bunntekstx {
+  height: 100px;
+  background-color: #FFCC33;
+  font-size: 10pt;
+}
 
-  #bunntekst p { /* position: static; */
+#bunntekst .tilvenstre,
+#bunntekst .camidten,
+#bunntekst .tilhoyre {
+  display: block;
+  padding: 10px;
+  height: 60px;
+  width: 260px;
+  float: left;
+}
 
-	margin-left: 251px;
-	width: 797px;
-	font-family: sans-serif;
-	font-size: 9px;
-	background: white;
-        color: #AAA;
-	}
+#bunntekst .tilhoyre {
+  width: 120px;
+  text-decoration: underline;
+}
 
-#bunntekst1.bunntekstboks { margin-left: 251px; 
-	width: 797px; 
-	background: white url(/uploaded_images/134-full.png) no-repeat top center;
-	padding-top: 50px; 
-	text-align: center;
-	}
-
-  #bunntekst1.bunntekstboks p { margin: 0; 
-	padding: 0;
-	}
+#bunntekst .tilvenstre {
+  width: 360px;
+}
 
 
 
@@ -288,244 +568,401 @@ position: absolute;
 /* - 7 - Standard
 ------------------------------------------------------------------------------*/
 
-.hstilt {float: right; 
-         margin: 0 6pt 6pt 6pt;
-	}
+.hstilt {
+  float: right; 
+  margin: 0 6pt 6pt 6pt;
+}
 
-.vstilt {float: left;
-         margin: 0 6pt 6pt 6pt;
-	}
+.vstilt {
+  float: left;
+  margin: 0 6pt 6pt 6pt;
+}
 
-  .vstilt img, 
-  .hstilt img {border: 0
-	}
+.vstilt img, 
+.hstilt img {
+  border: 0;
+}
 
 /* 7b - Edit-knapper */
 
 .vmeny .editmeny,
 .bunntekstboks .editmeny, 
-#toppmeny .editmeny { border: 1px solid #CCC;
-	padding: 0 3pt 0 3pt;
-	font-size: 9px;
-	font-family: sans-serif;
-	-moz-border-radius: 0.5em;
-	border-radius: 0.5em;
-	}  
+#toppmeny .editmeny {
+  border: 1px solid #CCC;
+  padding: 0 3pt 0 3pt;
+  font-size: 9px;
+  font-family: sans-serif;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+}  
                        
-.vmeny .editmeny {display: inline; float: right; margin: -10px 5px ; font-size: 7px; }
+.vmeny .editmeny {
+  display: inline;
+  float: right;
+  margin: -10px 5px;
+  font-size: 7px;
+}
                                         
-.bunntekstboks .editmeny {display: block;
-	position: absolute;
-	bottom: 19px; right: 265px; 
-	}
+.bunntekstboks .editmeny {
+  display: block;
+  position: absolute;
+  bottom: 19px; right: 265px; 
+}
 
 
-#toppmeny .editmeny {display: block;
-	position: absolute;
-	right: 365px;
-	top: 245px;
-	}
+#toppmeny .editmeny {
+  display: block;
+  position: absolute;
+  right: 365px;
+  top: 245px;
+}
                             
-.bunntekstboks {background: /uploaded_images/134-full.png;
-	}
+.bunntekstboks {
+  background: /uploaded_images/134-full.png;
+}
+
+.bunntekstboks a:last-of-type {
+  display: none;
+}
 
 
 
 /* - 8 - Forside / nyhetsside 
 ------------------------------------------------------------------------------*/
 
+.helesaken .fsheading {
+  color: red;
+  text-transform: uppercase;
+  font-weight: 400;
+  display: block;
+  height: 30px;
+}
+
+
+
+.sistenytt {
+  width: 850px;
+  float: left;
+  position: relative;
+  left: -5px;
+}
+
+.sistenytt p a {
+  color: black;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.nyheter {
+  width: 400px;
+  margin-left: 420px;
+}
 
 .link-par, .link-odd {
-   padding: 4px 2px 0px 2px;
+   padding: 0;
    margin: 0;
 }
 
-.link-par p, .link-odd p {padding: 0; margin: 0;}
-
-.grid-100 {width: 98%; border-top: 1px solid #DDD; margin-left: 10px; padding-left: 0;} 
-
-.grid-100 h2 {font-size: 60px; 
-         line-height: 1.05;}
-.grid-66 h2 {font-size: 30px;}
-.grid-33 h2 {font-size: 18px;}
-
-#main .helesaken .grid-33 h2,
-#main .helesaken .grid-66 h2,
-#main .helesaken .grid-100 h2 {padding: 0;}
-
-#main .helesaken .grid-33 p,
-#main .helesaken .grid-66 p,
-#main .helesaken .grid-100 p {padding: 0; margin:0;}
-
-.grid-33 {width: 31%; border-top: 1px solid #DDD; margin-left: 1%; display: inline; float: left;} 
-
-.grid-66 {display: inline; float: left; width: 64%; border-top: 1px solid #DDD; margin-left: 1%;} 
-
-.grid-66.first,
-.grid-33.first {margin-left: 10px; border-left: none; padding-left: 0;}
-
-.grid-100 .temalinker ul {margin: 0; padding: 0;}
-.grid-100 .temalinker li {display: inline;
-font-size: 12px;
-font-family: sans-serif;
-padding: 0 5px;
- border-left: 1px solid #DDD; 
-}
-.grid-33 .temalinker li.temalink2, .grid-66 .temalinker li.temalink2, .grid-100 .temalinker li.temalink2
-{border-left: 0;}
-
-.grid-33 .temalinker ul, .grid-66 .temalinker ul {margin: 0; padding: 0;}
-.grid-33 .temalinker li, .grid-66 .temalinker li {display: inline;
-font-size: 10px;
-font-family: sans-serif;
-padding: 0 2px;
-border-left: 1px solid #DDD;
+.link-par p, .link-odd p {
+  padding: 0;
+  margin: 0;
 }
 
 
-.link-par img, .link-odd img {
-   float: left;
-   border: 0;
-   margin: 0 10px 2px 0;
+
+.inkludert-link {
+  font-family: sans-serif;
+  font-size: 10px;
 }
 
-.grid-100 img {margin: 0 0 0 0;
-               float: none;}
-
-.grid-100 h2, 
-.grid-66 h2, 
-.grid-33 h2 {
-            margin: 0;
-            padding: 0;
-            font-weight: bold;
-            font-family: arial, helvetica, sans-serif;
-            }
-
-.inkludert-link {font-family: sans-serif;
-font-size: 10px;}
-
-.grid-a .grid-100,
-.grid-a .grid-66,
-.grid-a .grid-33 {border-top: none;}
-
-.grid-a:after,
-.grid-b:after,
-.grid-c:after,
-.grid-d:after,
-.grid-e:after,
-.grid-f:after,
-.grid-g:after,
-.grid-h:after,
-.grid-i:after,
-.grid-j:after  {content:".";display:block;height:0;clear:both;visibility:hidden;}
-
-.grid-a,
-.grid-b,
-.grid-c,
-.grid-d,
-.grid-e,
-.grid-f,
-.grid-g,
-.grid-h,
-.grid-i,
-.grid-j { margin-right: 0; 
-          padding-right: 0;
-         /* overflow: hidden; */
-          zoom: 1;  /* IE */  }
 
 /* 8b - Forside - lenker */
 
 .forside a:link, 
 .forside a:visited,
 .forside a:hover,
-.forside a:active {color: black;}
-.forside a img {border: 0;}
+.forside a:active {
+  color: black;
+}
+
+.forside a img {
+  border: 0;
+}
+
+.helesaken .o-pekere {
+  display: none;
+}
 
 /* - 9 - Temaside
 ------------------------------------------------------------------------------*/
 
-#temaside {margin: 0 10px 0 10px;
-	}
+#temaside {
+  margin: 0 10px 0 10px;
+}
 
-  #temaside h1 {font-size: 0; 
-	position: absolute; 
-	left: -50%;
-	}
+#temaside h1 {
+  font-size: 0; 
+  position: absolute; 
+  left: -50%;
+}
 
-.tema-artikkel {padding: 20px; 0 0 0;
-	margin: 0;
-	}
+.tema-artikkel {
+  padding: 20px; 0 0 0;
+  margin: 0;
+}
 
-  .tema-artikkel h2 {font-size: 20px; 
-	margin: 0;
-	padding: 5px 0 0 0;
-	}
+.tema-artikkel h2 {
+  font-size: 20px; 
+  margin: 0;
+  padding: 5px 0 0 0;
+}
 
-.tema-artikkel p {margin: 0;
-	padding: 0;
-	}
+.tema-artikkel p {
+  margin: 0;
+  padding: 0;
+}
 
 
 /* - 10 - Hele saken - view
 ------------------------------------------------------------------------------*/
 
-.helesaken {margin: 0;
-	padding: 10px 10px 0 10px;
-	}
+.helesaken {
+  margin: 0px 5px 0px 5px;
+  padding: 0;
+}
 
-  #main .helesaken h1 {padding: 10px 10px 0 0;
-        margin: 0;
-	font-size: 50px;
-	}
+#main .helesaken h1 {
+  padding: 10px 10px 10px 0px;
+  height: auto;
+  //margin: 0px 0px 1em 0px;
+  font-size: 50px;
+}
 
-  #main .helesaken h2,
-  #main .helesaken h3 {padding: 10px 10px 0 0;
-        margin: 0;
-	}
+#main .helesaken h2,
+#main .helesaken h3 {
+  padding: 10px 10px 0 0;
+  margin: 0;
+}
 
-  #main .helesaken p {padding: 0 10px 10px 0;
-        margin: 0;
-	}
+#main .helesaken p {
+  padding: 0 10px 10px 0;
+  margin: 0;
+}
 
-  .helesaken h1 span {display: block;
-	}
-  .helesaken h1 span.caps {display: inline;}
+.helesaken h1 span {
+  display: block;
+}
 
-  #main .helesaken .o-ingress p {margin-top: 0; 
-	padding-top: 5px; 
-	font-family: arial, sans-serif;
-	font-weight: 600;
-        width: 85%;
-	}
+.helesaken h1 span.caps {
+  display: inline;
+}
+
+#main .helesaken .o-ingress {
+  margin-top: 0; 
+  padding-top: 5px;
+  padding-bottom: 10px;; 
+  font-family: arial, sans-serif;
+  font-weight: 600;
+  width: 85%;
+}
+
+#main .helesaken .print-link {
+  display: none;
+}
+
+#main .helesaken .edit-link {
+  float: right;
+  display: inline;
+  font-family: sans-serif;
+  font-size: 9px;
+  border: 1px solid blue;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  margin-right: 4px;
+  padding: 0 4px;
+  text-align: center;
+}
+
+.helesaken quote {
+  font-style: italic;
+}
+
+#main p.pre {
+  font-family: monospace;
+  white-space: pre;
+  padding: 0;
+}
+
+.helesaken pre,
+p.pre {
+  border: 1px dashed #DDD;
+  border-left: 3px solid #DDD;
+  background: #FFF;
+  padding-left: 2px;
+}
 
 
-  #main .helesaken .print-link, 
-  #main .helesaken .edit-link {float: right; display: inline;
-	font-family: sans-serif;
-	font-size: 9px;
-	border: 1px solid blue;
-	-moz-border-radius: 0.5em;
-	border-radius: 0.5em;
-	margin-right: 4px;
-        padding: 0 4px;
-        text-align: center;
-	}
 
-  .helesaken quote { font-style: italic; 
-	}
+/* 11 - Sosiale medier */
 
-  #main p.pre {font-family: monospace;
-         white-space: pre;
-         padding: 0;
- }
+#sosmed {
+  height: 70px !important;
+  width: 100%;
+}
 
-  .helesaken pre,
-  p.pre {border: 1px dashed #DDD;
-                  border-left: 3px solid #DDD;
-                  background: #FFF;
-                  padding-left: 2px;
+#sosmed p  {
+  display: block;
+  height: 70px;
+  width: 390px;
+ // position: absolute;
+  /* INNTIL VIDERE */
+  text-align: center;
+  line-height: 4.5;
+  font-weight: bold;
+  overflow: hidden;
+}
 
-                  ; }
+#sosmed .links {
+  display: block;
+  position: relative;
+  margin-left: 390px;
+  margin-top: -70px;
+  width: 390px;
+  height: 70px;
+}
+
+#sosmed .links a {
+  display: block;
+  width: 130px;
+  float: left;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  height: 100%;
+  line-height: 4.5;
+  border: none !important;
+}
+
+#sosmed .links a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+#sosmed .end {
+  width: 65px;
+  height: 70px;
+  margin-left: 783px;
+  margin-top: -70px;
+  /* INNTIL VIDERE */
+  line-height: 4.5;
+  font-weight: bold;
+  text-align: center;
+  overflow: hidden;
+}
+
+.link-odd,
+.link-par {
+  height: 226px;
+  width: 315px;
+  float: left;
+ // overflow: hidden;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+
+.sistenytt .link-odd:hover,
+.sistenytt .link-par:hover {
+  background: #ffcc33;
+}
+
+.sistenytt .link-odd:hover .inkludert-ingress,
+.sistenytt .link-par:hover .inkludert-ingress{
+  height: auto;
+  background: #ffcc33;
+  position: relative;
+  padding-bottom: 0.5em;
+}
+
+.link-odd {
+  margin-right: 10px;
+}
+
+.link-odd .inkludert-link,
+.link-par .inkludert-link {
+  display: none;
+}
+
+.link-odd:nth-child(1):before,
+.link-par:nth-child(2):before {
+  content: "NYHET";
+  display: block;
+  position: absolute;
+  background: rgb(204, 51, 51);
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 80%;
+}
+
+.facebook .link-odd:before {
+  content: none;
+}
+
+.link-odd a:first-child,
+.link-par a:first-child {
+  font-size: 80%;
+}
+
+.sistenytt .inkludert-ingress {
+  font-size: 80%;
+  overflow: hidden;
+  height: 3em;
+  transition: all 0.3s;
+}
+
+/*.link-odd {
+  width: 300px;
+  float: left;
+}*/
+
+.link-odd img,
+.link-par img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.helesaken {
+  position: relative;
+}
+
+.youtube a {
+  width: 130px;
+  height: 70px;
+  position: absolute;
+  right: 40px;
+  top: 25px;
+  background: url("/uploaded_images/527-full.png");
+  transition: all 0.3s;
+}
+
+.youtube a:hover {
+  background: url("/uploaded_images/526-full.png");
+}
 
 
+.facebook .link-odd {
+  position: absolute;
+  right: -10px;
+  top: 100px;
+  width: 200px;
+  height: 370px;
+}
 
+#sosmed {
+  display: none;
+}
+
+.sistenytt p a {
+  z-index: 20;
+}

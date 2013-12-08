@@ -8,11 +8,14 @@ require 'RMagick'
 
 class Image < ActiveRecord::Base
   
-  DIRECTORY = 'public/uploaded_images'
-  TMPDIRECTORY = 'public/tmp_images'
+  DIRECTORY = "public/uploaded_images"
+  TMPDIRECTORY = "public/tmp_images"
+#  DIRECTORY = "#{Rails.root}/public/uploaded_images"
+#  TMPDIRECTORY = "#{Rails.root}/public/tmp_images"
   THUMB_MAX_SIZE = '150x75'
   STAND_SIZE = '500'
   after_save :process
+#  before_save :process
   after_destroy :cleanup
 
   
@@ -26,7 +29,6 @@ class Image < ActiveRecord::Base
   end
   
   def file_data=(file_data)
-    
     if file_data && file_data.size > 1
       @file_data = file_data
       write_attribute 'extension',
@@ -74,8 +76,9 @@ class Image < ActiveRecord::Base
       current_dir = "#{DIRECTORY}/#{current_dir}"
     end
     dir = Array.new()
-    ls = `ls #{current_dir}`
-    ls.each{ |x|
+#    ls = `ls #{current_dir}`
+#    ls.each{ |x|
+    Dir.foreach(current_dir){ |x|
       if File.directory?("#{current_dir}/#{x}".strip)
         dir << x
         #        dir.push("#{current_dir}/#{x}")
@@ -172,13 +175,19 @@ class Image < ActiveRecord::Base
   end
   
   def save_fullsize
-    File.open(path,'w') do |file|
-      file.puts @file_data.read
-    end
+#    File.open(path,'w') do |file|
+#      file.puts @file_data.read
+#    end
+#    logger.info "\n\n\n\n--------------------------------------------\nHenrik_fil #{@tempfile}\n\n"
+#    logger.info "\n\n\n\n--------------------------------------------\nHenrik_fil #{params[:image][:file_data]}\n\n"
+
+File.open(path, 'wb') do |f|
+  f.write(@file_data.read)
+    end    
   end
   
   def create_thumbnail
-    img = Magick::Image.read(path).first
+    img = Magick::Image.read(path).first # FEILEN ER: Filen lagres faktisk ikke som jpeg!
     #    thumbnail = img.thumbnail(*THUMB_MAX_SIZE)
     #thumbnail = img.resize_to_fit(*THUMB_MAX_SIZE)
     thumbnail = img.change_geometry!(THUMB_MAX_SIZE) { |cols, rows, img|
