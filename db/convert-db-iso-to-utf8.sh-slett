@@ -1,0 +1,20 @@
+#! /bin/bash
+#echo "DROP DATABASE IF EXISTS nor_rku;" > rku-latin.sql
+#echo "CREATE DATABASE nor_rku;" >> rku-latin.sql
+#echo "USE nor_rku;" >> rku-latin.sql
+#mysqldump -u root -p --add-drop-table nor_rku >> rku-latin.sql
+
+db="nor_rku"
+dbiso=$db"-latin.sql"
+dbutf=$db"-utf8.sql"
+
+echo "DROP DATABASE IF EXISTS "$db";" > $dbiso
+echo "CREATE DATABASE "$db";" >> $dbiso
+echo "USE nor_rku;" >> $dbiso
+mysqldump -u root -p --add-drop-table nor_rku >> $dbiso
+
+iconv -f ISO_8859-1 -t UTF-8 $dbiso > $dbutf
+`perl -pi -w -e 's/CHARSET=latin1/CHARSET=utf8/g;' $dbutf`
+mysql -u root -p < $dbutf
+
+#mysqldump -p --add-drop-table nor_rku stylesheets >> rku-utf8.sql
