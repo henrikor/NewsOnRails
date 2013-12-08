@@ -12,6 +12,7 @@ capybara-*.html
 /public/uploaded*
 /public/tmp*
 /public/tex2img
+/public/*
 /coverage/
 /spec/tmp/*
 /config/database.yml*

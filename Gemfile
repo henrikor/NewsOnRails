@@ -8,7 +8,6 @@ source 'http://rubygems.org'
 gem 'rails', '>= 3.2.0'
 
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -79,7 +78,7 @@ gem 'mediacloth'
 gem 'will_paginate', '>= 3.0.pre2'
 gem 'rubyzip'
 gem 'haml'
-gem 'acts_as_versioned'#, "0.5.3", :git => "git://github.com/henrikor/acts_as_versioned.git", :branch => "rails3"
+gem 'acts_as_versioned', "0.5.3", :git => "git://github.com/henrikor/acts_as_versioned.git", :branch => "rails3"
 #gem 'jquery-rails', '>= 0.2.6'
 #gem 'jquery-rails'
 gem 'magic_encoding'
