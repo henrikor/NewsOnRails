@@ -2,13 +2,11 @@
 
 <% if autorized_to_article?(@article2.id)|| @new_article -%>
   <%# if member_of_role?(@article2.owner)|| @new_article -%>
-  <!-- Klær 
 
   <%# @article2 = Article.find('10513') %>
   <p><label for="article_clothing">Velg bekledning. (Hvis du er usikker, s&aring; la det v&aelig;re som det er)</label><br/>
     <%= select(:article, :cloth, @cloth) %>
     <br/>
--->
 
   <% end -%>
   <%#= observe_field(:article_cloth,
@@ -215,6 +213,7 @@
            :url=>{:action=>'auto_complete_for_autogroup_name'},
            :tokens => ',' %>
  -->
+
 
      <p id="setraletemaer"><i><%= norsk2html(%{Sentrale temaer og temaer denne siden er med i fra før:}) %>
       </i></p>

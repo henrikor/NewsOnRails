@@ -34,7 +34,8 @@ gem 'mysql2'
 
 gem 'jquery-rails'
 #gem "jquery-ui-themes", "~> 0.0.8"
-gem 'jquery-ui-rails'
+#gem 'jquery-ui-rails'
+gem "jquery-ui-rails", "~> 4.1.0"
 
 
 # Asset template engines
