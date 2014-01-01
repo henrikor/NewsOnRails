@@ -34,7 +34,8 @@ gem 'mysql2'
 
 gem 'jquery-rails'
 #gem "jquery-ui-themes", "~> 0.0.8"
-gem 'jquery-ui-rails'
+#gem 'jquery-ui-rails'
+gem "jquery-ui-rails", "~> 4.1.0"
 
 
 # Asset template engines
@@ -76,7 +77,9 @@ gem 'RedCloth'
 gem 'mediacloth'
 #gem 'mislav-will_paginate'
 gem 'will_paginate', '>= 3.0.pre2'
-gem 'rubyzip'
+#gem 'rubyzip'
+#gem 'rubyzip', :require => 'zip/zip'
+gem 'rubyzip', '~> 0.9.9'
 gem 'haml'
 gem 'acts_as_versioned', "0.5.3", :git => "git://github.com/henrikor/acts_as_versioned.git", :branch => "rails3"
 #gem 'jquery-rails', '>= 0.2.6'
