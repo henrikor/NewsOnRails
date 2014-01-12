@@ -1,14 +1,13 @@
 <h1>Redigerer bruker</h1>
 
-<% form_tag :action => 'userupdate', :id => @user do %>
+<%= form_tag :action => 'userupdate', :id => @user do %>
     <%= render :partial => 'userform' %>
-
   <br/>
   <%= submit_tag 'Lagre' %>
 <% end %>
 
 
-<% form_tag :action => 'usernyttpass' %>
+<%= form_tag :action => 'usernyttpass' %>
   <p><label for="user_passwd">Nytt passord for bruker</label><br/>
   <%= text_field '@user', 'passord'  %></p>
 
