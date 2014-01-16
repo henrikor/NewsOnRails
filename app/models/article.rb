@@ -71,22 +71,22 @@ class Article < ActiveRecord::Base
         tagstart = $1
         tagslutt = $3
         tekst = $2
-        bokmerke = tekst.gsub(/<.*?>/,'') if tekst =~ /<.*?>/
+        bokmerke = tekst.gsub(/<\w.*?>/,'') #if tekst =~ /<.*?>/
+        bokmerke = bokmerke.gsub(/<\/w.*?>/,'') #if tekst =~ /<.*?>/
+        # bokmerke = tekst.gsub(/<span.*?>/,'') #if tekst =~ /<.*?>/
+        # bokmerke = bokmerke.gsub(/<\/span>/,'') #if tekst =~ /<.*?>/
 
         otmp = tagstart =~ /\<h(\d).*/
-        onr = $1
-        tekst = tekst + NorFelles.errormelding(%{Du har hovedoverskrift ("h1." eller "&lt;h1&gt;" i teksten. Dette er ikke lov i en vanlig artikkel som bruker innholdsliste taggen)}) if onr == "1"
-        hh = [onr => bokmerke.strip] if bokmerke
+        onr = $1.to_i
+        tekst = tekst + NorFelles.errormelding(%{Du har hovedoverskrift ("h1." eller "&lt;h1&gt;" i teksten. Dette er ikke lov i en vanlig artikkel som bruker innholdsliste taggen)}) if onr == 1
+        hh = [onr => bokmerke] if bokmerke
         liste << hh
         #      tekst = "\<a name=\"#{$2.strip}\"\>\<\/a\><h#$1\>#{$2}\<\/h#$1\>"
 
-  
         tekst = "\<a name=\"#{bokmerke}\"\>\<\/a\>#{tagstart} #{tekst} #{tagslutt}"
       }
-      #  end
-      
-      tekst = "<h1>test</h1>"
-
+      #  end   
+  #    tekst = "<h1>test</h1>"
       ul = 0
       eul = 0
       article = article.gsub(/\[\[innholdsliste\]\]/) {
@@ -94,8 +94,10 @@ class Article < ActiveRecord::Base
         y = 1
         nr = 0
         liste.each{|x|
-          key = x.first.keys.first.to_i if x
-          if key
+          key = x.first.keys.first if x 
+          y = 0 if y == nil
+          if key && y != nil
+            logger.debug "Key = #{key} ---> y = #{y}"
             if key > y
               diff = key - y
               @li = @li.sub(/(<\/li>)$(.*)/, "<ul>#{$2}")
@@ -112,7 +114,8 @@ class Article < ActiveRecord::Base
               eul = eul + 1
             end
           end
-          @li = "#{@li}<li><a href=\"\##{x.first["#{key}"].strip}\">#{x.first["#{key}"]}</a></li>" if x
+#          @li = "#{@li}<li><a href=\"\##{x.first["#{key}"].strip}\">#{x.first["#{key}"]}</a></li>" if x && x.first["#{key}"] != nil
+          @li = "#{@li}<li><a href=\"\##{x.first[key]}\">#{x.first[key]}</a></li>" #if x && x.first["#{key}"] != nil
           y = key
         }
         htmlliste = "<ul>#{@li}</ul>"
