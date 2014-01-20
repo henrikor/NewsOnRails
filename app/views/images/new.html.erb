@@ -38,12 +38,12 @@
     <p> Under hvert bilde er det en tekst i gr&aring;tt. Du skal n&aring; kopiere linjen under bildet, og lime den
       inn i teksten:<br/></p>
 
-    <% if authorized_to?(:controller => 'images', :action => 'clean') %>
+    <%# if authorized_to?(:controller => 'images', :action => 'clean') %>
 
       <%# = button_to("Destroy All",:action=>'clean') %>
-        <%= button_to 'Destroy All', {:action => 'clean'}, :confirm => 'Er du ikke litt teit hvis du trykker OK? Du vil slette ALLE bildene i databasa...' %>
+        <%#= button_to 'Destroy All', {:action => 'clean'}, :confirm => 'Er du ikke litt teit hvis du trykker OK? Du vil slette ALLE bildene i databasa...' %>
       
-    <% end %>
+    <%# end %>
 
 
     <table><tr>
