@@ -52,9 +52,12 @@ module NorAuthorize
         raise "finner ikke index action og gjeldende action == nil eller ikke eksisterende i authorized.yml" if !fil[controller]["index"]
         access_text = fil[controller]["index"]
       end
-      
       return true if current_user.has_role?("Admin")
-      return true if permit? access_text
+      if current_user.has_role?("Writers")
+        return true if controller == "ArticlesController" && access_text != nil
+        return true if controller == "ImagesController" && access_text != nil
+      end
+#      return true if permit?(access_text, current_user)
     end
   end
 
