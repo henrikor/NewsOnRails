@@ -53,10 +53,18 @@ module NorAuthorize
         access_text = fil[controller]["index"]
       end
       return true if current_user.has_role?("Admin")
-      if current_user.has_role?("Writers")
-        return true if controller == "ArticlesController" && access_text != nil
-        return true if controller == "ImagesController" && access_text != nil
-      end
+
+
+      # if current_user.has_role?("Writers")
+      #   return true if controller == "ArticlesController" && access_text != nil
+      #   return true if controller == "ImagesController" && access_text != nil
+      # end
+
+      current_user.roles.each{|role|
+        return true if role.name == access_text
+      }
+
+      return false
 #      return true if permit?(access_text, current_user)
     end
   end
