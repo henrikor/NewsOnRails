@@ -724,6 +724,12 @@ module ApplicationHelper
     text = text.gsub(/(\w*?\(m-?l\))/i) {
       t = "<notextile>#{$1}</notextile>"
     }    
+    text = text.gsub(/(\w*?\(mlm\))/i) {
+      t = "<notextile>#{$1}</notextile>"
+    }    
+    text = text.gsub(/(\w*?\(m\))/i) {
+      t = "<notextile>#{$1}</notextile>"
+    }    
   end
 
   def textilize(text, cloth = "r")
