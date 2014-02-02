@@ -721,7 +721,7 @@ module ApplicationHelper
     BlueCloth::new(text).to_html
   end
   def AkpMl(text)
-    text = text.gsub(/(akp\(m-?l\))/i) {
+    text = text.gsub(/(\w*?\(m-?l\))/i) {
       t = "<notextile>#{$1}</notextile>"
     }    
   end
