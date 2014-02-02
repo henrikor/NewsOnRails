@@ -720,6 +720,11 @@ module ApplicationHelper
   def markdown(text)
     BlueCloth::new(text).to_html
   end
+  def AkpMl(text)
+    text = text.gsub(/(akp\(m-?l\))/i) {
+      t = "<notextile>#{$1}</notextile>"
+    }    
+  end
 
   def textilize(text, cloth = "r")
     require_library_or_gem "redcloth" unless Object.const_defined?(:RedCloth)
@@ -730,6 +735,7 @@ module ApplicationHelper
         text2 =  markdown(text)
       elsif cloth == 'r'
         #text = text.gsub(/\<F8\>/, 'XXXXXoXXXXXX')
+        text = AkpMl(text)
         r = RedCloth.new(text)
         r.hard_breaks = false
         text2 = r.to_html
