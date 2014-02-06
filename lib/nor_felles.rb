@@ -34,7 +34,7 @@ module NorFelles
   end
 
   def is_email?(tekst)
-    return true if tekst =~ emailreg
+    return true if tekst =~ emailreg2
   end
 
   def emailreg

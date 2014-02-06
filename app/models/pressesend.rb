@@ -77,24 +77,35 @@ class Pressesend < ActionMailer::Base
   end
 
   def self.send_email(from, to, subject, message)
-    mail = TMail::Mail.new
-    mail.to = to
-    mail.from = to_isomail(from)
-    #    mail.from = from
-    mail.subject = to_iso(subject)
-    mail.subject = to_isomail(subject)
-    mail.body = message
+    # fil = "#{Rails.root/log/mail}"
+    # File.open(fil, 'w') {|f| f.write(message) }
+    # `mutt -s "#{subject}" -c #{to} < #{fil}`
 
-    mail.date = Time.now
-    mail.mime_version = '1.0'
+    mail = Mail.new do
+        from    from
+        to      to
+        subject subject
+        body    message
+    # to = to
+    # from = to_isomail(from)
+    # #    from = from
+    # subject = to_iso(subject)
+    # subject = to_isomail(subject)
+    # body = message
 
-    mail.set_content_type 'text', 'plain', {'charset'=>'iso-8859-1'}
+#    date = Time.now
 
-    msg = mail.to_s
+#    mime_version = '1.0'
 
-    Net::SMTP.start('localhost') do |smtp|
-      smtp.send_message msg, from, to
-    end  
-  end
+ #   set_content_type 'text', 'plain', {'charset'=>'iso-8859-1'}
+
+    # msg = mail.to_s
+
+    # Net::SMTP.start('localhost') do |smtp|
+    #   smtp.send_message msg, from, to
+    end 
+    mail.delivery_method :sendmail 
+    mail.deliver!
+   end
   
 end

@@ -14,6 +14,8 @@ class SendpostController < ApplicationController
     brukerip = request.env['HTTP_REFERER']
     @alarm = nil
     @alarm = "Skjemaet er laget feil:epostg (e-post gruppe) mangler" unless params.include?(:epostg)
+
+    logger.debug "MailAlarm--: #{@alarm}" unless @alarm == nil
     @epostg = params[:epostg]
 
     if params[:subject]
@@ -31,6 +33,8 @@ class SendpostController < ApplicationController
     rescue
       @arkivfil = "Finner ikke @arkivfil variabelen." unless defined?(@arkivfil)
       @alarm = "Klarte ikke lagre: #{@arkivfil} Mail sendt til drift@#{@domene}."
+      logger.debug "MailAlarm--2: #{@alarm}" unless @alarm == nil
+
       Pressesend.send_email("drift@#{@domene}", "drift@#{@domene}", "FEIL: Klarte ikke lagre yml fil fra webskjema", "Klarte ikke lage Yml arkivfil: #{@arkivfil}. Skjema sendt fra: #{brukerip}")
     end
 
@@ -38,6 +42,8 @@ class SendpostController < ApplicationController
       @ymldata = YAML::load( File.open( "#{Rails.root}/config/epostgrupper.yml") )
     rescue
       @alarm = "Alvorlig feil i epostgrupper.yml. Yml arkivfil av webskjemaet ligger her: #{@arkivfil} Rett opp i /sendpost/admin og sjekk arkivfila. Mail sendt til drift@#{@domene}"
+      logger.debug "MailAlarm--3: #{@alarm}" unless @alarm == nil
+
       Pressesend.send_email("drift@#{@domene}", "drift@#{@domene}", "FEIL: feil i epostgrupper.yml fila!", "Alvorlig feil i epostgrupper.yml. Yml arkivfil av webskjemaet ligger her: #{@arkivfil} Rett opp i /sendpost/admin og sjekk arkivfila")
     end
 
@@ -45,10 +51,14 @@ class SendpostController < ApplicationController
     #    @alarm = "Epostgruppa #{@epostg} finnnes ikke i epostgrupper.yml" unless defined?(ymldata[@epostg])
     if defined?(@ymldata)
       @alarm = "Epostgruppa #{@epostg} finnnes ikke i epostgrupper.yml" unless @ymldata.include?(@epostg)
+      logger.debug "MailAlarm--4: #{@alarm}" unless @alarm == nil
+
     end
 
     unless @alarm == nil
       flash[:error] = norsk2html("<h1>Dette skjemaet er feil laget. Prøv seinere</h1><p>#{@alarm}</p>")
+      logger.debug "MailAlarm2: #{@alarm}"
+
       redirect_to :back
     else
       @sentrale_arg = Hash.new
@@ -90,6 +100,7 @@ class SendpostController < ApplicationController
 
       if defined?(@sentrale_arg["e-post"])
         @fraepost = @sentrale_arg["e-post"]
+        @fraepost = "fra-ingen@epost.no" unless @fraepost =~ /\w/
       else
         @fraepost = "fra-ingen@epost.no"
       end
@@ -166,17 +177,21 @@ class SendpostController < ApplicationController
           Pressesend.send_email(@fraepost, @fraepost, slettnorske(@subject), to_iso(formdata)) if is_email?(@fraepost)
         end
         
-        begin
+#        begin
           @ymldata[@epostg].each{|x|
-            Pressesend.send_email(@fraepost, x, slettnorske(@subject), to_iso(formdata)) if is_email?(x)
+            Pressesend.send_email(@fraepost, x, slettnorske(@subject), formdata) if is_email?(x)
+#            Pressesend.send_email("henrik@tjen-folket.no", x, slettnorske(@subject), formdata) if is_email?(x)
+                                  #from, to, subject, message
           }
-        rescue
-          @alarm = "Klarte ikke sende skjemaet. Mail sendt til drift@#{@domene}"
-          flash[:error] = norsk2html("<h1>Dette skjemaet er feil laget. Prøv seinere</h1><p>#{@alarm}</p>")
-          Pressesend.send_email("drift@#{@domene}", "drift@#{@domene}", "FEIL: Klarte ikke sende webskjema", "Klarte ikke sende webskjema til alle mottakere i epostgruppa. Sjekke epostgruppe på /sendpost/admin Yml arkivfil: #{@arkivfil}")
-          redirect_to :back
-        end
-        #        Rails.logger.error("\n NOR-- Prover aa kjore sfp  \n")
+ #       rescue
+        #   @alarm = "Klarte ikke sende skjemaet. Mail sendt til drift@#{@domene}"
+        #   flash[:error] = norsk2html("<h1>Dette skjemaet er feil laget. Prøv seinere</h1><p>#{@alarm}</p>")
+        #   logger.debug "MailAlarm 186--: #{@alarm}" unless @alarm == nil
+
+        #   Pressesend.send_email("drift@#{@domene}", "drift@#{@domene}", "FEIL: Klarte ikke sende webskjema", "Klarte ikke sende webskjema til alle mottakere i epostgruppa. Sjekke epostgruppe på /sendpost/admin Yml arkivfil: #{@arkivfil}")
+        #   redirect_to :back
+        # end
+        # #        Rails.logger.error("\n NOR-- Prover aa kjore sfp  \n")
         Kurs.sfp(params) if @epostg == "populus" # Innmelding av sfp tiltak
 
       end
