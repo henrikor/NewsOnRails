@@ -86,3 +86,5 @@ gem 'acts_as_versioned', "0.5.3", :git => "git://github.com/henrikor/acts_as_ver
 #gem 'jquery-rails'
 gem 'magic_encoding'
 gem 'gon'
+gem 'mail'
+gem 'iconv'
