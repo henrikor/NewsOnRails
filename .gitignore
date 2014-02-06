@@ -18,6 +18,7 @@ capybara-*.html
 /config/database.yml*
 /config/nor.yml
 /config/routes.rb
+/config/epostgrupper.yml
 /app/assets/stylesheets/^([0-9]*
 *.old
 *.slett
