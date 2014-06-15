@@ -60,6 +60,19 @@ h3. Bilder
 <tr><td><notextile>  [[image:3 |nolink|]]</notextile></td><td> -> </td><td> Legg inn bilde, men ikke lag link på bildet til bildet i maksstørrelse </td></tr>
 </table>
 
+h3. Former
+
+<notextile>
+Former gjøres på vanlig html måte, men vi har definert e-postgrupper i /sendpost/admin. Eksempel for å sende
+til gruppen "ledelsen":
+<br /> 
+<b> &lt;input name="epostg" value="ledelsen" type="hidden"></b>
+<br /><br />
+Legg inn et felt for å hindre spamboter i å sende spam på skjemaet:
+<br />
+<b>&lt;input name="reklame" type="text" class="reklame"></b>
+</notextile>
+
 h3. Vedlegg
 
 <table>
