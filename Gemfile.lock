@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/guilleiguaran/sass-rails.git
+  revision: 0393d9e1a6e4a776e61f16fb75f97971b9f4abd2
+  branch: backport
+  specs:
+    sass-rails (4.0.1)
+      railties (>= 3.2.0, < 5.0)
+      sass (>= 3.2.0)
+      sprockets-rails (~> 2.0.0.backport1)
+
+GIT
   remote: git://github.com/henrikor/acts_as_versioned.git
   revision: 8c73e6362991024cc46f2bdba0926594104f5d3f
   branch: rails3
@@ -37,12 +47,16 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     arel (3.0.3)
+    autoprefixer-rails (2.1.0.20140628)
+      execjs
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bluecloth (2.2.0)
+    bootstrap-sass (3.2.0.0)
+      sass (~> 3.2)
     builder (3.0.4)
     callsite (0.0.11)
     coderay (1.1.0)
@@ -81,7 +95,7 @@ GEM
       rack-contrib
       railties
     mime-types (1.25.1)
-    multi_json (1.8.2)
+    multi_json (1.10.1)
     mysql2 (0.3.14)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -113,16 +127,16 @@ GEM
       json (~> 1.4)
     rmagick (2.13.2)
     rubyzip (0.9.9)
-    sass (3.2.12)
-    sass-rails (3.2.6)
-      railties (~> 3.2.0)
-      sass (>= 3.1.10)
-      tilt (~> 1.3)
-    sprockets (2.2.2)
+    sass (3.3.9)
+    sprockets (2.2.2.backport2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (2.0.0.backport1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (~> 2.2.2.backport2)
     sqlite3 (1.3.8)
     thor (0.18.1)
     tilt (1.4.1)
@@ -141,9 +155,11 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   acts_as_versioned (= 0.5.3)!
+  autoprefixer-rails
   better_errors
   binding_of_caller
   bluecloth (>= 2.0.0)
+  bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 3.2.1)
   gon
   haml
@@ -158,7 +174,9 @@ DEPENDENCIES
   rails (>= 3.2.0)
   rmagick
   rubyzip (~> 0.9.9)
-  sass-rails (~> 3.2.3)
+  sass-rails!
+  sprockets (= 2.2.2.backport2)
+  sprockets-rails (= 2.0.0.backport1)
   sqlite3
   uglifier (>= 1.0.3)
   will_paginate (>= 3.0.pre2)

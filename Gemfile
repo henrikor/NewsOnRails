@@ -11,7 +11,16 @@ gem 'rails', '>= 3.2.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.2.3"
+#  gem 'sass-rails', "  ~> 3.2.3"
+#gem 'bootstrap-sass', '~> 3.2.0'
+#gem 'autoprefixer-rails'
+
+gem 'sprockets-rails', '=2.0.0.backport1'
+gem 'sprockets', '=2.2.2.backport2'
+gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
   gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier', '>=1.0.3'
 end
@@ -88,3 +97,10 @@ gem 'magic_encoding'
 gem 'gon'
 gem 'mail'
 gem 'iconv'
+
+#gem 'bootstrap-sass', '~> 3.2.0'
+#gem 'autoprefixer-rails'
+
+#gem 'sprockets-rails', '=2.0.0.backport1'
+#gem 'sprockets', '=2.2.2.backport2'
+#gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
