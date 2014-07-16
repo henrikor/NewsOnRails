@@ -148,6 +148,8 @@ class AdminController < ApplicationController
 
   def usernyttpass
     @user = Noruser.find(params[:id])
+#    @user = Noruser.find(86)
+
     self.current_user = @user
     current_user.password = params[:passord]
     @user.reset_password
