@@ -147,6 +147,7 @@ GEM
     uglifier (2.3.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    version_fu (1.0.2)
     will_paginate (3.0.5)
 
 PLATFORMS
@@ -179,4 +180,5 @@ DEPENDENCIES
   sprockets-rails (= 2.0.0.backport1)
   sqlite3
   uglifier (>= 1.0.3)
+  version_fu
   will_paginate (>= 3.0.pre2)

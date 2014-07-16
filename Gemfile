@@ -15,12 +15,11 @@ group :assets do
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem 'autoprefixer-rails'
 
-gem 'sprockets-rails', '=2.0.0.backport1'
-gem 'sprockets', '=2.2.2.backport2'
-gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
-
+  gem 'sprockets-rails', '=2.0.0.backport1'
+  gem 'sprockets', '=2.2.2.backport2'
+  gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
+  gem 'bootstrap-sass', '~> 3.2.0'
+  gem 'autoprefixer-rails'
   gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier', '>=1.0.3'
 end
@@ -35,6 +34,7 @@ end
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'sqlite3'
 gem 'mysql2'
+gem 'version_fu'
 
 
 # Asset template engines
