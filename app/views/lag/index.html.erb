@@ -18,13 +18,6 @@
       <p class="a-dato"><%= article.created_on.strftime("%d.%m.%Y") %></p>
     </div>
   <% end %>
-  <% if @no_paginating != 1 %>
-    <%= link_to 'Forrige side', {:page => @article_pages.current.previous } if @article_pages.current.previous %>
-    <%= raw pagination_links(@article_pages) %>
-    <% au = "au" %>
-    <%= link_to('Neste side',{:page => @article_pages.current.next}) if
-    @article_pages.current.next %>
-  <% end %>
-
+  <%= will_paginate @articles %>
 </div>
 

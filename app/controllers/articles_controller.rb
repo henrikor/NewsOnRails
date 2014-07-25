@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   before_filter :markitupp
   before_filter :left_column
   verify :method => :post, :only => [ :destroy, :create, :update ],
-    :redirect_to => { :action => :list }
+  :redirect_to => { :action => :list }
   #  protect_from_forgery :only => [:update, :delete, :create]    
   # auto_complete_for :article, :source
   # auto_complete_for :autogroup, :name
@@ -88,8 +88,8 @@ class ArticlesController < ApplicationController
       :include => [:group],
       :conditions => [ "group_groups.group_id2 = '2' and LOWER(groups.name) LIKE ?",
         '%' + value.downcase + '%'], 
-      :order => 'groups.name ASC',
-      :limit => 8)
+        :order => 'groups.name ASC',
+        :limit => 8)
     render :partial => 'groups'
   end
 
@@ -133,7 +133,7 @@ class ArticlesController < ApplicationController
     gon.groups4 = ["test1", "test2", "kake", "julekake", "kjeks"]
     @lags2 = Group.groups(4)
     @lags = GroupGroup.auth_lags(session[:noruser])
-      
+
     fil = noryml
     if fil['troll']
       @sentral_group = fil['troll'] 
@@ -148,70 +148,71 @@ class ArticlesController < ApplicationController
       "media" => "m",
       "ingen" => "0"}
 
-    if session[:used_groups]
-      @used_groups = session[:used_groups]
-    end
-  end
-
-  def index
-    respond_to do |format|
-      format.html
-      format.atom
-      format.rss
+      if session[:used_groups]
+        @used_groups = session[:used_groups]
+      end
     end
 
-    list
-    render :action => 'list'
-  end
+    def index
+      respond_to do |format|
+        format.html
+        format.atom
+        format.rss
+      end
 
-  def list
-    
-    @not_show = ["Url", "Story text", "Suspend", "Ingress", "Un published", "Picture", "Source", "Expires date", "Version"]
-    if params[:sort]
-      @sort = params[:sort]
-    else
-      @sort = "created_on"
+      list
+      render :action => 'list'
     end
 
-    if params[:order]
-      @order = params[:order]
-    else
-      @order = "desc"
+    def list
+
+      @not_show = ["Url", "Story text", "Suspend", "Ingress", "Un published", "Picture", "Source", "Expires date", "Version"]
+      if params[:sort]
+        @sort = params[:sort]
+      else
+        @sort = "created_on"
+      end
+
+      if params[:order]
+        @order = params[:order]
+      else
+        @order = "desc"
+      end
+
+      if @sort != "created_on"
+        sort = "#{@sort} #{@order}, created_on desc"
+      else
+        sort = "#{@sort} #{@order}"
+      end
+
+      @porder = @order
+      @stylesheet = "admin"
+
+      @articles = Article.paginate :page => params[:page], :order => sort
+      
+
+
+      if @order == "asc"
+        @order = "desc"
+      else
+        @order = "asc"
+      end
+
+      respond_to do |format|
+        format.html
+        format.atom
+        format.rss
+      end
+
+
     end
 
-    if @sort != "created_on"
-      sort = "#{@sort} #{@order}, created_on desc"
-    else
-      sort = "#{@sort} #{@order}"
+    def show
+      @article = Article.find(params[:id])
     end
 
-    @porder = @order
-    @stylesheet = "admin"
 
-    @articles = Article.paginate :page => params[:page], :order => sort
-
-
-    if @order == "asc"
-      @order = "desc"
-    else
-      @order = "asc"
-    end
-
-    respond_to do |format|
-      format.html
-      format.atom
-      format.rss
-    end
-    
-
-  end
-
-  def show
-    @article = Article.find(params[:id])
-  end
-
-
-  def temaboksen
+    def temaboksen
     #    format.js {
     #      render(:update) {|page| page.replace_html 'temaboksen', :partial =>
     #          'articles/edit'}
@@ -320,7 +321,7 @@ class ArticlesController < ApplicationController
         articlehide = ArticleShow.new(
           :article_id => params[:id],
           :headline => '1'
-        )
+          )
       end
       session[:used_groups] = params[:group]
       troll?
@@ -342,36 +343,37 @@ class ArticlesController < ApplicationController
       @article.article_groups << ArticleGroup.new(
         :article_id   => params[:id],
         :group_id => x.first
-      )
+        )
     }
     arr = params[:autogroup][:name].split(',') # Dytt inn fra den nye autotemasaken
     arr.each{|y|
       Rails.logger.error("var y = #{y}")
-        
-       
-      tema = Group.find(:all, :conditions => [ "name = ?", y.strip])
-      if tema.length > 0
-        @article.article_groups << ArticleGroup.new(
-          :article_id   => params[:id],
-          :group_id => tema.first.id
-        )
-      else
-        storygroup = Group.group_from_name("STORIE_GROUP?")
-        group = Group.new
-        group.name = y.strip
-        group.created_of = session[:noruser]
-        if group.save!
-          tema2 = Group.find(:all, :conditions => [ "name = ?", group.name])
+
+      if y =~ /\w/
+        tema = Group.find(:all, :conditions => [ "name = ?", y.strip])
+        if tema.length > 0
           @article.article_groups << ArticleGroup.new(
             :article_id   => params[:id],
-            :group_id => tema2.first.id
-          )
-          group.group_groups << GroupGroup.new(
-            :group_id   => tema2.first.id,
-            :group_id2 => storygroup.id
-          )
+            :group_id => tema.first.id
+            )
+        else
+          storygroup = Group.group_from_name("STORIE_GROUP?")
+          group = Group.new
+          group.name = y.strip
+          group.created_of = session[:noruser]
+          if group.save!
+            tema2 = Group.find(:all, :conditions => [ "name = ?", group.name])
+            @article.article_groups << ArticleGroup.new(
+              :article_id   => params[:id],
+              :group_id => tema2.first.id
+              )
+            group.group_groups << GroupGroup.new(
+              :group_id   => tema2.first.id,
+              :group_id2 => storygroup.id
+              )
 
-          @flashtxt = 'Lagde en eller flere nye grupper.'
+            @flashtxt = 'Lagde en eller flere nye grupper.'
+          end
         end
       end
     }    
@@ -411,7 +413,7 @@ class ArticlesController < ApplicationController
         :source => source,
         :story_text => storytext,
         :dato => dato
-      )
+        )
     end
   end
 

@@ -15,6 +15,20 @@ GIT
   specs:
     acts_as_versioned (0.5.3)
 
+GIT
+  remote: https://github.com/Agiley/auto_complete.git
+  revision: 6008aa1d2a528fa4812cb77bbf3d60611503eb2a
+  specs:
+    auto_complete (0.0.1)
+
+GIT
+  remote: https://github.com/sikachu/verification.git
+  revision: 76eaf51b13276ecae54bd9cd115832595d2ff56d
+  specs:
+    verification (1.0.3)
+      actionpack (>= 3.0.0, < 5.0)
+      activesupport (>= 3.0.0, < 5.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -68,6 +82,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     debug_inspector (0.0.2)
+    dynamic_form (1.1.4)
     erubis (2.7.0)
     execjs (2.0.2)
     gon (4.1.1)
@@ -156,12 +171,14 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   acts_as_versioned (= 0.5.3)!
+  auto_complete!
   autoprefixer-rails
   better_errors
   binding_of_caller
   bluecloth (>= 2.0.0)
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 3.2.1)
+  dynamic_form
   gon
   haml
   iconv
@@ -180,5 +197,6 @@ DEPENDENCIES
   sprockets-rails (= 2.0.0.backport1)
   sqlite3
   uglifier (>= 1.0.3)
+  verification!
   version_fu
   will_paginate (>= 3.0.pre2)

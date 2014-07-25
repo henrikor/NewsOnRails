@@ -35,7 +35,7 @@ end
 gem 'sqlite3'
 gem 'mysql2'
 gem 'version_fu'
-
+gem 'dynamic_form'
 
 # Asset template engines
 #gem 'coffee-script'
@@ -97,6 +97,10 @@ gem 'magic_encoding'
 gem 'gon'
 gem 'mail'
 gem 'iconv'
+
+
+gem 'auto_complete', :git => "https://github.com/Agiley/auto_complete.git"
+gem 'verification', :git => "https://github.com/sikachu/verification.git"
 
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem 'autoprefixer-rails'
