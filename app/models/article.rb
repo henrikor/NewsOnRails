@@ -11,14 +11,45 @@ class Article < ActiveRecord::Base
   :dependent => :destroy
   validates_presence_of :headline, :ingress, :source
 #  acts_as_versioned
-  acts_as_versioned :table_name => :article_versions
+#  acts_as_versioned :table_name => :article_versions
   #  version_fu
+
+  # Versjonering uten Plugins/Gems:
+  has_many :article_versions
+  before_save :check_for_new_version
 
   DIRECTORY = 'public/uploaded_images'
   THUMB_MAX_SIZE = [125,125]
 
   after_save :process
   after_destroy :cleanup
+
+  # Versjonering uten Plugins/Gems:
+
+  def check_for_new_version
+    instantiate_revision if create_new_version?
+    true # Never halt save
+  end
+
+  def instantiate_revision
+    new_version = versions.build
+    versioned_columns.each do |attribute|
+      new_version.__send__ "#{attribute}=", __send__(attribute)
+    end
+    version_number = new_record? ? 1 : version + 1
+    new_version.version = version_number
+    self.version = version_number
+  end
+
+  def versioned_columns
+    %w(list of columns)
+  end
+
+  def create_new_version?
+    versioned_columns.detect {|a| __send__ "#{a}_changed?"}
+  end
+
+  # Versjonering uten Plugins/Gems -- SLUTT:
 
 
   # Henrik

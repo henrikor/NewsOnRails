@@ -193,7 +193,8 @@ class StartController < ApplicationController
   
   def view(lagid = params[:lagid], lagname = params[:lag])
     @view = 1
-    lag = Group.group_from_name(lagname)
+#    lag = Group.group_from_name(lagname)
+    lag = Group.find_by("name = ?", lagname)
 
     if !lagid && !lag
       lagid = 8

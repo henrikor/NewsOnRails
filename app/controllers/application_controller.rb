@@ -91,14 +91,23 @@ class ApplicationController < ActionController::Base
   end
 
   def left_column
-    group = Group.group_from_name("LEFTCOLUMN")
-    article_group = Group.group_from_name("leftcolumn_stori")
-    @groups_left_column = GroupGroup.find(:all,
-      :include => [:group],
-      :conditions => ["group_groups.group_id2 = ?", group.id])
-    @articles_left_column = ArticleGroup.find(:all,
-      :include => [:group],
-      :conditions => ["article_groups.group_id = ?", article_group.id])
+    # group = Group.group_from_name("LEFTCOLUMN")
+    group = Group.find_by(name: "LEFTCOLUMN")
+#    article_group = Group.group_from_name("leftcolumn_stori")
+    article_group = Group.find_by(name: "leftcolumn_stori")
+    # @groups_left_column = GroupGroup.find(:all,
+    #   :include => [:group],
+    #   :conditions => ["group_groups.group_id2 = ?", group.id])
+
+    @groups_left_column = GroupGroup.joins(:group).where("group_groups.group_id2 = ?", group.id)
+
+    # @articles_left_column = ArticleGroup.find(:all,
+    #   :include => [:group],
+    #   :conditions => ["article_groups.group_id = ?", article_group.id])
+
+    @articles_left_column = ArticleGroup.joins(:group).where("group_groups.group_id = ?", article_group.id)
+
+
     #    render(:controller => "start", :action => left_column)
     #    render(:layout => false)
   end

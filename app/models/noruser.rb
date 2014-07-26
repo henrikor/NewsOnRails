@@ -5,7 +5,7 @@ class Noruser < ActiveRecord::Base
   has_and_belongs_to_many :roles
   acts_as_authorized_user
   attr_accessor :password
-  attr_protected :activated_at
+#  attr_protected :activated_at
 
   validate :login, :email, :presence => true
   validate :password, :presence => true, :if => :password_required?

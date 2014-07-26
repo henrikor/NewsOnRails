@@ -13,7 +13,7 @@ module Authorization
       module ClassMethods
         def acts_as_authorized_user
           has_and_belongs_to_many :roles
-          attr_protected :role_ids
+#          attr_protected :role_ids
           include Authorization::ObjectRolesTable::UserExtensions::InstanceMethods
           include Authorization::Identity::UserExtensions::InstanceMethods   # Provides all kinds of dynamic sugar via method_missing
         end
@@ -79,7 +79,7 @@ module Authorization
       module ClassMethods
         def acts_as_authorizable
           has_many :accepted_roles, :as => :authorizable, :class_name => 'Role'
-          attr_protected :accepted_role_ids
+ #         attr_protected :accepted_role_ids
           
           def accepts_role?( role_name, user )
             user.has_role? role_name, self 

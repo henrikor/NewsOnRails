@@ -91,8 +91,10 @@ class Group < ActiveRecord::Base
   end
 
   def self.group_from_name(name)
-    group = Group.find(:first,
-      :conditions => "name = '#{name}'")
+    # group = Group.find(:first,
+    #   :conditions => "name = '#{name}'")
+    group = Group.where("name = ?", name)
+
   end
 
   def self.to_stylesheets(stylesheet, group)

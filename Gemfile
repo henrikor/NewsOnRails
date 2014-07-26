@@ -5,7 +5,8 @@ source 'http://rubygems.org'
 #gem 'rails', '>= 3.0.0'
 #gem 'rails', '= 3.0.0'
 #gem 'rails', '= 3.1.3'
-gem 'rails', '>= 3.2.0'
+#gem 'rails', '>= 3.2.0'
+gem 'rails', '>= 4.0.2'
 
 
 # Gems used only for assets and not required
@@ -15,13 +16,14 @@ group :assets do
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem 'autoprefixer-rails'
 
-  gem 'sprockets-rails', '=2.0.0.backport1'
-  gem 'sprockets', '=2.2.2.backport2'
-  gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
-  gem 'bootstrap-sass', '~> 3.2.0'
+#  gem 'sprockets-rails', '=2.0.0.backport1'
+#  gem 'sprockets', '=2.2.2.backport2'
+#  gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
+  gem 'sass-rails'#, '4.0.1'
+  gem 'bootstrap-sass'#, '~> 3.2.0'
   gem 'autoprefixer-rails'
-  gem 'coffee-rails', "~> 3.2.1"
-  gem 'uglifier', '>=1.0.3'
+  gem 'coffee-rails'#, "~> 3.2.1"
+  gem 'uglifier'#, ' >=1.0.3'
 end
 
 group :development do
@@ -44,8 +46,8 @@ gem 'dynamic_form'
 gem 'jquery-rails'
 #gem "jquery-ui-themes", "~> 0.0.8"
 #gem 'jquery-ui-rails'
-gem "jquery-ui-rails", "~> 4.1.0"
-
+#gem "jquery-ui-rails"#, "~> 4.1.0"
+gem 'jquery-ui-rails', github: 'joliss/jquery-ui-rails', branch: 'rails-4.0.2'
 
 # Asset template engines
 #gem 'sass'
@@ -85,7 +87,7 @@ gem 'rmagick'
 gem 'RedCloth'
 gem 'mediacloth'
 #gem 'mislav-will_paginate'
-gem 'will_paginate', '>= 3.0.pre2'
+gem 'will_paginate'#, '>= 3.0.pre2'
 #gem 'rubyzip'
 #gem 'rubyzip', :require => 'zip/zip'
 gem 'rubyzip', '~> 0.9.9'
@@ -101,6 +103,8 @@ gem 'iconv'
 
 gem 'auto_complete', :git => "https://github.com/Agiley/auto_complete.git"
 gem 'verification', :git => "https://github.com/sikachu/verification.git"
+gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
+
 
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem 'autoprefixer-rails'
