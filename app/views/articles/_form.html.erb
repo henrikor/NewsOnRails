@@ -30,28 +30,48 @@
 
     <table id="versjontable">
       <tr><th>Versjon:</th><th>Tidspunkt</th><th>Oppdatert av:</th><th>Rediger</th></tr>
-      <% Article.versioned_class.find(:all,
-        :conditions => ["article_id = '#{@article2.id}'"]).collect do |version|
-        if version.updated_of > 0
-          #         if Noruser.find(version.updated_of)
-          begin
-            user = Noruser.find(version.updated_of)
-            login = user.login
-            #         else
-          rescue
-            login = "Antagelig oppdatert i gammel NOR"
-          end
-        else
-          login = "Ikke oppdatert"
-        end -%>
 
-        <tr <% if @article.version == version.version -%> id="aktivversjon" <% end -%> >
-          <td><%= version.version -%> </td>
-          <td><%= version.updated_on -%> </td>
-          <td><%= login -%> <%#= version.updated_of %> </td>
-          <td><%= link_to 'Rediger', :action => 'edit', :id => @article2.id, :versjon => version.version -%>
+      <% 
+      # Article.versioned_class.find(:all,
+      #   :conditions => ["article_id = '#{@article2.id}'"]).collect do |version|
+      #   if version.updated_of > 0
+      #     #         if Noruser.find(version.updated_of)
+      #     begin
+      #       user = Noruser.find(version.updated_of)
+      #       login = user.login
+      #       #         else
+      #     rescue
+      #       login = "Antagelig oppdatert i gammel NOR"
+      #     end
+      #   else
+      #     login = "Ikke oppdatert"
+      #   end 
+        -%>
+
+        <tr <%# if @article.version == version.version -%> id="aktivversjon" <%# end -%> >
+          <td><%#= version.version -%> </td>
+          <td><%#= version.updated_on -%> </td>
+          <td><%#= login -%> <%#= version.updated_of %> </td>
+          <td><%#= link_to 'Rediger', :action => 'edit', :id => @article2.id, :versjon => version.version -%>
         </tr>
-      <% end -%>
+
+        <% 
+          versjoner = @article.versions.length
+          versjon = versjoner - 1
+          forrige = @article.previous_version
+          while versjon >= 0 && versjoner != nil
+             v = @article.versions[versjon]
+        -%>
+
+            <tr <% if @article.version == v.index -%> id="aktivversjon" <% end -%> >
+              <td><%= v.id -%> </td>
+              <td><%= v.created_at -%> </td>
+              <td><%= v.whodunnit -%> </td>
+              <td><%= link_to 'Rediger', :action => 'edit', :id => @article2.id, :versjon => versjon -%>
+</td>
+            </tr>
+          <% versjon = versjon - 1 
+          end -%>
     </table>
 
   <% end
@@ -64,7 +84,7 @@
   <%# if member_of_role?(@article2.owner)|| @new_article -%>
 
 
-    <p><label for="article_created_on">Created</label><br/>
+    <p><label for="article_created_on"> Created </label><br/>
       <%= datetime_select 'article', 'created_on'  %></p>
 
     <p><label for="article_source">Source</label><br/>
@@ -200,19 +220,6 @@
     </p>
 
 
-
-<!-- Her har vi prototype... -->
- 
-<!-- 
-   <div class="auto_complete"
-         id="autogroup_name_auto_complete"></div>
-         <%= auto_complete_field :autogroup_name,
-           :url=>{:action=>'auto_complete_for_autogroup_name'},
-           :tokens => ',' %>
-          <%= auto_complete_field :autogroup_name,
-           :url=>{:action=>'auto_complete_for_autogroup_name'},
-           :tokens => ',' %>
- -->
 
 
      <p id="setraletemaer"><i><%= norsk2html(%{Sentrale temaer og temaer denne siden er med i fra før:}) %>
@@ -380,8 +387,4 @@
 
 
                   <div id="itemlist">
-<%#= render(:partial => '/shared/item', :collection => @items) %>
                   </div>
-
-
-

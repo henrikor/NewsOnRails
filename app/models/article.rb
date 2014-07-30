@@ -10,13 +10,14 @@ class Article < ActiveRecord::Base
   has_many :article_shows,
   :dependent => :destroy
   validates_presence_of :headline, :ingress, :source
+  has_paper_trail
 #  acts_as_versioned
 #  acts_as_versioned :table_name => :article_versions
   #  version_fu
 
   # Versjonering uten Plugins/Gems:
-  has_many :article_versions
-  before_save :check_for_new_version
+#  has_many :article_versions
+#  before_save :check_for_new_version
 
   DIRECTORY = 'public/uploaded_images'
   THUMB_MAX_SIZE = [125,125]
@@ -42,11 +43,15 @@ class Article < ActiveRecord::Base
   end
 
   def versioned_columns
-    %w(list of columns)
+    %w(article of columns)
   end
 
   def create_new_version?
     versioned_columns.detect {|a| __send__ "#{a}_changed?"}
+  end
+
+  def article_changed?
+    return true
   end
 
   # Versjonering uten Plugins/Gems -- SLUTT:

@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   before_filter :nor_authorized?
   before_filter :markitupp
   before_filter :left_column
+#  before_filter :set_article
   verify :method => :post, :only => [ :destroy, :create, :update ],
   :redirect_to => { :action => :list }
   #  protect_from_forgery :only => [:update, :delete, :create]    
@@ -189,7 +190,7 @@ class ArticlesController < ApplicationController
       @stylesheet = "admin"
 
       @articles = Article.paginate :page => params[:page], :order => sort
-      
+
 
 
       if @order == "asc"
@@ -305,7 +306,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
+#    @liste = Liste.new(liste_params)
+
+#    @article = Article.new(params[:article])
+    @article = Article.new(article_params)
     @article.created_of = session[:noruser]
     @article.un_published = 0
     @articlegroup = ArticleGroup.new
@@ -417,38 +421,52 @@ class ArticlesController < ApplicationController
     end
   end
 
+
+
+
+
   def update
-    @article = Article.find(params[:id])
-    @article.updated_of = session[:noruser]
-    user = Noruser.find(session[:noruser])
-    @roles = noruser.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
-    articles()
+    respond_to do |format|
 
-    if params[:husk]
-      session[:husk] = params[:husk]
-    else
-    end
-    @article.article_shows.clear
-    hide() # Hva skal skjules ved start/view?
-    if @article.update_attributes(params[:article])
+#        @article = Article.find(params[:id])
+        @article = Article.find(params[:id])
+        @article.updated_of = session[:noruser]
+        user = Noruser.find(session[:noruser])
+        @roles = noruser.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
+        articles()
 
-      @article.article_groups.clear
+        if params[:husk]
+          session[:husk] = params[:husk]
+        end
+        @article.article_shows.clear
+        hide() # Hva skal skjules ved start/view?
+#        if @article.update_attributes(params[:article])
 
-      if params[:group]
-        legginntemaer
-        session[:used_groups] = params[:group]
-        troll?
+          @article.article_groups.clear
+
+        if params[:group]
+#            legginntemaer
+            session[:used_groups] = params[:group]
+            troll?
+          # else
+          #   flash[:warning] = "Advarsel: Du hadde ikke kryssa av for noen grupper. Siden vil ikke komme opp noe sted!! G&aring; til stories for &aring; fikse dette. #{@groupallert}"
+          # end
+#          redirect_to :controller => "start", :action => 'view', :id => @article
+          session[:role] = @article.owner
+        else
+          @article2 = @article
+          @user = Noruser.find(session[:noruser])
+          @roles = @user.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
+          articles()
+#          render :action => 'edit' and return
+        end
+      if @article.update(article_params)
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.json { head :no_content }
       else
-        flash[:warning] = "Advarsel: Du hadde ikke kryssa av for noen grupper. Siden vil ikke komme opp noe sted!! G&aring; til stories for &aring; fikse dette. #{@groupallert}"
+        format.html { render action: 'edit' }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
-      redirect_to :controller => "start", :action => 'view', :id => @article
-      session[:role] = @article.owner
-    else
-      @article2 = @article
-      @user = Noruser.find(session[:noruser])
-      @roles = @user.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
-      articles()
-      render :action => 'edit'
     end
   end
 
@@ -477,4 +495,17 @@ class ArticlesController < ApplicationController
     @article.save
     redirect_to :action => 'list'
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_article
+      @article = Article.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def article_params
+      params.require(:article).permit(:cloth, :created_on, :source, :headline, :ingress, :story_text, :pri, :un_published, :owner, {:autogroup_ids => []}, {:group_ids => []})
+    end
+
+
 end

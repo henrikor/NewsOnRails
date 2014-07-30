@@ -159,6 +159,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user
+    noruser
+  end
   def users_select
     @thing = [["select User", "empty"]] + Noruser.find(:all, :order => "login").map {|u| [u.login, u.id] }
     @thing2 = Noruser.find(:all, :order => "login")
