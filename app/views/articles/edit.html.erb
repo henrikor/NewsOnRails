@@ -16,7 +16,12 @@
 
 
 
-<%= form_tag({:action => 'update', :id => @article2}, :multipart => true) %>
+<%#= form_tag({:controller => 'articles', :action => 'update', :id => @article2}, :multipart => true, method: "post") %>
+<%= form_tag("/articles/update/#{@article2.id}", :multipart => true) %>
+    <%#= form_for(@article2, :html => { :id => article2 }) do |f| %>
+
+
+
 <%= render :partial => 'form' %>
 <%= submit_tag 'Lagre' %>
 

@@ -2,13 +2,24 @@
 NewsOnRails::Application.routes.draw do
 
 # FELLES:
+  resources :articles
+  match "/articles/:id" => "start#view", via: [:get]
+
+  match "/gropus/home" => "groups#home", via: [:get, :post]
+  match "/groups/list" => "groups#list", via: [:get, :post]
+  match "/account/logout" => "account#logout", via: [:get, :post]
+  match "/lister/list" => "lister#list", via: [:get, :post]
+  match "/articles/list" => "articles#list", via: [:get, :post]
+  match "/articles/:id" => "articles#update", via: [:post]
+
   resources :paths
   resources :stylesheets
   resources :helps
-  resources :articles
+  resources :gropus
+  resources :lister
 
+  match '/:controller(/:action(/:id))', via: [:get, :post]
 
-  # get '/:controller(/:action(/:id))'
   # resources :lag do
   #   collection do
   # get :id

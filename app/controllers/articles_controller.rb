@@ -250,7 +250,7 @@ class ArticlesController < ApplicationController
     user = Noruser.find(session[:noruser])
     @roles = user.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
     articles()
-    #unless params[:versjon]
+    # unless params[:versjon]
     #  if @article.article_shows.nitems >= 1
     #    if @article.article_shows.first.headline != nil
     #      @hide_headline = 1
@@ -268,10 +268,10 @@ class ArticlesController < ApplicationController
     #      @hide_dato = 1
     #    end
     #  end
-    #end
+    # end
     @table = @article
-    creator() # In application.rb, uses @table
-    updater() # In application.rb, uses @table
+    creator() # In application_controller.rb, uses @table
+    updater() # In application_controller.rb, uses @table
   end
 
   def create_new_common
@@ -426,9 +426,8 @@ class ArticlesController < ApplicationController
 
 
   def update
+      Rails.logger.info { "Update startet i kontroller" }
     respond_to do |format|
-
-#        @article = Article.find(params[:id])
         @article = Article.find(params[:id])
         @article.updated_of = session[:noruser]
         user = Noruser.find(session[:noruser])
@@ -445,7 +444,7 @@ class ArticlesController < ApplicationController
           @article.article_groups.clear
 
         if params[:group]
-#            legginntemaer
+            legginntemaer
             session[:used_groups] = params[:group]
             troll?
           # else
@@ -464,7 +463,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', notice: 'Article was not updated.' }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
