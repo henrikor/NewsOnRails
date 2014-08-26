@@ -28,26 +28,6 @@ class StartController < ApplicationController
     # @article_pages = Paginator.new self, ArticleGroup.count_by_sql(["#{@count_condition_sql}", temaid]), 10, page
   end
 
-  # Flyttet til start Model
-  def sql_from_only_one_group(temaid = '10', lagid = '8', page = '0')
-    @sql = "SELECT a.* FROM articles a
-                        JOIN article_groups ag ON ag.article_id = a.id
-                        WHERE
-                        a.un_published != '1' AND
-                        ag.group_id IN (?, ?)
-                        GROUP BY a.id
-                        HAVING COUNT(DISTINCT ag.group_id) = 2"
-    # sql2 = "SELECT a.id FROM articles a
-    #                     JOIN article_groups ag ON ag.article_id = a.id
-    #                     WHERE
-    #                     a.un_published != '1' AND
-    #                     ag.group_id IN (?, ?)
-    #                     GROUP BY a.id
-    #                     HAVING COUNT(DISTINCT ag.group_id) = 2"
-    # csql = Article.find_by_sql([sql2, temaid, lagid])
-    # @count_condition_sql = "SELECT FOUND_ROWS()"
-    # @article_pages = Paginator.new self, ArticleGroup.count_by_sql(["#{@count_condition_sql}", temaid]), 10, page
-  end
 
   def group(temaid = params[:id], lagid = params[:lagid], page = params[:page], controller = "index")
     @right_column = 1

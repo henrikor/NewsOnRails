@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class AccountController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+#  include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
   # say something nice, you goof!  something sweet.
   def index
@@ -13,6 +13,20 @@ class AccountController < ApplicationController
 #    end
   end
 
+
+  def create
+    user = Norser.find_by(email: params[:session][:login].downcase)
+    if user && user.authenticate(params[:session][:password])
+      sign_in user
+      redirect_back_or user
+    else
+      flash.now[:error] = 'Invalid email/password combination'
+      render 'new'
+    end
+  end
+
+
+
   def login
     return unless request.post?
     self.current_user = Noruser.authenticate(params[:login], params[:password])
@@ -21,8 +35,10 @@ class AccountController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default(:controller => '/account', :action => 'index')
+      redirect_back_or(:controller => '/account', :action => 'index')
       flash[:notice] = "Du er nå logget inn"
+    else
+      flash[:notice] = "Innlogging misslykket"
     end
   end
 

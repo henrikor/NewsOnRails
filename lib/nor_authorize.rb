@@ -1,7 +1,8 @@
 # -*- encoding : utf-8 -*-
 # Methods added to this helper will be available to all templates in the application.
 module NorAuthorize
-  #  include AuthenticatedSystem
+#    include AuthenticatedSystem
+#  include SessionsHelper
 
   def nor_logged_in?
     redirect_back_or_default(:controller => '/account', :action => 'index') unless logged_in? # || Noruser.count > 0 
@@ -38,6 +39,10 @@ module NorAuthorize
       flash[:notice] = "Du har ikke tilgang til denne siden" 
       access_denied
     end
+  end
+  def access_denied(default = "")
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
   end
 
   def nor_authf(accessarr)

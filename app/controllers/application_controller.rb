@@ -1,9 +1,10 @@
-# -*- encoding : utf-8 -*-
 #-*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include NorAuthorize
-  include AuthenticatedSystem
+#  include NorAuthorize
+#  include AuthenticatedSystem
+  include SessionsHelper
+
   before_filter :left_column
   before_filter :klargjor
 
@@ -159,9 +160,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_user
-    noruser
-  end
+  # def current_user
+  #   noruser
+  # end
   def users_select
     @thing = [["select User", "empty"]] + Noruser.find(:all, :order => "login").map {|u| [u.login, u.id] }
     @thing2 = Noruser.find(:all, :order => "login")

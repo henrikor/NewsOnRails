@@ -2,6 +2,7 @@
 NewsOnRails::Application.routes.draw do
 
 # FELLES:
+  match "/articles/list" => "articles#list", via: [:get, :post]
   resources :articles
   match "/articles/:id" => "start#view", via: [:get]
 
@@ -9,7 +10,6 @@ NewsOnRails::Application.routes.draw do
   match "/groups/list" => "groups#list", via: [:get, :post]
   match "/account/logout" => "account#logout", via: [:get, :post]
   match "/lister/list" => "lister#list", via: [:get, :post]
-  match "/articles/list" => "articles#list", via: [:get, :post]
   match "/articles/:id" => "articles#update", via: [:post]
 
   resources :paths
@@ -32,11 +32,11 @@ NewsOnRails::Application.routes.draw do
   # end  
   # end
 
-  # get ':lag/:id.:format' => 'lag#index'
-  # get ':lag/:id' => 'lag#index'
-  # get ':lag/view/:id' => 'start#view'
+   get ':lag/:id.:format' => 'lag#index'
+   get ':lag/:id' => 'lag#index'
+   get ':lag/view/:id' => 'start#view'
   # get ':controller/service.wsdl' => '#wsdl'
-  # get 'start/view/:id/:lagid' => 'start#view'
+   get 'start/view/:id/:lagid' => 'start#view'
   # get '*path' => 'application#rescue_404'
 
 

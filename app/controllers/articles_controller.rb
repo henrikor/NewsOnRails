@@ -309,6 +309,10 @@ class ArticlesController < ApplicationController
 #    @liste = Liste.new(liste_params)
 
 #    @article = Article.new(params[:article])
+    if params[:group] == nil
+        flash[:error] = norsk2html("<h1>Kunne ikke opprette - mangler avkrysning for grupper</h1><br/><i>#{@flashtxt}</i>")        
+        redirect_to :action => 'new' and return
+      end
     @article = Article.new(article_params)
     @article.created_of = session[:noruser]
     @article.un_published = 0
@@ -460,7 +464,7 @@ class ArticlesController < ApplicationController
 #          render :action => 'edit' and return
         end
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to "/start/view/#{@article.id}", notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit', notice: 'Article was not updated.' }
