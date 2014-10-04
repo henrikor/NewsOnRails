@@ -426,16 +426,14 @@ class ArticlesController < ApplicationController
   end
 
 
-
-
-
   def update
-      Rails.logger.info { "Update startet i kontroller" }
+    Rails.logger.info { "Update startet i kontroller" }
     respond_to do |format|
         @article = Article.find(params[:id])
         @article.updated_of = session[:noruser]
         user = Noruser.find(session[:noruser])
-        @roles = noruser.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
+#        @roles = noruser.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
+        @roles = user.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
         articles()
 
         if params[:husk]
@@ -444,8 +442,7 @@ class ArticlesController < ApplicationController
         @article.article_shows.clear
         hide() # Hva skal skjules ved start/view?
 #        if @article.update_attributes(params[:article])
-
-          @article.article_groups.clear
+        @article.article_groups.clear
 
         if params[:group]
             legginntemaer

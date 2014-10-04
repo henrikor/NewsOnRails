@@ -33,10 +33,16 @@ class AccountController < ApplicationController
     if logged_in?
       if params[:remember_me] == "1"
         self.current_user.remember_me
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+        cookies[:remember_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
+      sign_in(current_user)
       redirect_back_or(:controller => '/account', :action => 'index')
-      flash[:notice] = "Du er nå logget inn"
+      if !current_user.nil?
+        session[:noruser] = current_user.id
+        flash[:notice] = "Du er nå logget inn"
+      else
+        flash[:notice] = "Finner ikke current_user"
+      end
     else
       flash[:notice] = "Innlogging misslykket"
     end
@@ -55,10 +61,10 @@ class AccountController < ApplicationController
   
   def logout
     self.current_user.forget_me if logged_in?
-    cookies.delete :auth_token
+    cookies.delete :remember_token
     reset_session
     flash[:notice] = "Du har logga ut."
-    redirect_back_or_default(:controller => '/account', :action => 'index')
+    redirect_back_or(:controller => '/account', :action => 'index')
   end
   
   def activate

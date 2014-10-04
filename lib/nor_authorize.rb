@@ -12,7 +12,7 @@ module NorAuthorize
     !session[:noruser].nil?
   end
   
-  def noruser
+  def self.noruser
     if session && session[:noruser] && !session[:noruser].nil?
       noruser = Noruser.find(session[:noruser])
     else
@@ -57,6 +57,7 @@ module NorAuthorize
         raise "finner ikke index action og gjeldende action == nil eller ikke eksisterende i authorized.yml" if !fil[controller]["index"]
         access_text = fil[controller]["index"]
       end
+#      return true if current_user.has_role?("Admin", current_user.id)
       return true if current_user.has_role?("Admin")
 
 

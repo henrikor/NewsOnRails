@@ -2,7 +2,7 @@
 require 'digest/sha1'
 class Noruser < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
-  has_and_belongs_to_many :roles
+  has_and_belongs_to_many :roles #, through: :norusers_roles
 #  acts_as_authorized_user
   attr_accessor :password
 #  attr_protected :activated_at
@@ -20,8 +20,24 @@ class Noruser < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_create :make_activation_code
   before_save :encrypt_password
-
  
+  #include NorAuthorize
+
+  def has_role?(role)
+      self.roles.each{|r|
+        return true if r.name == "Admin"
+  #      return true if r.name == role
+      }
+      return false
+
+    # if self.roles.include?
+    #   return true
+    # else
+    #   return false
+    # end
+  end
+
+
   # Reset passord ting:
 
   def forgot_password
@@ -74,6 +90,10 @@ class Noruser < ActiveRecord::Base
   # def encrypt(password)
   #   self.class.encrypt(password, salt)
   # end
+
+  def Noruser.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
 
   def Noruser.encrypt(password, salt)
 #    Digest::SHA1.hexdigest(token.to_s)
@@ -136,7 +156,7 @@ class Noruser < ActiveRecord::Base
   private
 
     def create_remember_token
-      self.remember_token = Noruser.encrypt(User.new_remember_token)
+      self.remember_token = Noruser.encrypt(Noruser.new_remember_token)
     end
 
   #  def set_new_password(password)
