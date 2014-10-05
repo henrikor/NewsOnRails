@@ -113,5 +113,9 @@ module NorAuthorize
     #    end
   end
 
+    def redirect_back_or_default(default)
+      session[:return_to] ? redirect_to_url(session[:return_to]) : redirect_to(default)
+      session[:return_to] = nil
+    end
 
 end

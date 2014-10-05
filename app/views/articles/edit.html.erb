@@ -17,7 +17,7 @@
 
 
 <%#= form_tag({:controller => 'articles', :action => 'update', :id => @article2}, :multipart => true, method: "post") %>
-<%= form_tag("/articles/update/#{@article2.id}", :multipart => true) %>
+<%= form_tag("/articles/update/#{@article.id}", :multipart => true) %>
     <%#= form_for(@article2, :html => { :id => article2 }) do |f| %>
 
 
@@ -28,5 +28,5 @@
 <%= form_tag %>
 
 
-<%= link_to 'Show', :action => 'show', :id => @article2 %> |
+<%= link_to 'Show', :action => 'show', :id => @article %> |
 <%= link_to 'Back', :action => 'list' %>

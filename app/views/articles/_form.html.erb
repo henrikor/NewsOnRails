@@ -1,6 +1,6 @@
 <%= error_messages_for 'article' %>
 
-<% if autorized_to_article?(@article2.id)|| @new_article -%>
+<% if autorized_to_article?(@article.id)|| @new_article -%>
   <%# if member_of_role?(@article2.owner)|| @new_article -%>
 
   <%# @article2 = Article.find('10513') %>
@@ -67,7 +67,7 @@
               <td><%= v.id -%> </td>
               <td><%= v.created_at -%> </td>
               <td><%= v.whodunnit -%> </td>
-              <td><%= link_to 'Rediger', :action => 'edit', :id => @article2.id, :versjon => versjon -%>
+              <td><%= link_to 'Rediger', :action => 'edit', :id => @article.id, :versjon => v.created_at -%>
 </td>
             </tr>
           <% versjon = versjon - 1 
@@ -80,7 +80,7 @@
   %>
 
 
-  <% if autorized_to_article?(@article2.id)|| @new_article -%>
+  <% if autorized_to_article?(@article.id)|| @new_article -%>
   <%# if member_of_role?(@article2.owner)|| @new_article -%>
 
 
@@ -229,7 +229,7 @@
       vist = []
     %>
 
-      <% @article2.article_groups.each {|x|
+      <% @article.article_groups.each {|x|
         if (x.group_id == @group.group_id)
           vist << x.group_id
         %>
@@ -256,7 +256,7 @@
       #:url => { :action => "temaboksen", :id => @article.id},
       #link_to"Vis flere temaer", :update => 'temaboksen',
       #  :url => { :action => "temaboksen", :id => @article.id}
-      #:url => { :action => "temaboksen", :group => @group, :group2 => @group2, :group3 => @groups3, :article2 => @article2 }
+      #:url => { :action => "temaboksen", :group => @group, :group2 => @group2, :group3 => @groups3, :article2 => @article }
       %>
     </strong>
 
@@ -278,7 +278,7 @@
     ########################################################################################
     -%>
 
-    <% @article2.article_groups.each {|x|
+    <% @article.article_groups.each {|x|
       if (Group.laggroup?(x.group_id) && !autorized_to_group?(x.group_id)) || !Group.laggroup?(x.group_id)
       %>
         <span class="nobreak"><input id="group_<%= x.group_id %>_id" name="group[<%= x.group_id %>]" value="<%= x.group_id %>" type="hidden">
@@ -329,7 +329,7 @@
   <div id="lags">
     <% for @lag in @lags %>
       <% treff = 0 %>
-      <% if @article2.article_groups.each {|x|
+      <% if @article.article_groups.each {|x|
           if (x.group_id == @lag.group_id) %>
             <span class="nobreak"><input checked="checked" id="group_<%= @lag.group.id %>_id" name="group[<%= @lag.group.id %>]" value="<%= @lag.group.id %>" type="checkbox">&nbsp;<%= @lag.name %>
 
@@ -374,7 +374,7 @@
 
                   <br/>
 
-                  <% if autorized_to_article?(@article2.id) -%>
+                  <% if autorized_to_article?(@article.id) -%>
   <%# if member_of_role?(@article.owner) -%>
                     <p><label for="article_owner"><i><%= norsk2html(%{Eier, hvem skal ha tilgang til å redigere denne <strong>NB!</strong> her må det ikke stå "User", velg laget ditt i stede!}) %>
                         </i>

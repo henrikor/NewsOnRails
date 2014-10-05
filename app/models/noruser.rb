@@ -2,7 +2,7 @@
 require 'digest/sha1'
 class Noruser < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
-  has_and_belongs_to_many :roles #, through: :norusers_roles
+  has_and_belongs_to_many :roles
 #  acts_as_authorized_user
   attr_accessor :password
 #  attr_protected :activated_at
@@ -87,9 +87,9 @@ class Noruser < ActiveRecord::Base
   end
 
   # Encrypts the password with the user salt
-  # def encrypt(password)
-  #   self.class.encrypt(password, salt)
-  # end
+  def encrypt(password)
+    self.class.encrypt(password, salt)
+  end
 
   def Noruser.new_remember_token
     SecureRandom.urlsafe_base64

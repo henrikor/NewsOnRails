@@ -2,7 +2,7 @@
 class Role2groupController < ApplicationController
 #  before_filter :authorize_action
 #  before_filter :left_column
-#  
+  include NorAuthorize  
   before_filter :nor_logged_in?
   before_filter :klargjor
   before_filter :left_column
@@ -52,21 +52,33 @@ class Role2groupController < ApplicationController
   def update
     @role = Role.find(params[:id])
 #    @role = Role.find(5)
-    @rolegroup = GroupRole.new
-    if @role.update_attributes(params[:role])
-      @role.group_roles.clear
+#    @rolegroup = GroupRole.new
+#    if @role.update_attributes(params[:role])
+#    if @role.update(params[:role])
+#    if @role.update_attributes(role_params)
+
+   if @role.update(role_params)
+      grouprole = GroupRole.where(role_id: params[:id])
+      grouprole.each do |a|
+        a.destroy
+      end
+
+#      @role.group_roles.clear
       params[:group].each { |x|  # Array created of chexboxes
         @role.group_roles << GroupRole.new(
                                                     :role_id   => params[:id],
                                                     :group_id => x.first
                                                     )
       }
-      #      @first.clear
+#           @first.clear
       flash[:notice] = 'Role was successfully updated.'
       redirect_to :action => 'show', :id => @role
     else
       render :action => 'edit'
     end
+  end
+  def role_params
+    params.require(:group).permit({:group_ids => []})
   end
 
 end

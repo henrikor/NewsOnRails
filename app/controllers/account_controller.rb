@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class AccountController < ApplicationController
+    include NorAuthorize
+
   # Be sure to include AuthenticationSystem in Application Controller instead
 #  include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
@@ -49,7 +51,8 @@ class AccountController < ApplicationController
   end
 
   def signup
-    @noruser = Noruser.new(params[:noruser])
+#    @noruser = Noruser.new(params[:noruser])
+    @noruser = Noruser.new(user_params)
     return unless request.post?
     @noruser.save!
     self.current_user = @noruser
@@ -111,4 +114,8 @@ class AccountController < ApplicationController
     redirect_back_or_default(:controller => '/account', :action => 'index')
   end
 #  # Resett passord ting, slutt
+  def user_params
+    params.require(:noruser).permit(:login, :email, :password, :password_confirmation)
+  end
+
 end

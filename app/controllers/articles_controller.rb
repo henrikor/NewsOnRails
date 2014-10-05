@@ -119,7 +119,7 @@ class ArticlesController < ApplicationController
 
   def articles
     #    group = group_from_name("THEME")
-    if @article.cloth
+    if defined? @article.cloth
       @syntax = clothsyntax(@article.cloth)
     else
       @syntax = clothsyntax("r")
@@ -239,10 +239,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article2 = Article.find(params[:id])
+#    @article2 = Article.find(params[:id])
+    @article = Article.find(params[:id])
     if params[:versjon]
-      @article = Article.find_version(params[:id], params[:versjon])
-      @article.id = @article2.id
+#      @article = Article.find_version(params[:id], params[:versjon])
+#      @article = @article.versions[params[:versjon].to_i]
+      @article = @article.version_at(params[:versjon])
     else
       @article = Article.find(params[:id],
         :include => [:article_shows])
