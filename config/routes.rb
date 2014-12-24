@@ -22,7 +22,7 @@ NewsOnRails::Application.routes.draw do
 
 
 
-  root :to => 'start#view', :id => '10522'
+  root :to => 'start#view', :id => '5'
 
 
 
@@ -32,8 +32,8 @@ NewsOnRails::Application.routes.draw do
   match ':lag/:id' => 'lag#index'
   match ':lag.:format' => 'lag#index', :id => '10'
   match 'norhjelp' => 'start#view', :id => '13281'
-  match 'finnes_ikke' => 'start#view', :id => '10522'
-  match 'forside' => 'start#view', :id => '10'
+  match 'finnes_ikke' => 'start#view', :id => '5'
+  match 'forside' => 'start#view', :id => '5'
 
 
   match ':lag/view/:id' => 'start#view'
