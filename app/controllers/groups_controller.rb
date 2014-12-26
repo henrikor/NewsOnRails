@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class GroupsController < ApplicationController
   include ArticlesHelper #ClothSyntax
-#  before_filter :authorize_action, :except => [:temaer]
+#  before_filter :nor_authorized?, :except => [:temaer]
 #  before_filter :nor_logged_in?
   before_filter :klargjor
   before_filter :nor_authorized?

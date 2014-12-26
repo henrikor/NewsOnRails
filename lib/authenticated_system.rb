@@ -10,6 +10,7 @@ module AuthenticatedSystem
     current_user != :false
   end
     
+  
   # Accesses the current noruser from the session.
   def current_user
     #      @current_user ||= session[:noruser] || :false #&& Noruser.find_by_id(session[:noruser])) || :false

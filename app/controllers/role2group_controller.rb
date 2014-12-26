@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Role2groupController < ApplicationController
-#  before_filter :authorize_action
+#  before_filter :nor_authorized?
 #  before_filter :left_column
   include NorAuthorize  
   before_filter :nor_logged_in?

@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ArticlesController < ApplicationController
-  before_filter :authorize_action
+  before_filter :nor_authorized?
   before_filter :left_column
 
 #  cache_sweeper :article_sweeper,

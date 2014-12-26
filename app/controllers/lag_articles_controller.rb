@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class LagArticlesController < ArticlesController
-  before_filter :authorize_action
+  before_filter :nor_authorized?
   before_filter :left_column
 
   def articles
