@@ -39,21 +39,19 @@ NewsOnRails::Application.routes.draw do
    get 'start/view/:id/:lagid' => 'start#view'
   # get '*path' => 'application#rescue_404'
 
-#  match ':lag.:format' => 'lag#index', :id => '10'
-#  match 'norhjelp' => 'start#view', :id => '13281'
-#  match 'finnes_ikke' => 'start#view', :id => '5'
-#  match 'forside' => 'start#view', :id => '5'
+
+  # post 'articles/update/:id' => 'articles#update'
+  # post 'articles/:id' => 'start#view'
+  
+  #match 'articles/' to: 'articles#index', via: [:get, :post]0
 
 
-#  match ':lag/view/:id' => 'start#view'
-#  match ':controller/service.wsdl' => '#wsdl'
-#  match ':lag' => 'lag#index', :id => '10'
-#  match 'start/view/:id/:lagid' => 'start#view'
-#  match '' => 'Sentralt#10'
-#  match 'hotest' => 'lag#index', :lag => 'Sentralt', :id => '10'
-#  match ':lag/:id/:page' => 'lag#index', :constraints => { :page => /\d+/, :id => /\d+/ }, :lag => , :page => , :id =>
-#  match '*path' => 'application#rescue_404'
+# FELLES SLUTT
 
+  root :to => 'start#view', :id => '5'
+
+
+#  match '/Sentralt/:id' => 'lag#index', :lag => 'sentralt-organisasjon' # Kun for sos-rasisme.no
   get ':lag.:format' => 'lag#index', :id => '10'
   get 'norhjelp' => 'start#view', :id => '13281'
   get 'finnes_ikke' => 'start#view', :id => '5'
@@ -63,6 +61,5 @@ NewsOnRails::Application.routes.draw do
   get ':lag' => 'lag#index', :id => '10'
 #  get '' => 'Sentralt#10'
 #  get 'hotest' => 'lag#index', :lag => 'Sentralt', :id => '10'
-#  get ':lag/:id/:page' => 'lag#index', :constraints => { :page => /\d+/, :id => /\d+/ }, :lag => , :page => , :id =>
-
+  #  get ':lag/:id/:page' => 'lag#index', :constraints => { :page => /\d+/, :id => /\d+/ }, :lag => , :page => , :id =>
 end
