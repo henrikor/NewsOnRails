@@ -48,6 +48,8 @@ gem 'jquery-rails'
 #gem 'jquery-ui-rails'
 #gem "jquery-ui-rails"#, "~> 4.1.0"
 gem 'jquery-ui-rails', github: 'joliss/jquery-ui-rails', branch: 'rails-4.0.2'
+gem 'rails-observers'
+gem "sass", :require => 'sass'
 
 # Asset template engines
 #gem 'sass'
