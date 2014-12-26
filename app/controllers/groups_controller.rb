@@ -123,7 +123,7 @@ class GroupsController < ApplicationController
 
   def create
     groups_select()
-    @group = Group.new(params[:group])
+    @group = Group.new(group_params)
     @group.created_of = session[:noruser]
     #    @table = @group
     #    creator() # In application.rb, uses @table
@@ -149,7 +149,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @group.updated_of = session[:noruser]
 
-    if @group.update_attributes(params[:group])
+    if @group.update_attributes(group_params)
       @group.group_groups.clear
       if params[:group_id]
         params[:group_id].each { |x|  # Array created of chexboxes
@@ -177,4 +177,9 @@ class GroupsController < ApplicationController
     end
     redirect_to :action => 'list'
   end
+  def group_params
+    params.require(:group).permit(:name, :description, {:group_ids => []}, {:suspend_ids => []}, {:expire_date_ids => []})
+  end
+
+
 end

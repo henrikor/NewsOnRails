@@ -1,9 +1,10 @@
-# -*- encoding : utf-8 -*-
 #-*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include NorAuthorize
-  include AuthenticatedSystem
+#  include NorAuthorize
+#  include AuthenticatedSystem
+  include SessionsHelper
+
   before_filter :left_column
   before_filter :klargjor
 
@@ -91,14 +92,23 @@ class ApplicationController < ActionController::Base
   end
 
   def left_column
-    group = Group.group_from_name("LEFTCOLUMN")
-    article_group = Group.group_from_name("leftcolumn_stori")
-    @groups_left_column = GroupGroup.find(:all,
-      :include => [:group],
-      :conditions => ["group_groups.group_id2 = ?", group.id])
-    @articles_left_column = ArticleGroup.find(:all,
-      :include => [:group],
-      :conditions => ["article_groups.group_id = ?", article_group.id])
+    # group = Group.group_from_name("LEFTCOLUMN")
+    group = Group.find_by(name: "LEFTCOLUMN")
+#    article_group = Group.group_from_name("leftcolumn_stori")
+    article_group = Group.find_by(name: "leftcolumn_stori")
+    # @groups_left_column = GroupGroup.find(:all,
+    #   :include => [:group],
+    #   :conditions => ["group_groups.group_id2 = ?", group.id])
+
+    @groups_left_column = GroupGroup.joins(:group).where("group_groups.group_id2 = ?", group.id)
+
+    # @articles_left_column = ArticleGroup.find(:all,
+    #   :include => [:group],
+    #   :conditions => ["article_groups.group_id = ?", article_group.id])
+
+    @articles_left_column = ArticleGroup.joins(:group).where("group_groups.group_id = ?", article_group.id)
+
+
     #    render(:controller => "start", :action => left_column)
     #    render(:layout => false)
   end
@@ -150,6 +160,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def current_user
+  #   noruser
+  # end
   def users_select
     @thing = [["select User", "empty"]] + Noruser.find(:all, :order => "login").map {|u| [u.login, u.id] }
     @thing2 = Noruser.find(:all, :order => "login")

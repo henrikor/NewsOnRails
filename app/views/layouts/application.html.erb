@@ -57,7 +57,7 @@
 <%#           import url(path_to_stylesheet "1"); %>
     </style>
 
-    <%= stylesheet_link_tag '1', :media => 'all' %>
+    <%#= stylesheet_link_tag '1', :media => 'all' %>
     <% if @nor_stylesheet %>
       <% @nor_stylesheet.each{|x| -%>
         <% if x.id == 1
@@ -221,7 +221,7 @@
         </div>
 
       <% end %>
-
+    
       <div id="columns">
         <div id="side">
           <a name="meny"></a>

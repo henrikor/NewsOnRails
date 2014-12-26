@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class StylesheetsController < ApplicationController
+  include NorAuthorize
   before_filter :nor_logged_in?
   before_filter :klargjor
   before_filter :left_column
@@ -46,7 +47,7 @@ class StylesheetsController < ApplicationController
   # POST /stylesheets
   # POST /stylesheets.xml
   def create
-    @stylesheet = Stylesheet.new(params[:stylesheet])
+    @stylesheet = Stylesheet.new(css_params)
 
     respond_to do |format|
       if @stylesheet.save
@@ -69,7 +70,7 @@ class StylesheetsController < ApplicationController
     @stylesheet = Stylesheet.find(params[:id])
 
     respond_to do |format|
-      if @stylesheet.update_attributes(params[:stylesheet])
+      if @stylesheet.update_attributes(css_params)
         
         Stylesheet.css_fil_save(@stylesheet.id, @stylesheet.css)
 
@@ -94,4 +95,8 @@ class StylesheetsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def css_params
+    params.require(:stylesheet).permit(:created_of, :name, :css)
+  end
+
 end

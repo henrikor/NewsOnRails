@@ -1,2 +1,18 @@
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+ 
+ == TODO:
+
+  [[tema=999, fra=0, antall=5, ...
+>
+> I sånne tilfeller pleier jeg å gå inn på "List groups", bla gjennom
+> sidene for å finne temaet jeg skal bruke og finne nummeret derifra.
+> Det hadde vært en del enklere å kunne skrive
+>
+> [[tema='aktivitetsrapport', fra=0, antall=5, ...
+>
+> Og dette ville fungert fint siden tema sjelden/aldri skifter navn
+
+Ja, skjønner - høres lurt ut. Kan kanskje legge inn at dersom en
+fyller inn kun tall, så sjekker en om det finnes et tema med slik ID,
+mens en tar fra temanavn ellers for bakoverkompatibilitet.

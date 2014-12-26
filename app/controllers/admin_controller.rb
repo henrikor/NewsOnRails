@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class AdminController < ApplicationController
-  #  include NorAuthorize
+    include NorAuthorize
   #  include AuthenticatedSystem
 
   before_filter :nor_logged_in?
@@ -148,6 +148,8 @@ class AdminController < ApplicationController
 
   def usernyttpass
     @user = Noruser.find(params[:id])
+#    @user = Noruser.find(86)
+
     self.current_user = @user
     current_user.password = params[:passord]
     @user.reset_password
@@ -163,7 +165,7 @@ class AdminController < ApplicationController
     @user = Noruser.find(params[:id])
     @user.roles = Role.find(params[:roller]) if params[:roller] #legger inn fra checkbokser
 
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(admin_params)
       flash[:notice] = 'user was successfully updated.'
       redirect_to :action => 'usershow', :id => @user
     else
@@ -175,5 +177,8 @@ class AdminController < ApplicationController
     Noruser.find(params[:id]).destroy
     redirect_to :action => 'userlist'
   end
-  
+  def admin_params
+    params.require(:user).permit(:login, :email, :updated_at, :users, :roller, :id)
+  end
+
 end

@@ -2,6 +2,9 @@
 NewsOnRails::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
+  # Rails 4.1:
+  config.eager_load = true
+ 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = false

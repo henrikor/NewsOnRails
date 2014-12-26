@@ -1,6 +1,6 @@
 <%= error_messages_for 'article' %>
 
-<% if autorized_to_article?(@article2.id)|| @new_article -%>
+<% if autorized_to_article?(@article.id)|| @new_article -%>
   <%# if member_of_role?(@article2.owner)|| @new_article -%>
 
   <%# @article2 = Article.find('10513') %>
@@ -30,28 +30,48 @@
 
     <table id="versjontable">
       <tr><th>Versjon:</th><th>Tidspunkt</th><th>Oppdatert av:</th><th>Rediger</th></tr>
-      <% Article.versioned_class.find(:all,
-        :conditions => ["article_id = '#{@article2.id}'"]).collect do |version|
-        if version.updated_of > 0
-          #         if Noruser.find(version.updated_of)
-          begin
-            user = Noruser.find(version.updated_of)
-            login = user.login
-            #         else
-          rescue
-            login = "Antagelig oppdatert i gammel NOR"
-          end
-        else
-          login = "Ikke oppdatert"
-        end -%>
 
-        <tr <% if @article.version == version.version -%> id="aktivversjon" <% end -%> >
-          <td><%= version.version -%> </td>
-          <td><%= version.updated_on -%> </td>
-          <td><%= login -%> <%#= version.updated_of %> </td>
-          <td><%= link_to 'Rediger', :action => 'edit', :id => @article2.id, :versjon => version.version -%>
+      <% 
+      # Article.versioned_class.find(:all,
+      #   :conditions => ["article_id = '#{@article2.id}'"]).collect do |version|
+      #   if version.updated_of > 0
+      #     #         if Noruser.find(version.updated_of)
+      #     begin
+      #       user = Noruser.find(version.updated_of)
+      #       login = user.login
+      #       #         else
+      #     rescue
+      #       login = "Antagelig oppdatert i gammel NOR"
+      #     end
+      #   else
+      #     login = "Ikke oppdatert"
+      #   end 
+        -%>
+
+        <tr <%# if @article.version == version.version -%> id="aktivversjon" <%# end -%> >
+          <td><%#= version.version -%> </td>
+          <td><%#= version.updated_on -%> </td>
+          <td><%#= login -%> <%#= version.updated_of %> </td>
+          <td><%#= link_to 'Rediger', :action => 'edit', :id => @article2.id, :versjon => version.version -%>
         </tr>
-      <% end -%>
+
+        <% 
+          versjoner = @article.versions.length
+          versjon = versjoner - 1
+          forrige = @article.previous_version
+          while versjon >= 0 && versjoner != nil
+             v = @article.versions[versjon]
+        -%>
+
+            <tr <% if @article.version == v.index -%> id="aktivversjon" <% end -%> >
+              <td><%= v.id -%> </td>
+              <td><%= v.created_at -%> </td>
+              <td><%= v.whodunnit -%> </td>
+              <td><%= link_to 'Rediger', :action => 'edit', :id => @article.id, :versjon => v.created_at -%>
+</td>
+            </tr>
+          <% versjon = versjon - 1 
+          end -%>
     </table>
 
   <% end
@@ -60,11 +80,11 @@
   %>
 
 
-  <% if autorized_to_article?(@article2.id)|| @new_article -%>
+  <% if autorized_to_article?(@article.id)|| @new_article -%>
   <%# if member_of_role?(@article2.owner)|| @new_article -%>
 
 
-    <p><label for="article_created_on">Created</label><br/>
+    <p><label for="article_created_on"> Created </label><br/>
       <%= datetime_select 'article', 'created_on'  %></p>
 
     <p><label for="article_source">Source</label><br/>
@@ -201,19 +221,6 @@
 
 
 
-<!-- Her har vi prototype... -->
- 
-<!-- 
-   <div class="auto_complete"
-         id="autogroup_name_auto_complete"></div>
-         <%= auto_complete_field :autogroup_name,
-           :url=>{:action=>'auto_complete_for_autogroup_name'},
-           :tokens => ',' %>
-          <%= auto_complete_field :autogroup_name,
-           :url=>{:action=>'auto_complete_for_autogroup_name'},
-           :tokens => ',' %>
- -->
-
 
      <p id="setraletemaer"><i><%= norsk2html(%{Sentrale temaer og temaer denne siden er med i fra før:}) %>
       </i></p>
@@ -222,7 +229,7 @@
       vist = []
     %>
 
-      <% @article2.article_groups.each {|x|
+      <% @article.article_groups.each {|x|
         if (x.group_id == @group.group_id)
           vist << x.group_id
         %>
@@ -249,7 +256,7 @@
       #:url => { :action => "temaboksen", :id => @article.id},
       #link_to"Vis flere temaer", :update => 'temaboksen',
       #  :url => { :action => "temaboksen", :id => @article.id}
-      #:url => { :action => "temaboksen", :group => @group, :group2 => @group2, :group3 => @groups3, :article2 => @article2 }
+      #:url => { :action => "temaboksen", :group => @group, :group2 => @group2, :group3 => @groups3, :article2 => @article }
       %>
     </strong>
 
@@ -271,7 +278,7 @@
     ########################################################################################
     -%>
 
-    <% @article2.article_groups.each {|x|
+    <% @article.article_groups.each {|x|
       if (Group.laggroup?(x.group_id) && !autorized_to_group?(x.group_id)) || !Group.laggroup?(x.group_id)
       %>
         <span class="nobreak"><input id="group_<%= x.group_id %>_id" name="group[<%= x.group_id %>]" value="<%= x.group_id %>" type="hidden">
@@ -322,7 +329,7 @@
   <div id="lags">
     <% for @lag in @lags %>
       <% treff = 0 %>
-      <% if @article2.article_groups.each {|x|
+      <% if @article.article_groups.each {|x|
           if (x.group_id == @lag.group_id) %>
             <span class="nobreak"><input checked="checked" id="group_<%= @lag.group.id %>_id" name="group[<%= @lag.group.id %>]" value="<%= @lag.group.id %>" type="checkbox">&nbsp;<%= @lag.name %>
 
@@ -367,7 +374,7 @@
 
                   <br/>
 
-                  <% if autorized_to_article?(@article2.id) -%>
+                  <% if autorized_to_article?(@article.id) -%>
   <%# if member_of_role?(@article.owner) -%>
                     <p><label for="article_owner"><i><%= norsk2html(%{Eier, hvem skal ha tilgang til å redigere denne <strong>NB!</strong> her må det ikke stå "User", velg laget ditt i stede!}) %>
                         </i>
@@ -380,8 +387,4 @@
 
 
                   <div id="itemlist">
-<%#= render(:partial => '/shared/item', :collection => @items) %>
                   </div>
-
-
-

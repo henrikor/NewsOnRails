@@ -5,7 +5,7 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 NewsOnRails::Application.initialize!
 
-AUTHORIZATION_MIXIN = "object roles"
+#AUTHORIZATION_MIXIN = "object roles"
 
 #require File.join(File.dirname(__FILE__), 'boot')
 #gem "calendar_date_select"
