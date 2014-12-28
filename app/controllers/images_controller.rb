@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ImagesController < ApplicationController
+  include ApplicationHelper #ClothSyntax
   
   before_filter :nor_authorized?
   
