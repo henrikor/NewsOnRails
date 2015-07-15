@@ -44,4 +44,6 @@ NewsOnRails::Application.routes.draw do
 #  match 'hotest' => 'lag#index', :lag => 'Sentralt', :id => '10'
 #  match ':lag/:id/:page' => 'lag#index', :constraints => { :page => /\d+/, :id => /\d+/ }, :lag => , :page => , :id =>
   match '*path' => 'application#rescue_404'
+
+  match 'butikk' => 'start#view', :id => '11247'
 end
