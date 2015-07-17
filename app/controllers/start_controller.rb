@@ -234,7 +234,7 @@ class StartController < ApplicationController
 
     if @article.un_published == 1
       #      flash[:error] = "<p>Siden finnes ikke</p>"
-      @fraurl = "http://" + @domene + request.request_uri
+      @fraurl = "http://" + @domene + request.url
       render :action => "404", :status => 404
       #      redirect_to("/")# if request.referer == nil
     end

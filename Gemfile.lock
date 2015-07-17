@@ -83,6 +83,7 @@ GEM
     dynamic_form (1.1.4)
     erubis (2.7.0)
     execjs (2.2.1)
+    gcloud (0.0.7)
     gon (5.1.2)
       actionpack (>= 2.3.0)
       json
@@ -90,6 +91,7 @@ GEM
       request_store (>= 1.0.5)
     haml (4.0.5)
       tilt
+    highline (1.7.2)
     hike (1.2.3)
     i18n (0.6.11)
     iconv (1.0.4)
@@ -184,8 +186,10 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails
   dynamic_form
+  gcloud
   gon
   haml
+  highline
   iconv
   jquery-rails
   jquery-ui-rails!
@@ -205,3 +209,6 @@ DEPENDENCIES
   uglifier
   verification!
   will_paginate
+
+BUNDLED WITH
+   1.10.5
