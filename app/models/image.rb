@@ -28,7 +28,7 @@ class Image < ActiveRecord::Base
   PROJECT = ENV["PUBSUB_PROJECT"] || "august-strata-94307"
   KEYFILE = ENV["PUBSUB_KEYFILE"] || "#{Rails.root}/client_secrets.json"
 
-#  STORAGE = Gcloud.storage PROJECT, KEYFILE
+  STORAGE = Gcloud.storage PROJECT, KEYFILE
 
   def gcloud
     fil = YAML::load( File.open( "#{Rails.root}/config/nor.yml") )

@@ -73,7 +73,7 @@ module ApplicationHelper
     return out
   end
 
-  def hentbilde(idnr, str, imagelink = "nei", crop = 1, plassering = "senter")
+  def hentbilde(idnr, str, imagelink = "nei", crop = 1, plassering = "senter", imgclass = "nei")
     begin
       image = Image.find(idnr)
       raise "Bildet finnes ikke (er det blitt slettet ved en feil?)" if !image
@@ -91,7 +91,11 @@ module ApplicationHelper
       alttekst = image.name
     end
 #    imagetag = raw("<img alt=\"" + alttekst + "\" src=\"" + filepath + "\" title=\"" + alttekst + "\" />")
-    imagetag = raw('<img alt="' + alttekst + '" src="' + filepath + '" title="' + alttekst + '" />')
+    if imgclass == "nei"
+      imagetag = raw('<img alt="' + alttekst + '" src="' + filepath + '" title="' + alttekst + '" />')
+    else
+      imagetag = raw('<img class="' + imgclass + '" alt="' + alttekst + '" src="' + filepath + '" title="' + alttekst + '" />')      
+    end
   end
 
   def mk_link(article, del, deltxt, link = 0, tag = 0, textile = "j")
@@ -175,6 +179,11 @@ module ApplicationHelper
     temalinker = 1 if tag =~ /temalinker/
     divclass = $1 if tag =~ /\((.*)\)/
     divstyle = $1 if tag =~ /\{(.*)\}/
+    if tag =~ /img-class\:(\w*)/ # legge til CSSklasse til inkludert bilde
+      imgclass = $1
+    else
+      imgclass = "nei"
+    end
 
     tekst = ""
 
@@ -185,7 +194,6 @@ module ApplicationHelper
     elsif divclass == "nei" && divstyle != "nei"
       tekst = tekst + %{<div style="#{divstyle}">}
     end
-
 
     tekst = tekst + %{<div class="link-#{@par_odd}">} if @par_odd
 
@@ -200,9 +208,9 @@ module ApplicationHelper
       end
       unless bildeid == nil
         if bildeid =~ /(\d*)\|(\w*)\|/
-          bilde = hentbilde($1, bildeli, "nei", 1, $2).html_safe
+          bilde = hentbilde($1, bildeli, "nei", 1, $2, imgclass).html_safe
         else
-          bilde = hentbilde(bildeid, bildeli).html_safe
+          bilde = hentbilde(bildeid, bildeli, imgclass).html_safe
         end
 
         tekst = tekst + '<div class="inkludert-bilde">' +
@@ -222,9 +230,9 @@ module ApplicationHelper
       unless bildeid == nil
         #        bilde = hentbilde(bildeid, bildest)
         if bildeid =~ /(\d*)\|(\w*)\|/
-          bilde = hentbilde($1, bildest, "nei", 1, $2).html_safe
+          bilde = hentbilde($1, bildest, "nei", 1, $2, imgclass).html_safe
         else
-          bilde = hentbilde(bildeid, bildest).html_safe
+          bilde = hentbilde(bildeid, bildest, imgclass).html_safe
         end
         tekst = tekst + "<div class=\"inkludert-bilde\">" +
           mk_link(article, "bilde", bilde, link) +
@@ -652,6 +660,14 @@ module ApplicationHelper
       else
         articles = ArticleGroup.articles_from_group(tagid, @lagid, @fra, @antall)
       end
+
+      # slettes - blir ikke brukt:
+      # if tag =~ /, imgclass()/
+      #   articles = ArticleGroup.articles_from_group(tagid, @lagid, @fra, @antall, "rand")
+      # else
+      #   articles = ArticleGroup.articles_from_group(tagid, @lagid, @fra, @antall)
+      # end
+
 
       #     test = [%{<div class="inkluder-alt"><div id="inkluder-tema#{tagid}">}]
       @par_odd = "odd"

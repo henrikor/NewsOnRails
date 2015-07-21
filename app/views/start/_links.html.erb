@@ -1,13 +1,13 @@
     <% if (links.story_text =~ /\w/ && !@view)
        linkon = 1 %>
-    |
+    
     <% @lag = "Sentralt" unless @lag =~ /\w/ %>
       <%= link_to "Les hele saken", :controller => @lag, :action => 'view', :id => links.article_id %>
     <% end %>
 
     <% if (links.url =~ /http/)
        linkon = 1 %>
-    | <a href="<%= links.url %>"> Les mer </a>
+     <a href="<%= links.url %>"> Les mer </a>
     <% end %>
 
   <% for @x in links.article_groups
@@ -18,20 +18,19 @@
      linkon = 1
     if !GroupGroup.lag_gruppe?(@x.group_id)
      %>
-    | <%= link_to @group_name.first.name, :controller => 'lag', :action => @action, :id => @x.group_id, :lag => @lag %>
+    <span class='label label-default'><%= link_to @group_name.first.name, :controller => 'lag', :action => @action, :id => @x.group_id, :lag => @lag %></span>
 
   <% end -%>
 <% end -%>
 
 
 
-    <% if authorized_to?(:controller => 'articles', :action => 'edit') -%>
-  |
-      <%= link_to "Edit", :controller => 'articles', :action => 'edit', :id => links.article_id %>
+    <%# if authorized_to?(:controller => 'articles', :action => 'edit') -%>
+      <%#= link_to "Edit", :controller => 'articles', :action => 'edit', :id => links.article_id %>
 
-    <% end -%>
+    <%# end -%>
   <% if linkon == 1 %>
-      |
+
   <% end %>
 
 
