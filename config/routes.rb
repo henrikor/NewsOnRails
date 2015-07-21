@@ -52,25 +52,25 @@ NewsOnRails::Application.routes.draw do
 
 
   #root :to => 'start#view', :id => '10522'
-  root :to => 'start#view', :id => 'frontpage'
 
 
 #  match '/Sentralt/:id' => 'lag#index', :lag => 'sentralt-organisasjon' # Kun for sos-rasisme.no
 
 # TF:
-  get ':lag.:format' => 'lag#index', :id => '10'
-  get 'norhjelp' => 'start#view', :id => '13281'
-  get 'finnes_ikke' => 'start#view', :id => '10522'
-  get 'forside' => 'start#view', :id => '5'
-  get 'butikk' => 'start#view', :id => '11247'
+#  root :to => 'start#view', :id => 'frontpage'
+  # get ':lag.:format' => 'lag#index', :id => '10'
+  # get 'norhjelp' => 'start#view', :id => '13281'
+  # get 'finnes_ikke' => 'start#view', :id => '10522'
+  # get 'forside' => 'start#view', :id => '5'
+  # get 'butikk' => 'start#view', :id => '11247'
 
 # NOR mal (rku):
-# root :to => 'start#view', :id => '1'
-# get ':lag.:format' => 'lag#index', :id => '10'
-# get 'norhjelp' => 'start#view', :id => '13281'
-# get 'finnes_ikke' => 'start#view', :id => '1'
-# get 'forside' => 'start#view', :id => '1'
-# get 'blimedlem' => 'start#view', :id => '312'
+root :to => 'start#view', :id => '1'
+get ':lag.:format' => 'lag#index', :id => '10'
+get 'norhjelp' => 'start#view', :id => '13281'
+get 'finnes_ikke' => 'start#view', :id => '1'
+get 'forside' => 'start#view', :id => '1'
+get 'blimedlem' => 'start#view', :id => '312'
 
 
   get ':lag' => 'lag#index', :id => '10'
