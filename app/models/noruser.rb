@@ -7,9 +7,9 @@ class Noruser < ActiveRecord::Base
   attr_accessor :password
 #  attr_protected :activated_at
 
-  validate :login, :email, :presence => true
-  validate :password, :presence => true, :if => :password_required?
-  validate :password_confirmation, :presence => true, :if => :password_required?
+  validates :login, :email, :presence => true
+  validates :password, :presence => true, :if => :password_required?
+  validates :password_confirmation, :presence => true, :if => :password_required?
 #  validates_presence_of     :login, :email
 #  validates_presence_of     :password,                   :if => :password_required?
 #  validates_presence_of     :password_confirmation,      :if => :password_required?
