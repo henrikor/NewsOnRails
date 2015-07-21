@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ImagesController < ApplicationController
+  include ApplicationHelper #ClothSyntax
   
   before_filter :nor_authorized?
   
@@ -26,7 +27,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.create(params[:image])
+    @image = Image.create(image_params)
     redirect_to :action => 'new'
   end
 
@@ -37,7 +38,7 @@ class ImagesController < ApplicationController
 #    if params[:image].file == nil
 #      params[:image].file = @image.file
 #    end
-    @image.update_attributes(params[:image])
+    @image.update_attributes(image_params)
     redirect_to :action => 'new'
   end
 
@@ -50,5 +51,9 @@ class ImagesController < ApplicationController
     Image.find(params[:id]).destroy
     redirect_to :action => 'new'
   end
+    def image_params
+      params.require(:image).permit(:image, :file_data, :bane, :description)
+    end
+
 
 end
