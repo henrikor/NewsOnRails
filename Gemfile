@@ -103,11 +103,17 @@ gem 'gon'
 gem 'mail'
 gem 'iconv'
 
-
 gem 'auto_complete', :git => "https://github.com/Agiley/auto_complete.git"
 gem 'verification', :git => "https://github.com/sikachu/verification.git"
 gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 gem 'paper_trail', '~> 3.0.6'
+#gem 'google-api-client'
+gem 'gcloud'
+gem 'highline'
+# gem 'gcloud/storage'
+# gem 'highline/import'
+
+
 #gem "authorization", github: "rufo/rails-authorization-plugin"
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem 'autoprefixer-rails'

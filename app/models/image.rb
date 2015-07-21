@@ -4,7 +4,13 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/fr_rr for more book information.
 #---
-require 'RMagick'
+#require 'rubygems'
+
+#require 'RMagick'
+# require 'gcloud/storage'
+# require 'highline/import'
+
+#require 'google/api_client'
 
 class Image < ActiveRecord::Base
   
@@ -18,6 +24,45 @@ class Image < ActiveRecord::Base
 #  before_save :process
   after_destroy :cleanup
 
+
+  PROJECT = ENV["PUBSUB_PROJECT"] || "august-strata-94307"
+  KEYFILE = ENV["PUBSUB_KEYFILE"] || "#{Rails.root}/client_secrets.json"
+
+  STORAGE = Gcloud.storage PROJECT, KEYFILE
+
+  def gcloud
+    fil = YAML::load( File.open( "#{Rails.root}/config/nor.yml") )
+    if gcloud = fil['GCLOUD']
+      @bucket = find_gcloud_bucket(gcloud)      
+      return true
+    else
+      return false
+    end    
+  end
+  def find_gcloud_bucket(var)
+    begin
+        bucket = STORAGE.find_bucket var
+        if bucket.nil?
+          Rails.logger.fatal { "Sorry, but #{bucket_name} does not exist. - Cannot access Google Cloud storage" }
+        else
+          return bucket
+            # bucket.files.each { |file| say file.name }
+        end
+      rescue Gcloud::Storage::Error => e
+        Rails.logger.fatal { "Unable to load bucket #{bucket_name}. Recieved the error: #{e}" }
+        return false
+    end    
+  end
+
+
+  def gcloud_test
+    #avatar_files = bucket.files prefix: "avatars/"
+    # Last opp fil
+    @bucket.create_file "testfiler/test01.txt", #Fil lokalt
+                       "testfiler/test04.txt"         #Her lastes fil opp
+    #file = bucket.file "avatars/heidi/400x400.png"
+    #file.download "/var/todo-app/avatars/heidi/400x400.png"    
+  end
   
   def self.bildetyper
     bildetyper = ["jpg", "gif", "png"]
@@ -181,9 +226,15 @@ class Image < ActiveRecord::Base
 #    logger.info "\n\n\n\n--------------------------------------------\nHenrik_fil #{@tempfile}\n\n"
 #    logger.info "\n\n\n\n--------------------------------------------\nHenrik_fil #{params[:image][:file_data]}\n\n"
 
-File.open(path, 'wb') do |f|
-  f.write(@file_data.read)
-    end    
+    if gcloud?      
+      @bucket.create_file @file_data.read, #Fil lokalt
+                         path         #Her lastes fil opp
+            
+    else
+      File.open(path, 'wb') do |f|
+        f.write(@file_data.read)
+          end          
+    end
   end
   
   def create_thumbnail
