@@ -7,8 +7,8 @@
 #require 'rubygems'
 
 #require 'RMagick'
-# require 'gcloud/storage'
-# require 'highline/import'
+require 'gcloud/storage'
+require 'highline/import'
 
 #require 'google/api_client'
 
