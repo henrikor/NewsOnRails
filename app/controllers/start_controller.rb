@@ -192,7 +192,11 @@ class StartController < ApplicationController
     @lag = lagname
     @lag_name = lagname
 
-    @article = Article.find(params[:id])
+    if params[:id] == 'frontpage'
+      @article = Article.find(10522)
+    else
+      @article = Article.find(params[:id])
+    end
 
     unless @article.story_text =~ /\[\[tema=.*\]\]/ || @article.ingress =~ /\[\[tema=.*\]\]/
       if @article.story_text =~ /(bilde-li)\:(\w*)/

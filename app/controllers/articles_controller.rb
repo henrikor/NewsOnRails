@@ -186,6 +186,8 @@ class ArticlesController < ApplicationController
         sort = "#{@sort} #{@order}"
       end
 
+      @colnames = {"Created on" => "Created", "Created of" => "Created by", "Updated on" => "Updated", "Updated of" => "Updated by", "Headline" => "Headline", "Pri" => "Pri", "Owner" => "Owner", "Cloth" => "Cloth"}
+
       @porder = @order
       @stylesheet = "admin"
 

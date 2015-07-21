@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 NewsOnRails::Application.routes.draw do
 
+  resources :menu_elements
+
 # FELLES:
   match "/articles/list" => "articles#list", via: [:get, :post]
   resources :articles
@@ -48,14 +50,18 @@ NewsOnRails::Application.routes.draw do
 
 # FELLES SLUTT
 
-  root :to => 'start#view', :id => '5'
+  #root :to => 'start#view', :id => '10522'
+  root :to => 'start#view', :id => 'frontpage'
 
 
 #  match '/Sentralt/:id' => 'lag#index', :lag => 'sentralt-organisasjon' # Kun for sos-rasisme.no
   get ':lag.:format' => 'lag#index', :id => '10'
   get 'norhjelp' => 'start#view', :id => '13281'
-  get 'finnes_ikke' => 'start#view', :id => '5'
+  get 'finnes_ikke' => 'start#view', :id => '10522'
   get 'forside' => 'start#view', :id => '5'
+  get 'butikk' => 'start#view', :id => '11247'
+
+
 
 
   get ':lag' => 'lag#index', :id => '10'

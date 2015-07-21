@@ -15,6 +15,15 @@ class AdminController < ApplicationController
     render :action => 'userlist'
   end
 
+  def dashboard
+    @types = {1 => 'Link', 2 => 'Dropdown', 3 => 'Custom'}
+    @menu_elements = MenuElement.all
+  end
+
+  def new_menu_element
+    @menu_element = MenuElement.new
+  end
+
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
     :redirect_to => { :action => :list }
