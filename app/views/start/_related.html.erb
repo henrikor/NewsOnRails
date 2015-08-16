@@ -1,0 +1,32 @@
+<% for @x in @article.article_groups
+  if GroupGroup.hide(@x.group_id) == 1
+    next
+  end
+  @group_name = Group.find_by_sql(["select name from groups where id = ?", @x.group_id])
+  if !GroupGroup.lag_gruppe?(@x.group_id) %>
+  <!--span class='label label-default'><%= link_to @group_name.first.name, :controller => 'lag', :action => @action, :id => @x.group_id, :lag => @lag %></span-->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1>Les mer om&nbsp;
+            <small>
+              <%= link_to @group_name.first.name, :controller => 'lag', :action => @action, :id => @x.group_id, :lag => @lag %>
+            </small>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="media">
+          <div class="media-left">
+            <%#= inkluder_articles("[[tema=10, headline:h2. , ingress, lagid=8, fra=1, antall=3, link=|headline, bilde|, bilde-st:350x250, img-class=img-responsive, (col-md-4)]]", @article) %>
+            <%#= Article.find_by article_groups: @x.group_id %>
+            <p>Linker til artikler her</p>
+            <p>Trenger metode for å hente artikler fra tema gjennom view</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
