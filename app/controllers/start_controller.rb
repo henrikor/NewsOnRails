@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class StartController < ApplicationController
+  include ApplicationHelper #ClothSyntax
+
 #  layout "Application"
   before_filter :left_column
   #  around_filter BenchmarkingFilter.new
@@ -173,6 +175,8 @@ class StartController < ApplicationController
   
   def view(lagid = params[:lagid], lagname = params[:lag])
     @view = 1
+    fil = noryml
+    @forsideid = fil['FORSIDEID'] or logger.fatal { "FORSIDEID ikke definert i nor.yml" }
 #    lag = Group.group_from_name(lagname)
     lag = Group.find_by("name = ?", lagname)
 
