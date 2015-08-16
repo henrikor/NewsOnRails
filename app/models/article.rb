@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-require 'RMagick'
+require 'rmagick'
 
 class Article < ActiveRecord::Base
   include NorFelles

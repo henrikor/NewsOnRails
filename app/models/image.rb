@@ -26,11 +26,11 @@ class Image < ActiveRecord::Base
 
 
   PROJECT = ENV["PUBSUB_PROJECT"] || "august-strata-94307"
-  KEYFILE = ENV["PUBSUB_KEYFILE"] || "#{Rails.root}/client_secrets.json"
+  KEYFILE = ENV["PUBSUB_KEYFILE"] || "#{Rails.root}/config/client_secrets.json"
 
   STORAGE = Gcloud.storage PROJECT, KEYFILE
 
-  def gcloud
+  def gcloud?
     fil = YAML::load( File.open( "#{Rails.root}/config/nor.yml") )
     if gcloud = fil['GCLOUD']
       @bucket = find_gcloud_bucket(gcloud)      
@@ -41,7 +41,8 @@ class Image < ActiveRecord::Base
   end
   def find_gcloud_bucket(var)
     begin
-        bucket = STORAGE.find_bucket var
+#        bucket = STORAGE.find_bucket var
+        bucket = STORAGE.find_bucket var.chomp
         if bucket.nil?
           Rails.logger.fatal { "Sorry, but #{bucket_name} does not exist. - Cannot access Google Cloud storage" }
         else
