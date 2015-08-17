@@ -176,7 +176,7 @@ class StartController < ApplicationController
   def view(lagid = params[:lagid], lagname = params[:lag])
     @view = 1
     fil = noryml
-    @forsideid = fil['FORSIDEID'] or logger.fatal { "FORSIDEID ikke definert i nor.yml" }
+    @forsideid = fil['FORSIDEID'] or Rails.logger.fatal { "FORSIDEID ikke definert i nor.yml" }
 #    lag = Group.group_from_name(lagname)
     lag = Group.find_by("name = ?", lagname)
 
