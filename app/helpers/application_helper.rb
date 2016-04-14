@@ -599,8 +599,12 @@ module ApplicationHelper
         else
           alttekst = image.name
         end
-
-        imagetag = raw("<img alt=\"" + alttekst + "\" src=\"" + filepath + "\" title=\"" + alttekst + "\" />")
+        begin
+          imagetag = raw("<img alt=\"" + alttekst + "\" src=\"" + filepath + "\" title=\"" + alttekst + "\" />")  
+        rescue Exception => e
+          "<br/><i>feil med bilde</i><br/>"
+        end
+        
 
         if tags =~ /=/; plassering = "s"
         elsif tags =~ /\>/; plassering = "h"
@@ -614,7 +618,12 @@ module ApplicationHelper
         if tags =~ /.*nolink.*/
           fullpath = imagetag
         else
-          fullpath = imagelinktagstart + imagetag + imagelinktagslutt
+          begin
+            fullpath = imagelinktagstart + imagetag + imagelinktagslutt  
+          rescue Exception => e
+            "<br/><i>feil med bildelink</i><br/>"
+          end
+          
         end
 
       else
