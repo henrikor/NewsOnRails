@@ -7,6 +7,7 @@ source 'http://rubygems.org'
 #gem 'rails', '= 3.1.3'
 #gem 'rails', '>= 3.2.0'
 gem 'rails', '>= 4.0.2'
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 
 # Gems used only for assets and not required

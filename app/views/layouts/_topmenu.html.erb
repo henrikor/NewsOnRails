@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid" data-spy="affix-top">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -51,9 +51,14 @@
         <div class="form-group">
           <input type="hidden" name="cx" value="<%=@googlesok%>" />
           <input type="hidden" name="ie" value="UTF-8" />
-          <input type="text" class="form-control" placeholder="<%= norsk2html("Søk på siden") %>" id="cse-search-box-1">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="<%= norsk2html("Søk på siden") %>" id="cse-search-box-1">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
+            </span>
+          </div><!-- /input-group -->
         </div>
-        <button type="submit" class="btn btn-default"><%= norsk2html("Søk") %></button>
+        
       </form>
       <ul class="nav navbar-nav navbar-right">
         <!--li><a href="#">Link</a></li-->
@@ -101,6 +106,8 @@
               <% if authorized_to?(:controller => 'role2group', :action => 'list')  %>
               <li><%= link_to "Roller til Grupper", :controller => "role2group", :action => "list" %></li>
             <% end %>
+
+              <li><%= link_to "Rediger forside", :controller => 'articles', :action => 'edit', :id => 10522 %></li>
 
               <% if authorized_to?(:controller => 'sendpost', :action => 'admin')  %>
               <li><%= link_to "E-post grupper", :controller => "sendpost", :action => "admin" %></li>

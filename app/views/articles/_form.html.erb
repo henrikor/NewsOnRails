@@ -36,7 +36,7 @@
       <table id="versjontable" class="table table-striped">
         <tr><th>Rev:</th><th>Timestamp</th><th>Edited by:</th><th>Revert</th></tr>
 
-        <% 
+        <%
         # Article.versioned_class.find(:all,
         #   :conditions => ["article_id = '#{@article2.id}'"]).collect do |version|
         #   if version.updated_of > 0
@@ -50,7 +50,7 @@
         #     end
         #   else
         #     login = "Ikke oppdatert"
-        #   end 
+        #   end
           -%>
 
           <tr <%# if @article.version == version.version -%> id="aktivversjon" <%# end -%> >
@@ -60,7 +60,7 @@
             <td><%#= link_to 'Rediger', :action => 'edit', :id => @article2.id, :versjon => version.version -%>
           </tr>
 
-          <% 
+          <%
             versjoner = @article.versions.length
             versjon = versjoner - 1
             forrige = @article.previous_version
@@ -75,7 +75,7 @@
                 <td><%= link_to 'Revert', {:action => 'edit', :id => @article.id, :versjon => v.created_at}, :class => "btn btn-small btn-primary" -%>
   </td>
               </tr>
-            <% versjon = versjon - 1 
+            <% versjon = versjon - 1
             end -%>
       </table>
     </div>
@@ -155,7 +155,7 @@
 
     </div>
 
-    
+
 
 
     <!--

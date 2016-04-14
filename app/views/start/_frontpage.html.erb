@@ -1,9 +1,9 @@
 <%# Frontpage %>
 <%# Let's not clutter this up with div's, and leave the layout to the article %>
 
-<div class="row">
+<div class="row frontpage">
   <div class="col-lg-12">
-    <div class="row">
+    <!--div class="row"-->
       <% if @article.story_text && @article.story_text != nil %>
         <%  @article.story_text = text2html(@article.story_text, @article.cloth, "view")
           if @article.story_text =~ /\[\[innholdsliste\]\]/
@@ -11,6 +11,6 @@
         end  %>
       <%= @article.story_text.html_safe %>
       <% end %>
-    </div>
+    <!--/div-->
   </div>
 </div>

@@ -31,7 +31,7 @@ NewsOnRails::Application.routes.draw do
   # resources :start do
   #   collection do
   # get :id
-  # end  
+  # end
   # end
 
    get ':lag/:id.:format' => 'lag#index'
@@ -44,7 +44,7 @@ NewsOnRails::Application.routes.draw do
 
   # post 'articles/update/:id' => 'articles#update'
   # post 'articles/:id' => 'start#view'
-  
+
   #match 'articles/' to: 'articles#index', via: [:get, :post]0
 
 
@@ -65,7 +65,7 @@ NewsOnRails::Application.routes.draw do
   # get 'butikk' => 'start#view', :id => '11247'
 
 # NOR mal (rku):
-root :to => 'start#view', :id => '1'
+root :to => 'start#view', :id => '10522'
 get ':lag.:format' => 'lag#index', :id => '10'
 get 'norhjelp' => 'start#view', :id => '13281'
 get 'finnes_ikke' => 'start#view', :id => '1'
@@ -80,4 +80,3 @@ get 'blimedlem' => 'start#view', :id => '312'
   #  get ':lag/:id/:page' => 'lag#index', :constraints => { :page => /\d+/, :id => /\d+/ }, :lag => , :page => , :id =>
    get '*path' => 'application#rescue_404'
 end
-

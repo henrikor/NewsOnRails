@@ -8,25 +8,42 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="page-header">
-          <h1>Les mer om&nbsp;
+          <h1>
             <small>
-              <%= link_to @group_name.first.name, :controller => 'lag', :action => @action, :id => @x.group_id, :lag => @lag %>
+              Les mer om&nbsp;
             </small>
+            <%= link_to @group_name.first.name, :controller => 'lag', :action => @action, :id => @x.group_id, :lag => @lag %>
           </h1>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12">
+      <% @related = Article.find_by_sql("SELECT a.* FROM articles a 
+                                              JOIN article_groups ag
+                                              ON ag.article_id = a.id
+                                              WHERE ag.group_id LIKE #{@x.group_id}
+                                              LIMIT 3") %>
+      <% for @ra in @related %>
+      <!--div class="col-lg-12">
         <div class="media">
-          <div class="media-left">
+          <div class="media-left"-->
+            <a href="#">
+              <!--img class="media-object" src="..." alt="..."-->
+              <%#= raw hentbilde(@ra.bildeview, @ra.bilderetning, "nei", 0, "senter", "pull-left")  %>
+            </a>
             <%#= inkluder_articles("[[tema=10, headline:h2. , ingress, lagid=8, fra=1, antall=3, link=|headline, bilde|, bilde-st:350x250, img-class=img-responsive, (col-md-4)]]", @article) %>
             <%#= Article.find_by article_groups: @x.group_id %>
-            <p>Linker til artikler her</p>
-            <p>Trenger metode for å hente artikler fra tema gjennom view</p>
-          </div>
-        </div>
-      </div>
+          <!--/div-->
+          <!--div class="media-body"-->
+            <!--h4 class="media-heading"><%#= link_to @ra.headline.html_safe, :controller => "start", :action => "view", :id => @ra.id %></h4-->
+            <!--p><%#= text2html(@ra.ingress, @ra.cloth, "view").html_safe %></p-->
+            <div class="related-article col-md-12">
+            <%= alfreds_article("[[tema=#{@x.group_id}, headline:h3. , ingress, lagid=8, fra=1, antall=1, link=|headline, bilde|, bilde-st:100x100]]", @ra).html_safe %>
+            </div>
+          <!--/div-->
+        <!--/div>
+      </div-->
+      <%- end %>
     </div>
   <% end %>
 <% end %>

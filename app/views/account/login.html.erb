@@ -1,22 +1,30 @@
+<div class="row">
+<div class="col-md-4 col-md-offset-4">
+<div class="panel panel-default">
+<div class="panel-heading">
+  <h3 class="panel-title">Sign in</h3>
+</div>
+<div class="panel-body">
 <%= form_tag do -%>
 
-<div style="width: 500px; margin-left: auto; margin-right: auto;">
+<!--div style="width: 500px; margin-left: auto; margin-right: auto;"-->
 
-  <h2>Logg inn</h2>
+
+
 
   <div class="form-group">
-    <label for="login" class="sr-only">Brukernavn</label>
+    <label for="login" class="sr-only">Username</label>
     <div class="input-group">
-      <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-      <%= text_field_tag 'login', nil, {:class => 'form-control', :placeholder => 'Brukernavn', :required => true, :autofocus => true} %>
+      <!--span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span-->
+      <%= text_field_tag 'login', nil, {:class => 'form-control', :placeholder => 'Username', :required => true, :autofocus => true} %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="password" class="sr-only">Passord</label>
+    <label for="password" class="sr-only">Password</label>
     <div class="input-group">
-      <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-      <%= password_field_tag 'password', nil, {:class => 'form-control', :placeholder => 'Passord', :required => true} %>
+      <!--span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span-->
+      <%= password_field_tag 'password', nil, {:class => 'form-control', :placeholder => 'Password', :required => true} %>
     </div>
   </div>
 
@@ -25,15 +33,19 @@
 
   <div class="checkbox">
     <label>
-      <%= check_box_tag 'remember_me' %> Husk meg
+      <%= check_box_tag 'remember_me' %> Remember me
     </label>
   </div>
-  
 
-  <p><%= submit_tag 'Logg inn', :class => 'btn btn-large btn-block' %></p>
+
+  <p><%= submit_tag 'Sign in', :class => 'btn btn-large btn-block' %></p>
   <br/>
-  <p>Har du glemt passordet ditt? <%= link_to 'Resett passordet', :action => 'forgot_password' %>
+  <p>Forgot your password? <%= link_to 'Reset', :action => 'forgot_password' %>
 
 </p>
 
 <% end -%>
+</div>
+</div>
+</div>
+</div>

@@ -6,7 +6,7 @@
 
  -%>
 <%= name %>
-<table class="table-striped">
+<table class="table table-striped">
   <tr>
 
 
@@ -20,13 +20,16 @@ if @not_show.include?(column.human_name)
     <th><%= link_to column.human_name, { :action => "list", :sort => column.name, :order => @order, :page => params[:page] } %>
        <% if column.name == @sort -%>
           <% if @order == "desc" -%>
-             <
+             <i class="fa fa-sort-alpha-desc"></i>
           <% else -%>
-             ^
+             <i class="fa fa-sort-alpha-asc"></i>
           <% end %>
        <% end %>
   <% end %>
     </th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
   <% nr = "1" -%>

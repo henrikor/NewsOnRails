@@ -1,9 +1,15 @@
 # -*- encoding : utf-8 -*-
 class Pressesend < ActionMailer::Base
-  
+  Mail.defaults do
+    delivery_method :smtp,
+    address: "smtp.sendgrid.net",
+    port: 2525,
+    user_name:            'aktivist01',
+    password:             'kA1V9CbdAQjz4lp7XIBo'
+  end
   def self.to_iso(tekst)
     #Iconv.conv('ISO-8859-1', 'utf-8', tekst)
-    Iconv.conv('utf-8', 'ISO-8859-1', tekst)    
+    Iconv.conv('utf-8', 'ISO-8859-1', tekst)
   end
 
   def self.iso_slett_tegn(tekst)
@@ -32,7 +38,7 @@ class Pressesend < ActionMailer::Base
     tekst = "=?iso-8859-1?#{tekst}?="
     #    tekst = "=?iso-8859-1?Q?#{tekst}?="
   end
-  
+
   def self.to_isomail(tekst)
     #    if tekst =~ /[æøåÆØÅ]/
     tekst = to_iso(tekst)
@@ -58,7 +64,7 @@ class Pressesend < ActionMailer::Base
     #    tekstarr.each{|x|
     #      tekst = "#{tekst} " + word_to_isomail(x)
     #    }
-    
+
     #    end
     #      if tekst =~ /(.*)(\<.*\>)/
     #        tekst = "=?iso-8859-1?Q? TEST #{$1}?=#{$2}"
@@ -71,49 +77,24 @@ class Pressesend < ActionMailer::Base
     #   to_iso(tekst)
     return tekst
   end
-  
+
   def self.testing(tekst)
     return tekst
   end
 
   def self.send_email(from, to, subject, message)
-    # fil = "#{Rails.root/log/mail}"
-    # File.open(fil, 'w') {|f| f.write(message) }
-    # `mutt -s "#{subject}" -c #{to} < #{fil}`
+    # mail(to: to,
+    #      body: message,
+    #      content_type: "text/html",
+    #      subject: subject,
+    #      from: from)
 
     mail = Mail.new do
         from    from
         to      to
         subject subject
         body    message
-    # to = to
-    # from = to_isomail(from)
-    # #    from = from
-    # subject = to_iso(subject)
-    # subject = to_isomail(subject)
-    # body = message
-
-#    date = Time.now
-
-#    mime_version = '1.0'
-
- #   set_content_type 'text', 'plain', {'charset'=>'iso-8859-1'}
-
-    # msg = mail.to_s
-
-    # Net::SMTP.start('localhost') do |smtp|
-    #   smtp.send_message msg, from, to
-    end 
-#    mail.delivery_method :sendmail 
-#    mail.delivery_method :sendmail, :location => "/usr/sbin/sendmail -t -i"
-    mail.delivery_method :smtp, address: "127.0.0.1", port: 25, :openssl_verify_mode  => 'none'
-#    mail.delivery_method :smtp, address: "mx.node3301.gplhost.com", port: 25
-#    mail.delivery_method :smtp, address: "localhost", port: 25
+    end
     mail.deliver
-#    Mail.defaults do
-#      delivery_method :smtp, address: "127.0.0.1", port: 25
-#    end
-
    end
-  
 end

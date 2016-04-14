@@ -238,6 +238,7 @@ class ArticlesController < ApplicationController
   def new
     create_new_common()
     @article.cloth = "r"
+    @images = Image.paginate :page => params[:page], :order => "created_at desc"
   end
 
   def edit

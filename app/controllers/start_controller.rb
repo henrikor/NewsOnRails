@@ -310,4 +310,5 @@ class StartController < ApplicationController
   #    norinitialize()
   #    render :action => 'lag'
   #  end
+  #helper_method :sql
 end

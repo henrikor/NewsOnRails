@@ -91,10 +91,13 @@ module ApplicationHelper
       alttekst = image.name
     end
 #    imagetag = raw("<img alt=\"" + alttekst + "\" src=\"" + filepath + "\" title=\"" + alttekst + "\" />")
+    alttekst = "bilde" if alttekst == nil
+
     if imgclass == "nei"
       imagetag = raw('<img alt="' + alttekst + '" src="' + filepath + '" title="' + alttekst + '" />')
     else
-      imagetag = raw('<img class="' + imgclass + '" alt="' + alttekst + '" src="' + filepath + '" title="' + alttekst + '" />')      
+      #imagetag = raw('<img alt="' + '" src="' + filepath + '" />')
+      imagetag = raw('<img class="' + imgclass + '" alt="' + alttekst + '" src="' + filepath + '" title="' + alttekst + '" />')
     end
   end
 
@@ -203,7 +206,7 @@ module ApplicationHelper
       #      if article.ingress =~ /\[\[bilde-li\:(\w*)/
       if article.ingress =~ /\[\[bilde-li\:(.*)\]\]/
         bildeid = $1
-      elsif article.ingress =~ /\[\[image\:(\w*)/
+      elsif article.ingress =~ /\[\[image\:(\w*)\]\]/
         bildeid = $1
       end
       unless bildeid == nil
@@ -224,7 +227,7 @@ module ApplicationHelper
     if defined?(bildest) && bildest != "nei"
       if article.ingress =~ /\[\[bilde-st\:(.*)\]\]/
         bildeid = $1.html_safe
-      elsif article.ingress =~ /\[\[image\:(\w*)/
+      elsif article.ingress =~ /\[\[image\:(\w*)\]\]/
         bildeid = $1.html_safe
       end
       unless bildeid == nil
@@ -238,6 +241,122 @@ module ApplicationHelper
           mk_link(article, "bilde", bilde, link) +
           "</div>"
       end
+    end
+
+    article.ingress = article.ingress.gsub(/\[\[image\:.*\]\]/,"")
+
+    if kilde
+      tekst = tekst + "<div class=\"inkludert-kilde\">" +
+        text2html(article.source, article.cloth) +
+        "</div>"
+    end
+
+    if headline
+      if textile == "n"
+        ntekst = text2html(mk_link(article, "headline", article.headline, link, tag, "n"), "n")
+      else
+        ntekst = text2html(mk_link(article, "headline", article.headline, link, tag), article.cloth)
+      end
+      ikkelink = 1
+      tekst = tekst + raw(ntekst)
+    end
+    if url
+      tekst = tekst + "<div class=\"inkludert-url\">" + mk_link(article, "url", article.url, link) + "</div>"
+    end
+    if ingress
+      tekst = tekst + "<div class=\"inkludert-ingress\">" +
+        text2html(article.ingress, article.cloth, "inkludert", article.id, article.url) +
+        "</div>"
+    end
+    if story_text
+      regx = Regexp.new('\<css-include\>(.*)\<\/css-include\>', Regexp::MULTILINE)
+      article.story_text = article.story_text.gsub(/#{regx}/, '')
+
+      tekst = tekst + "<div class=\"inkludert-story_text\">" +
+        text2html(mk_link(article, "story_text", article.story_text, link), article.cloth, "inkludert", article.id, article.url) +
+        "</div>"
+    end
+    if link =~ /\"(.*)\"/
+      linkt = $1
+      if article.url =~ /\w/
+        ntekst = "<a href=\"" + article.url + "\">" + linkt + "</a>"
+      else
+        ntekst = link_to linkt, :controller => @lag, :action => 'view', :id => article.id
+      end
+      tekst = tekst + "<div class=\"inkludert-link\">" + ntekst + "</div>"
+    end
+
+    if temalinker == 1
+      tekst = tekst + mk_temalinker(article)
+    end
+
+    #####################################
+    # TIL SLUTT SENDER VI FERDIG TEKST:
+
+    #    tekst = tekst.gsub(/\[\[bilde.*\]\]/,"")
+    if @par_odd
+      tekst = tekst + "</div>"
+    end
+    if divclass != "nei" || divstyle != "nei"
+      tekst = tekst + "</div>"
+    end
+    #logger.debug "Problembarn tekst: \n #{tekst} \n\n"
+    return tekst
+
+  end
+
+  def alfreds_article(tag, article, textile = "j")
+    bildeli = "nei"
+    bildest = "nei"
+    divstyle = "nei"
+    divclass = "nei"
+    imgclass = "nei"
+    kilde = 1 if tag =~ /kilde/
+    headline = 1 if tag =~ /headline/
+    url = 1 if tag =~ /url/
+    ingress = 1 if tag =~ /ingress/
+    story_text = 1 if tag =~ /story_text/
+    link = $1 if tag =~ /link=\|(.*)\|/
+    link = 0 unless tag =~ /link=\|(.*)\|/
+
+    bildeli = $1 if tag =~ /bilde-li\:(\w*)/
+    bildest = $1 if tag =~ /bilde-st\:(\w*)/
+    temalinker = 1 if tag =~ /temalinker/
+    divclass = $1 if tag =~ /\((.*)\)/
+    divstyle = $1 if tag =~ /\{(.*)\}/
+    imgclass = $1 if tag =~ /img-class\:(\w*)/
+
+    tekst = ""
+
+    if divclass != "nei" && divstyle != "nei"
+      tekst = tekst + %{<div class="#{divclass}" style="#{divstyle}">}
+    elsif divclass != "nei" && divstyle == "nei"
+      tekst = tekst + %{<div class="#{divclass}">}
+    elsif divclass == "nei" && divstyle != "nei"
+      tekst = tekst + %{<div style="#{divstyle}">}
+    end
+
+    tekst = tekst + %{<div class="link-#{@par_odd}">} if @par_odd
+
+    bildeid = nil
+
+    # Alfreds bildetweaks
+    if article.ingress =~ /\[\[bilde-li\:(.*)\]\]/
+      bildeid = $1.html_safe
+    elsif article.ingress =~ /\[\[bilde-st\:(.*)\]\]/
+      bildeid = $1.html_safe
+    elsif article.ingress =~ /\[\[image\:(\w*)\]\]/
+      bildeid = $1.html_safe
+    end
+    unless bildeid == nil
+      if bildeid =~ /(\d*)\|(\w*)\|/
+        bilde = hentbilde($1, bildest, "nei", 1, $2, imgclass).html_safe
+      else
+        bilde = hentbilde(bildeid, bildest, imgclass).html_safe
+      end
+      tekst = tekst + "<div class=\"inkludert-bilde\">" +
+        mk_link(article, "bilde", bilde, link) +
+        "</div>"
     end
 
     article.ingress = article.ingress.gsub(/\[\[image\:.*\]\]/,"")
@@ -691,11 +810,11 @@ module ApplicationHelper
            # if tags =~ /class=\"(.*)\"/
            #   @par_odd = "#{@par_odd} #{$1}"
            # end
-      # test.each{ |x| 
+      # test.each{ |x|
       #   sendtekst = sendtekst + x.to_s
       # }
       test.join
-     #return sendtekst      
+     #return sendtekst
 
     }
 
@@ -739,7 +858,7 @@ module ApplicationHelper
   def AkpMl(text)
     text = text.gsub(/(\w*?\(.{0,5}\))/i) {
       t = "<notextile>#{$1}</notextile>"
-    }    
+    }
   end
 
   def textilize(text, cloth = "r")
