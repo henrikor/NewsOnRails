@@ -51,17 +51,17 @@ class AccountController < ApplicationController
   end
 
   def signup
-#    @noruser = Noruser.new(params[:noruser])
-    @noruser = Noruser.new(user_params)
-    return unless request.post?
-    @noruser.save!
-    self.current_user = @noruser
-    redirect_back_or_default(:controller => '/account', :action => 'index')
-    flash[:notice] = "Du har nå registrert konto!"
-  rescue ActiveRecord::RecordInvalid
-    render :action => 'signup'
+    if params[:noruser]      
+      @noruser = Noruser.new(user_params)
+      return unless request.post?
+      @noruser.save!
+      self.current_user = @noruser
+      redirect_back_or_default(:controller => '/account', :action => 'index')
+      flash[:notice] = "Du har nå registrert konto!"
+    end
+    rescue ActiveRecord::RecordInvalid
+      render :action => 'signup'
   end
-  
   def logout
     self.current_user.forget_me if logged_in?
     cookies.delete :remember_token
