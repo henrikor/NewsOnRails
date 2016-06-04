@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-lg-12">
+    <%#= render(:partial => 'links', :object => @article) %>
+    <% unless @visheadline == 1 -%>
+      <%#= norsk2html("<h1>#{@article.headline}</h1>", @article.cloth) %>
+      <div class="page-header">
+        <h1>
+          <%#= text2html(@article.headline, @article.cloth, "view").html_safe %>
+          <%= raw @article.headline %>
+          <small>
+            <% if authorized_to?(:controller => 'articles', :action => 'edit')  %>
+              <%= link_to "Edit", :controller => 'articles', :action => 'edit', :id => @article.id %>
+            <% end %>
+          </small>
+        </h1>
+      </div>
+    <% end -%>
+    <div class="row">
+      <div class='col-md-8 col-md-offset-1 col-sm-12'>
+        <div class="row">
+          <div class="col-sm-12">
+            <% unless @bildeview == nil || @bilderetning == nil %>
+              <div class="row">
+                <div class="col-lg-12">
+                  <% if @article.source && @vissource != 1 -%>
+                    <small>Publisert av</small>
+                    <cite><%= raw @article.source %></cite>
+                  <% end %>
+                  <% if @visdato != 1 -%>
+                    <small>
+                      <i>
+                        <%= @article.created_on.strftime("%d.%m.%Y") %>
+                      </i>
+                    </small>
+                  <% end %>
+                </div>
+              </div>
+              <%= raw hentbilde(@bildeview, @bilderetning, "nei", 0, "senter", "pull-left")  %>
+            <% end %>
+          </div>
+        </div>
+    <%# if authorized_to?(:controller => 'articles', :action => 'edit')  %>
+      <!--p class="edit-link"><%= link_to "Edit", :controller => 'articles', :action => 'edit', :id => @article.id %></p-->
+    <%# end %>
+    <% if @article.story_text =~ /\w/ && @visstory_text != 1 -%>
+    <% end %>
+    <% unless @visingress == 1 -%>      
+      <!--div class="o-ingress"-->
+        <p class="lead">
+          <% logger.debug "Problembarn002 tekst: \n #{text2html(@article.ingress, @article.cloth, "view")} \n\n" %>
+          <%= text2html(@article.ingress, @article.cloth, "view").html_safe %>
+          <%#= sanitize(text2html(@article.ingress, @article.cloth, "view")) %>
+          <%#= raw @article.ingress %>
+        </p>
+      <!--/div-->
+
+    <% end -%>
+      <% if @article.story_text && @article.story_text != nil %>
+      <div class="row">
+        <div class="col-md-2">
+      <!--div class="panel panel-default" style="float: left; margin-right: 20px; border: medium none;"-->
+        <!--div class="panel-body"-->
+          <% unless @print == 1 %>
+            <%#= link_to "Skriv ut", {:controller => 'start', :action => 'print', :id => @article.id}, :class => "btn btn-default btn-small" %>
+            <button type="button" class="btn btn-default btn-block">
+              <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Skriv ut
+            </button>
+          <% end -%>
+          <button type="button" class="btn btn-default btn-block">
+            <span class="fa fa-facebook-official"></span> Del
+          </button>
+        </div>
+        <div class="col-md-10">
+          <%  @article.story_text = text2html(@article.story_text, @article.cloth, "view")
+            if @article.story_text =~ /\[\[innholdsliste\]\]/
+            @article.story_text = Article.innholdsliste(@article.story_text)
+          end  %>
+
+            <%= @article.story_text.html_safe %>
+            <%#= @article.story_text %>
+          <% end %>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <%= render partial: 'start/related' %>

@@ -1,10 +1,22 @@
 <% for article in @articles %>
 
-  <h1> <%= article.headline %> </h1>
+  <!--h1> <%= article.headline %> </h1>
   <p>  <%= text2html(article.ingress, article.cloth) %> </p>
   <p>
   <%= render(:partial => '/start/links', :object => article) %>
-  </p>
+  </p-->
+
+<div class="col-lg-12">
+  <div class="media">
+    <div class="media-left">
+      <%= article.picture %>
+    </div>
+    <div class="media-body">
+      <h4 class"media-heading"><%= article.headline %></h4>
+      <%= text2html(article.ingress, article.cloth) %>
+    </div>
+  </div>
+</div>
 
 <% end %>
 <% if @no_paginating != 1 %>

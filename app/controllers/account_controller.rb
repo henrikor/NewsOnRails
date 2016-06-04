@@ -1,7 +1,9 @@
 # -*- encoding : utf-8 -*-
 class AccountController < ApplicationController
+    include NorAuthorize
+
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+#  include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
   # say something nice, you goof!  something sweet.
   def index
@@ -13,21 +15,44 @@ class AccountController < ApplicationController
 #    end
   end
 
+
+  def create
+    user = Norser.find_by(email: params[:session][:login].downcase)
+    if user && user.authenticate(params[:session][:password])
+      sign_in user
+      redirect_back_or user
+    else
+      flash.now[:error] = 'Invalid email/password combination'
+      render 'new'
+    end
+  end
+
+
+
   def login
     return unless request.post?
     self.current_user = Noruser.authenticate(params[:login], params[:password])
     if logged_in?
       if params[:remember_me] == "1"
         self.current_user.remember_me
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+        cookies[:remember_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default(:controller => '/account', :action => 'index')
-      flash[:notice] = "Du er nå logget inn"
+      sign_in(current_user)
+      redirect_back_or(:controller => '/account', :action => 'index')
+      if !current_user.nil?
+        session[:noruser] = current_user.id
+        flash[:notice] = "Du er nå logget inn"
+      else
+        flash[:notice] = "Finner ikke current_user"
+      end
+    else
+      flash[:notice] = "Innlogging misslykket"
     end
   end
 
   def signup
-    @noruser = Noruser.new(params[:noruser])
+#    @noruser = Noruser.new(params[:noruser])
+    @noruser = Noruser.new(user_params)
     return unless request.post?
     @noruser.save!
     self.current_user = @noruser
@@ -39,10 +64,10 @@ class AccountController < ApplicationController
   
   def logout
     self.current_user.forget_me if logged_in?
-    cookies.delete :auth_token
+    cookies.delete :remember_token
     reset_session
     flash[:notice] = "Du har logga ut."
-    redirect_back_or_default(:controller => '/account', :action => 'index')
+    redirect_back_or(:controller => '/account', :action => 'index')
   end
   
   def activate
@@ -89,4 +114,8 @@ class AccountController < ApplicationController
     redirect_back_or_default(:controller => '/account', :action => 'index')
   end
 #  # Resett passord ting, slutt
+  def user_params
+    params.require(:noruser).permit(:login, :email, :password, :password_confirmation)
+  end
+
 end

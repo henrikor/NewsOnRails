@@ -1,16 +1,39 @@
 <%= form_tag do -%>
-<p><label for="login">Logg inn</label><br/>
-<%= text_field_tag 'login' %></p>
 
-<p><label for="password">Passord</label><br/>
-<%= password_field_tag 'password' %></p>
+<div style="width: 500px; margin-left: auto; margin-right: auto;">
 
-<!-- Uncomment this if you want this functionality
--->
-<p><label for="remember_me">Husk meg:</label>
-  <%= check_box_tag 'remember_me' %> </p>
+  <h2>Logg inn</h2>
 
-<p><%= submit_tag 'Logg inn' %></p>
-<br/>
-<p>Har du glemt passordet ditt? <%= link_to 'Resett passordet', :action => 'forgot_password' %>
+  <div class="form-group">
+    <label for="login" class="sr-only">Brukernavn</label>
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+      <%= text_field_tag 'login', nil, {:class => 'form-control', :placeholder => 'Brukernavn', :required => true, :autofocus => true} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="sr-only">Passord</label>
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+      <%= password_field_tag 'password', nil, {:class => 'form-control', :placeholder => 'Passord', :required => true} %>
+    </div>
+  </div>
+
+  <!-- Uncomment this if you want this functionality
+  -->
+
+  <div class="checkbox">
+    <label>
+      <%= check_box_tag 'remember_me' %> Husk meg
+    </label>
+  </div>
+  
+
+  <p><%= submit_tag 'Logg inn', :class => 'btn btn-large btn-block' %></p>
+  <br/>
+  <p>Har du glemt passordet ditt? <%= link_to 'Resett passordet', :action => 'forgot_password' %>
+
+</p>
+
 <% end -%>

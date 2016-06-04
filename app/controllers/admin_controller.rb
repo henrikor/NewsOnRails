@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class AdminController < ApplicationController
-  #  include NorAuthorize
+    include NorAuthorize
   #  include AuthenticatedSystem
 
   before_filter :nor_logged_in?
@@ -13,6 +13,15 @@ class AdminController < ApplicationController
   def index
     userlist
     render :action => 'userlist'
+  end
+
+  def dashboard
+    @types = {1 => 'Link', 2 => 'Dropdown', 3 => 'Custom'}
+    @menu_elements = MenuElement.all
+  end
+
+  def new_menu_element
+    @menu_element = MenuElement.new
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -148,6 +157,8 @@ class AdminController < ApplicationController
 
   def usernyttpass
     @user = Noruser.find(params[:id])
+#    @user = Noruser.find(86)
+
     self.current_user = @user
     current_user.password = params[:passord]
     @user.reset_password
@@ -163,7 +174,7 @@ class AdminController < ApplicationController
     @user = Noruser.find(params[:id])
     @user.roles = Role.find(params[:roller]) if params[:roller] #legger inn fra checkbokser
 
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(admin_params)
       flash[:notice] = 'user was successfully updated.'
       redirect_to :action => 'usershow', :id => @user
     else
@@ -175,5 +186,8 @@ class AdminController < ApplicationController
     Noruser.find(params[:id]).destroy
     redirect_to :action => 'userlist'
   end
-  
+  def admin_params
+    params.require(:user).permit(:login, :email, :updated_at, :users, :roller, :id)
+  end
+
 end

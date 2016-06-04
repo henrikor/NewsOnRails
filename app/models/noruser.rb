@@ -3,13 +3,13 @@ require 'digest/sha1'
 class Noruser < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   has_and_belongs_to_many :roles
-  acts_as_authorized_user
+#  acts_as_authorized_user
   attr_accessor :password
-  attr_protected :activated_at
+#  attr_protected :activated_at
 
-  validate :login, :email, :presence => true
-  validate :password, :presence => true, :if => :password_required?
-  validate :password_confirmation, :presence => true, :if => :password_required?
+  validates :login, :email, :presence => true
+  validates :password, :presence => true, :if => :password_required?
+  validates :password_confirmation, :presence => true, :if => :password_required?
 #  validates_presence_of     :login, :email
 #  validates_presence_of     :password,                   :if => :password_required?
 #  validates_presence_of     :password_confirmation,      :if => :password_required?
@@ -20,8 +20,24 @@ class Noruser < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_create :make_activation_code
   before_save :encrypt_password
-
  
+  #include NorAuthorize
+
+  def has_role?(role)
+      self.roles.each{|r|
+        return true if r.name == "Admin"
+  #      return true if r.name == role
+      }
+      return false
+
+    # if self.roles.include?
+    #   return true
+    # else
+    #   return false
+    # end
+  end
+
+
   # Reset passord ting:
 
   def forgot_password
@@ -49,8 +65,9 @@ class Noruser < ActiveRecord::Base
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
     #    u = find_by_login(login) # need to get the salt
-    u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login]
-    u && u.authenticated?(password) ? u : nil
+#    u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login]
+    u = self.where(['login = ? and activated_at IS NOT NULL', login]).take
+    u && u.authenticated?(password, u.salt) ? u : nil
   end
 
   # Activates the user in the database.
@@ -74,13 +91,27 @@ class Noruser < ActiveRecord::Base
     self.class.encrypt(password, salt)
   end
 
-  def authenticated?(password)
-    crypted_password == encrypt(password)
+  def Noruser.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def Noruser.encrypt(password, salt)
+#    Digest::SHA1.hexdigest(token.to_s)
+    Digest::SHA1.hexdigest("--#{salt}--#{password}--")
+  end
+  def Noruser.encryptcookie(password)
+    Digest::SHA1.hexdigest(password.to_s)
+  end
+
+  def authenticated?(password, salt)
+#    crypted_password == Noruser.encrypt(password)
+    crypted_password == Noruser.encrypt(password, salt)
   end
 
   def remember_token?
     remember_token_expires_at && Time.now.utc < remember_token_expires_at 
   end
+
 
   # These create and unset the fields required for remembering users between browser closes
   def remember_me
@@ -121,6 +152,12 @@ class Noruser < ActiveRecord::Base
   def make_password_reset_code
     self.password_reset_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
   end
+
+  private
+
+    def create_remember_token
+      self.remember_token = Noruser.encrypt(Noruser.new_remember_token)
+    end
 
   #  def set_new_password(password)
   #    self.password= password

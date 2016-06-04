@@ -1,27 +1,51 @@
-<h1>Editing article</h1>
+<div class="page-header">
+  <h1>Editing article <small><%= @article.headline %> (ID: <%= @article.id %>)</small></h1>
+</div>
 
 
 
-<table>
+<!--table>
   <tr>
-<td><%= button_to 'Copy', :action => 'new', :id => @article %></td>
+<td><%= button_to 'Duplicate', {:action => 'new', :id => @article}, :class => "btn btn-success" %></td>
 <%# if @user_has_role %>
 <%# if member_of_role?(@article.owner) -%>
 <% if autorized_to_article?(@article.id)-%>
-<td><%= button_to 'Destroy', {:action => 'destroy', :id => @article}, :confirm => 'Are you sure?' %></td>
-<td><%= button_to 'Un publish', :action => 'un_publish', :id => @article %></td>
+<td><%= button_to 'Destroy', {:action => 'destroy', :id => @article}, :class => "btn btn-danger", :confirm => 'Are you sure?' %></td>
+<td><%= button_to 'Un publish', {:action => 'un_publish', :id => @article}, :class => "btn btn-warning" %></td>
 <% end %>
   </tr>
-</table>
+</table-->
+
+<div class="row">
+<div class="col-md-8 col-sm-12">
+<div class="form-group">
+  <%= button_to 'Duplicate', {:action => 'new', :id => @article}, :class => "btn btn-success form-control" %>
+  <% if autorized_to_article?(@article.id)-%>
+    <%= button_to 'Destroy', {:action => 'destroy', :id => @article}, :class => "btn btn-danger form-control", :confirm => 'Are you sure?' %>
+    <%= button_to 'Un-publish', {:action => 'un_publish', :id => @article}, :class => "btn btn-warning form-control" %>
+  <% end %>
+</div>
+<!--/div-->
+
+<!--div class="col-md-8 col-sm-12"-->
+<%#= form_tag({:controller => 'articles', :action => 'update', :id => @article2}, :multipart => true, method: "post") %>
+  <%= form_tag("/articles/update/#{@article.id}", :multipart => true) %>
+    <%#= form_for(@article2, :html => { :id => article2 }) do |f| %>
 
 
-
-<%= form_tag({:action => 'update', :id => @article2}, :multipart => true) %>
 <%= render :partial => 'form' %>
-<%= submit_tag 'Lagre' %>
+<%= submit_tag 'Save', :class => "btn btn-success" %>
 
 <%= form_tag %>
 
 
-<%= link_to 'Show', :action => 'show', :id => @article2 %> |
-<%= link_to 'Back', :action => 'list' %>
+<%#= link_to 'Show', :action => 'show', :id => @article %>
+<%= link_to 'Back to list', {:action => 'list'}, :class => "btn btn-default" %>
+
+</div>
+
+<div class="col-md-4 hidden-sm">
+    <div id="syntaxmenue"><%= @syntax -%></div>
+</div>
+
+</div>

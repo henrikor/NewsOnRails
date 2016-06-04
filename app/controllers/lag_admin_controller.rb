@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class LagAdminController < ApplicationController
-  before_filter :authorize_action
+  before_filter :nor_authorized?
 
   # Tilgang til grupper må styres av roller. Alle i rollen "asker" har tilgang til gruppa "asker" osv.
   # Det betyr at vi må ha join tabell mellom roles og groups tabellen. Roles puttes i grupper

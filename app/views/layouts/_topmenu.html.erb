@@ -1,0 +1,118 @@
+  <nav class="navbar navbar-default">
+  <div class="container-fluid" data-spy="affix-top">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!--a class="navbar-brand" href="#">Brand</a-->
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/Sentralt/view/10160">Kontakt</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Politikk <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/sentralt/view/10253">Hva mener Tjen folket</a></li>
+            <li><a href="/sentralt/view/10422">Program</a></li>
+            <li><a href="/Sentralt/228"><%= norsk2html 'Spørsmål og svar' %></a></li>
+            <li><a href="/start/view/10384">Klassiske tekster</a></li>
+            <li><a href="/groups/temaer">Temasider</a></li>
+            <li><a href="/sentralt/view/11046">Kultur</a></li>
+          </ul>
+        </li>
+        <li><a href="/sentralt/view/11247">Butikk</a>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Media <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://youtube.com/tjenfolket">Film</a></li>
+            <li><a href="/sentralt/view/11036"><%= norsk2html 'Lydbøker' %></a></li>
+            <li><a href="/Sentralt/276">Til kamp</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ressurser <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/Sentralt/view/10159">Lenker</a></li>
+            <li><a href="http://kommunisme.no/sentralt/view/65">Grafikk</a></li>
+            <li><a href="/Sentralt/view/11227">Pressefoto</a></li>
+            <li><a href="/Sentralt/view/11030"><%= norsk2html 'Løpesedler' %></a></li>
+            <li><a href="/Sentralt/view/11030">Plakater</a></li>
+          </ul>
+        </li>
+        <li><a href="http://kommunisme.no/">RKU</a>
+      </ul>
+      <form class="navbar-form navbar-left" action="http://www.google.no/cse" id="cse-search-box-1" role="search">
+        <div class="form-group">
+          <input type="hidden" name="cx" value="<%=@googlesok%>" />
+          <input type="hidden" name="ie" value="UTF-8" />
+          <input type="text" class="form-control" placeholder="<%= norsk2html("Søk på siden") %>" id="cse-search-box-1">
+        </div>
+        <button type="submit" class="btn btn-default"><%= norsk2html("Søk") %></button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <!--li><a href="#">Link</a></li-->
+        <% if logged_in? -%>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Innstillinger", :controller => "admin", :action => "dashboard" %></li>
+            <% if authorized_to?(:controller => 'lister', :action => 'list')  %>
+              <li><%= link_to "E-post lister", :controller => "lister", :action => "list" %></li>
+            <% end %>
+
+            <% if authorized_to?(:controller => 'articles', :action => 'list')  %>
+              <li><%= link_to "Artikler", :controller => "articles", :action => "list" %></li>
+            <% end %>
+
+            <% if authorized_to?(:controller => 'articles', :action => 'new')  %>
+              <li><%= link_to "Legg til artikkel", :controller => "articles", :action => "new" %></li>
+            <% end %>
+
+            <% if authorized_to?(:controller => 'groups', :action => 'list')  %>
+              <li><%= link_to "Stilark", :controller => "stylesheets" %></li>
+            <% end %>
+
+            <% if authorized_to?(:controller => 'groups', :action => 'list')  %>
+              <li><%= link_to "Grupper", :controller => "groups", :action => "list" %></li>
+            <% end %>
+
+            <% if authorized_to?(:controller => 'groups', :action => 'new')  %>
+              <li><%= link_to "Legg til gruppe", :controller => "groups", :action => "new" %></li>
+            <% end %>
+
+            <% if authorized_to?(:controller => 'admin', :action => 'userlist')  %>
+              <li><%= link_to "Brukerkontoer", :controller => "admin", :action => "userlist" %></li>
+            <% end %>
+
+             <% if authorized_to?(:controller => 'presse', :action => 'index')  %>
+              <li><%= link_to "Send pressemelding", :controller => "presse", :action => "index" %></li>
+            <% end %>
+
+              <% if authorized_to?(:controller => 'admin', :action => 'list')  %>
+              <li><%= link_to "Roller", :controller => "admin", :action => "list" %></li>
+            <% end %>
+
+              <% if authorized_to?(:controller => 'role2group', :action => 'list')  %>
+              <li><%= link_to "Roller til Grupper", :controller => "role2group", :action => "list" %></li>
+            <% end %>
+
+              <% if authorized_to?(:controller => 'sendpost', :action => 'admin')  %>
+              <li><%= link_to "E-post grupper", :controller => "sendpost", :action => "admin" %></li>
+            <% end %>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Logg ut", :controller => "account", :action => "logout" %></li>
+          </ul>
+        </li>
+        <% else -%>
+        <li><%= link_to 'Logg inn', :controller => 'account', :action => 'login' %></li>
+        <% end -%>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

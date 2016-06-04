@@ -16,41 +16,20 @@ class StartController < ApplicationController
                         ag.group_id IN (?, ?)
                         GROUP BY a.id
                         HAVING COUNT(DISTINCT ag.group_id) = 2"
-    sql2 = "SELECT a.id FROM articles a
-                        JOIN article_groups ag ON ag.article_id = a.id
-                        WHERE
-                        a.un_published != '1' AND
-                        ag.group_id IN (?, ?)
-                        GROUP BY a.id
-                        HAVING COUNT(DISTINCT ag.group_id) = 2"
-    csql = Article.find_by_sql([sql2, temaid, lagid])
-    @count_condition_sql = "SELECT FOUND_ROWS()"
-    @article_pages = Paginator.new self, ArticleGroup.count_by_sql(["#{@count_condition_sql}", temaid]), 10, page
+    # sql2 = "SELECT a.id FROM articles a
+    #                     JOIN article_groups ag ON ag.article_id = a.id
+    #                     WHERE
+    #                     a.un_published != '1' AND
+    #                     ag.group_id IN (?, ?)
+    #                     GROUP BY a.id
+    #                     HAVING COUNT(DISTINCT ag.group_id) = 2"
+    # csql = Article.find_by_sql([sql2, temaid, lagid])
+    # @count_condition_sql = "SELECT FOUND_ROWS()"
+    # @article_pages = Paginator.new self, ArticleGroup.count_by_sql(["#{@count_condition_sql}", temaid]), 10, page
   end
 
-  # Flyttet til start Model
-  def sql_from_only_one_group(temaid = '10', lagid = '8', page = '0')
-    @sql = "SELECT a.* FROM articles a
-                        JOIN article_groups ag ON ag.article_id = a.id
-                        WHERE
-                        a.un_published != '1' AND
-                        ag.group_id IN (?, ?)
-                        GROUP BY a.id
-                        HAVING COUNT(DISTINCT ag.group_id) = 2"
-    sql2 = "SELECT a.id FROM articles a
-                        JOIN article_groups ag ON ag.article_id = a.id
-                        WHERE
-                        a.un_published != '1' AND
-                        ag.group_id IN (?, ?)
-                        GROUP BY a.id
-                        HAVING COUNT(DISTINCT ag.group_id) = 2"
-    csql = Article.find_by_sql([sql2, temaid, lagid])
-    @count_condition_sql = "SELECT FOUND_ROWS()"
-    @article_pages = Paginator.new self, ArticleGroup.count_by_sql(["#{@count_condition_sql}", temaid]), 10, page
-  end
 
   def group(temaid = params[:id], lagid = params[:lagid], page = params[:page], controller = "index")
-    @page = page
     @right_column = 1
     group = Group.find(temaid)
     @description = group.description
@@ -62,12 +41,11 @@ class StartController < ApplicationController
     @lag_name = grouplag.name
     @temaid = temaid
 
-    sql(@temaid, @lagid, page)
-    @articles = Article.find_by_sql(["#{@sql}
+    sql(@temaid, @lagid)
+    @articles = Article.paginate_by_sql(["#{@sql}
                                            ORDER BY a.pri desc,
-                                           a.created_on desc limit ?, ?",
-        temaid, lagid, @article_pages.current.offset,
-        @article_pages.items_per_page])
+                                           a.created_on desc",
+        temaid, lagid], :page => page, :per_page => 10)
     render :controller => controller, :action => "index"
     #    respond_to do |format|
     #      format.html {render :controller => controller, :action => "index"}
@@ -195,7 +173,8 @@ class StartController < ApplicationController
   
   def view(lagid = params[:lagid], lagname = params[:lag])
     @view = 1
-    lag = Group.group_from_name(lagname)
+#    lag = Group.group_from_name(lagname)
+    lag = Group.find_by("name = ?", lagname)
 
     if !lagid && !lag
       lagid = 8
@@ -213,7 +192,11 @@ class StartController < ApplicationController
     @lag = lagname
     @lag_name = lagname
 
-    @article = Article.find(params[:id])
+    if params[:id] == 'frontpage'
+      @article = Article.find(10522)
+    else
+      @article = Article.find(params[:id])
+    end
 
     unless @article.story_text =~ /\[\[tema=.*\]\]/ || @article.ingress =~ /\[\[tema=.*\]\]/
       if @article.story_text =~ /(bilde-li)\:(\w*)/
@@ -255,7 +238,7 @@ class StartController < ApplicationController
 
     if @article.un_published == 1
       #      flash[:error] = "<p>Siden finnes ikke</p>"
-      @fraurl = "http://" + @domene + request.request_uri
+      @fraurl = "http://" + @domene + request.url
       render :action => "404", :status => 404
       #      redirect_to("/")# if request.referer == nil
     end

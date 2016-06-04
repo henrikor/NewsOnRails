@@ -15,7 +15,7 @@ class ListerController < ApplicationController
   
   #  
   #  before_filter :left_column
-  #  before_filter :authorize_action
+  #  before_filter :nor_authorized?
   require 'fileutils'
   include FileUtils::Verbose
 

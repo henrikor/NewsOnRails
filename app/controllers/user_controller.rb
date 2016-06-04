@@ -29,7 +29,7 @@
 # LoginEngine to give user management methods (list, edit_user, etc)
 class UserController < ApplicationController
   include AuthenticatedSystem
-  before_filter :authorize_action, :except => [:login, :signup, :forgot_password]
+  before_filter :nor_authorized?, :except => [:login, :signup, :forgot_password]
   #  ssl_required :login, :signup, :forgot_password
   #  ssl_allowed :index, :list
 

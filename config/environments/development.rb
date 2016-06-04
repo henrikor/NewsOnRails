@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 NewsOnRails::Application.configure do
+
+  config.eager_load = false
  
   # Settings specified here will take precedence over those in config/application.rb
   config.action_mailer.default_url_options = { :host => 'localhost:3001' }
@@ -23,7 +25,6 @@ NewsOnRails::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
-
 
 
 

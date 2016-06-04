@@ -2,8 +2,9 @@
 // FIXME: Tell people how Sprockets and CoffeeScript works
 //
 //= require jquery
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require_tree .
 
 
