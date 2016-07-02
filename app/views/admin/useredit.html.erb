@@ -7,13 +7,13 @@
 <% end %>
 
 
-<%= form_tag :action => 'usernyttpass' %>
+<%= form_tag :action => 'usernyttpass', :id => @user do %>
   <p><label for="user_passwd">Nytt passord for bruker</label><br/>
-  <%= text_field '@user', 'passord'  %></p>
-
+  <%#= text_field 'user', 'password'  %></p>
+  <%= password_field :user, :password %>	
 
   <br/>
   <%= submit_tag 'Sett passord' %>
   <br/>
-
+<% end -%>
 <%= link_to 'Tilbake', :action => 'userlist' %>

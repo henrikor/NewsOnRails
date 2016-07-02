@@ -152,23 +152,49 @@ class AdminController < ApplicationController
   
   def useredit
     @user = Noruser.find(params[:id])
-    @roles = Role.find(:all)
+#    @roles = Role.find(:all)
+    @roles = Role.all
   end
 
   def usernyttpass
     @user = Noruser.find(params[:id])
 #    @user = Noruser.find(86)
 
-    self.current_user = @user
-    current_user.password = params[:passord]
-    @user.reset_password
-    if @user.update_attributes(params[:user])
-      flash[:notice] = 'user was successfully updated.'
-      redirect_to :action => 'usershow', :id => @user
-    else
-      render :action => 'useredit'
-    end
-    
+
+    raise if @user.nil?
+    return if @user unless params[:user]
+#    if (params[:password] == params[:password_confirmation])
+
+	pw = params[:user][:password]      
+      self.current_user = @user #for the next two lines to work
+      current_user.password_confirmation = pw
+      current_user.password = pw
+      @user.reset_password
+      flash[:notice] = current_user.save ? "Password reset" : "Password not reset" 
+      redirect_to :action => 'useredit', :id => @user
+
+ #   else
+ #     flash[:notice] = "Passordene stemte ikke med hverandre" 
+ #   end
+
+
+#    self.current_user = @user
+#    current_user.password = params[:password]
+#    @user.reset_password
+#    @user.save!
+
+
+#params.require(:cart).permit(:attribute1, :attribute2, :attribute3)
+#    if @user.update_attributes(params[:user])
+ #reset_password
+#    if @user.update_attributes(admin_params)
+#      flash[:notice] = 'user was successfully updated.'
+#      redirect_to :action => 'usershow', :id => @user
+#    else
+#      flash[:error] = 'Error - password not updated!'
+#    end
+
+
   end
   def userupdate
     @user = Noruser.find(params[:id])
@@ -187,7 +213,7 @@ class AdminController < ApplicationController
     redirect_to :action => 'userlist'
   end
   def admin_params
-    params.require(:user).permit(:login, :email, :updated_at, :users, :roller, :id)
+    params.require(:user).permit(:login, :passwd, :password, :email, :updated_at, :users, :roller, :id)
   end
 
 end
