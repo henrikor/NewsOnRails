@@ -595,13 +595,16 @@ module ApplicationHelper
         fullpath = Image.full_path(image.id)
         fullpath = Image.rensurl(fullpath)
         if image.description =~ /\w/
-          alttekst = image.description
-        else
+          alttekst = "test" #image.description
+        elsif image.name =~ /\w/          
           alttekst = image.name
+        else
+          alttekst = "Bilde"
         end
         begin
           imagetag = raw("<img alt=\"" + alttekst + "\" src=\"" + filepath + "\" title=\"" + alttekst + "\" />")  
         rescue Exception => e
+#          imagetag = raw("<img alt=\"" + alttekst + "\" src=\"" + filepath + "\" title=\"" + "tittel" + "\" />")  
           "<br/><i>feil med bilde</i><br/>"
         end
         
