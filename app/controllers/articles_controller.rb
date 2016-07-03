@@ -5,8 +5,9 @@ class ArticlesController < ApplicationController
   before_filter :nor_authorized?
   before_filter :markitupp
   before_filter :left_column
+#  before_filter :set_article
   verify :method => :post, :only => [ :destroy, :create, :update ],
-    :redirect_to => { :action => :list }
+  :redirect_to => { :action => :list }
   #  protect_from_forgery :only => [:update, :delete, :create]    
   # auto_complete_for :article, :source
   # auto_complete_for :autogroup, :name
@@ -88,8 +89,8 @@ class ArticlesController < ApplicationController
       :include => [:group],
       :conditions => [ "group_groups.group_id2 = '2' and LOWER(groups.name) LIKE ?",
         '%' + value.downcase + '%'], 
-      :order => 'groups.name ASC',
-      :limit => 8)
+        :order => 'groups.name ASC',
+        :limit => 8)
     render :partial => 'groups'
   end
 
@@ -118,7 +119,7 @@ class ArticlesController < ApplicationController
 
   def articles
     #    group = group_from_name("THEME")
-    if @article.cloth
+    if defined? @article.cloth
       @syntax = clothsyntax(@article.cloth)
     else
       @syntax = clothsyntax("r")
@@ -133,7 +134,7 @@ class ArticlesController < ApplicationController
     gon.groups4 = ["test1", "test2", "kake", "julekake", "kjeks"]
     @lags2 = Group.groups(4)
     @lags = GroupGroup.auth_lags(session[:noruser])
-      
+
     fil = noryml
     if fil['troll']
       @sentral_group = fil['troll'] 
@@ -148,70 +149,73 @@ class ArticlesController < ApplicationController
       "media" => "m",
       "ingen" => "0"}
 
-    if session[:used_groups]
-      @used_groups = session[:used_groups]
-    end
-  end
-
-  def index
-    respond_to do |format|
-      format.html
-      format.atom
-      format.rss
+      if session[:used_groups]
+        @used_groups = session[:used_groups]
+      end
     end
 
-    list
-    render :action => 'list'
-  end
+    def index
+      respond_to do |format|
+        format.html
+        format.atom
+        format.rss
+      end
 
-  def list
-    
-    @not_show = ["Url", "Story text", "Suspend", "Ingress", "Un published", "Picture", "Source", "Expires date", "Version"]
-    if params[:sort]
-      @sort = params[:sort]
-    else
-      @sort = "created_on"
+      list
+      render :action => 'list'
     end
 
-    if params[:order]
-      @order = params[:order]
-    else
-      @order = "desc"
+    def list
+
+      @not_show = ["Url", "Story text", "Suspend", "Ingress", "Un published", "Picture", "Source", "Expires date", "Version"]
+      if params[:sort]
+        @sort = params[:sort]
+      else
+        @sort = "created_on"
+      end
+
+      if params[:order]
+        @order = params[:order]
+      else
+        @order = "desc"
+      end
+
+      if @sort != "created_on"
+        sort = "#{@sort} #{@order}, created_on desc"
+      else
+        sort = "#{@sort} #{@order}"
+      end
+
+      @colnames = {"Created on" => "Created", "Created of" => "Created by", "Updated on" => "Updated", "Updated of" => "Updated by", "Headline" => "Headline", "Pri" => "Pri", "Owner" => "Owner", "Cloth" => "Cloth"}
+
+      @porder = @order
+      @stylesheet = "admin"
+
+      @articles = Article.paginate :page => params[:page], :order => sort
+
+
+
+      if @order == "asc"
+        @order = "desc"
+      else
+        @order = "asc"
+      end
+
+      respond_to do |format|
+        format.html
+        format.atom
+        format.rss
+      end
+
+
     end
 
-    if @sort != "created_on"
-      sort = "#{@sort} #{@order}, created_on desc"
-    else
-      sort = "#{@sort} #{@order}"
+    def show
+      @article = Article.find(params[:id])
     end
 
-    @porder = @order
-    @stylesheet = "admin"
 
-    @articles = Article.paginate :page => params[:page], :order => sort
-
-
-    if @order == "asc"
-      @order = "desc"
-    else
-      @order = "asc"
-    end
-
-    respond_to do |format|
-      format.html
-      format.atom
-      format.rss
-    end
-    
-
-  end
-
-  def show
-    @article = Article.find(params[:id])
-  end
-
-
-  def temaboksen
+    def temaboksen
     #    format.js {
     #      render(:update) {|page| page.replace_html 'temaboksen', :partial =>
     #          'articles/edit'}
@@ -237,10 +241,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article2 = Article.find(params[:id])
+#    @article2 = Article.find(params[:id])
+    @article = Article.find(params[:id])
     if params[:versjon]
-      @article = Article.find_version(params[:id], params[:versjon])
-      @article.id = @article2.id
+#      @article = Article.find_version(params[:id], params[:versjon])
+#      @article = @article.versions[params[:versjon].to_i]
+      @article = @article.version_at(params[:versjon])
     else
       @article = Article.find(params[:id],
         :include => [:article_shows])
@@ -248,7 +254,7 @@ class ArticlesController < ApplicationController
     user = Noruser.find(session[:noruser])
     @roles = user.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
     articles()
-    #unless params[:versjon]
+    # unless params[:versjon]
     #  if @article.article_shows.nitems >= 1
     #    if @article.article_shows.first.headline != nil
     #      @hide_headline = 1
@@ -266,10 +272,10 @@ class ArticlesController < ApplicationController
     #      @hide_dato = 1
     #    end
     #  end
-    #end
+    # end
     @table = @article
-    creator() # In application.rb, uses @table
-    updater() # In application.rb, uses @table
+    creator() # In application_controller.rb, uses @table
+    updater() # In application_controller.rb, uses @table
   end
 
   def create_new_common
@@ -304,7 +310,14 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
+#    @liste = Liste.new(liste_params)
+
+#    @article = Article.new(params[:article])
+    if params[:group] == nil
+        flash[:error] = norsk2html("<h1>Kunne ikke opprette - mangler avkrysning for grupper</h1><br/><i>#{@flashtxt}</i>")        
+        redirect_to :action => 'new' and return
+      end
+    @article = Article.new(article_params)
     @article.created_of = session[:noruser]
     @article.un_published = 0
     @articlegroup = ArticleGroup.new
@@ -320,7 +333,7 @@ class ArticlesController < ApplicationController
         articlehide = ArticleShow.new(
           :article_id => params[:id],
           :headline => '1'
-        )
+          )
       end
       session[:used_groups] = params[:group]
       troll?
@@ -342,36 +355,37 @@ class ArticlesController < ApplicationController
       @article.article_groups << ArticleGroup.new(
         :article_id   => params[:id],
         :group_id => x.first
-      )
+        )
     }
     arr = params[:autogroup][:name].split(',') # Dytt inn fra den nye autotemasaken
     arr.each{|y|
       Rails.logger.error("var y = #{y}")
-        
-       
-      tema = Group.find(:all, :conditions => [ "name = ?", y.strip])
-      if tema.length > 0
-        @article.article_groups << ArticleGroup.new(
-          :article_id   => params[:id],
-          :group_id => tema.first.id
-        )
-      else
-        storygroup = Group.group_from_name("STORIE_GROUP?")
-        group = Group.new
-        group.name = y.strip
-        group.created_of = session[:noruser]
-        if group.save!
-          tema2 = Group.find(:all, :conditions => [ "name = ?", group.name])
+
+      if y =~ /\w/
+        tema = Group.find(:all, :conditions => [ "name = ?", y.strip])
+        if tema.length > 0
           @article.article_groups << ArticleGroup.new(
             :article_id   => params[:id],
-            :group_id => tema2.first.id
-          )
-          group.group_groups << GroupGroup.new(
-            :group_id   => tema2.first.id,
-            :group_id2 => storygroup.id
-          )
+            :group_id => tema.first.id
+            )
+        else
+          storygroup = Group.group_from_name("STORIE_GROUP?")
+          group = Group.new
+          group.name = y.strip
+          group.created_of = session[:noruser]
+          if group.save!
+            tema2 = Group.find(:all, :conditions => [ "name = ?", group.name])
+            @article.article_groups << ArticleGroup.new(
+              :article_id   => params[:id],
+              :group_id => tema2.first.id
+              )
+            group.group_groups << GroupGroup.new(
+              :group_id   => tema2.first.id,
+              :group_id2 => storygroup.id
+              )
 
-          @flashtxt = 'Lagde en eller flere nye grupper.'
+            @flashtxt = 'Lagde en eller flere nye grupper.'
+          end
         end
       end
     }    
@@ -411,42 +425,52 @@ class ArticlesController < ApplicationController
         :source => source,
         :story_text => storytext,
         :dato => dato
-      )
+        )
     end
   end
 
+
   def update
-    @article = Article.find(params[:id])
-    @article.updated_of = session[:noruser]
-    user = Noruser.find(session[:noruser])
-    @roles = noruser.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
-    articles()
+    Rails.logger.info { "Update startet i kontroller" }
+    respond_to do |format|
+        @article = Article.find(params[:id])
+        @article.updated_of = session[:noruser]
+        user = Noruser.find(session[:noruser])
+#        @roles = noruser.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
+        @roles = user.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
+        articles()
 
-    if params[:husk]
-      session[:husk] = params[:husk]
-    else
-    end
-    @article.article_shows.clear
-    hide() # Hva skal skjules ved start/view?
-    if @article.update_attributes(params[:article])
+        if params[:husk]
+          session[:husk] = params[:husk]
+        end
+        @article.article_shows.clear
+        hide() # Hva skal skjules ved start/view?
+#        if @article.update_attributes(params[:article])
+        @article.article_groups.clear
 
-      @article.article_groups.clear
-
-      if params[:group]
-        legginntemaer
-        session[:used_groups] = params[:group]
-        troll?
+        if params[:group]
+            legginntemaer
+            session[:used_groups] = params[:group]
+            troll?
+          # else
+          #   flash[:warning] = "Advarsel: Du hadde ikke kryssa av for noen grupper. Siden vil ikke komme opp noe sted!! G&aring; til stories for &aring; fikse dette. #{@groupallert}"
+          # end
+#          redirect_to :controller => "start", :action => 'view', :id => @article
+          session[:role] = @article.owner
+        else
+          @article2 = @article
+          @user = Noruser.find(session[:noruser])
+          @roles = @user.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
+          articles()
+#          render :action => 'edit' and return
+        end
+      if @article.update(article_params)
+        format.html { redirect_to "/start/view/#{@article.id}", notice: 'Article was successfully updated.' }
+        format.json { head :no_content }
       else
-        flash[:warning] = "Advarsel: Du hadde ikke kryssa av for noen grupper. Siden vil ikke komme opp noe sted!! G&aring; til stories for &aring; fikse dette. #{@groupallert}"
+        format.html { render action: 'edit', notice: 'Article was not updated.' }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
-      redirect_to :controller => "start", :action => 'view', :id => @article
-      session[:role] = @article.owner
-    else
-      @article2 = @article
-      @user = Noruser.find(session[:noruser])
-      @roles = @user.roles.map {|u| [u.name, u.id] } # Selects role name and id for roles user has access to
-      articles()
-      render :action => 'edit'
     end
   end
 
@@ -475,4 +499,17 @@ class ArticlesController < ApplicationController
     @article.save
     redirect_to :action => 'list'
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_article
+      @article = Article.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def article_params
+      params.require(:article).permit(:cloth, :created_on, :source, :headline, :ingress, :story_text, :pri, :un_published, :owner, {:autogroup_ids => []}, {:group_ids => []})
+    end
+
+
 end

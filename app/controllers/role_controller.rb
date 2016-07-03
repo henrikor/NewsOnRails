@@ -28,5 +28,5 @@
 # The RoleController allows Role objects to be manipulated via the
 # web interface
 class RoleController < ApplicationController
-#  before_filter :authorize_action
+#  before_filter :nor_authorized?
 end

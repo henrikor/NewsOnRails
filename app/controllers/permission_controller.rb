@@ -27,5 +27,5 @@
 # The PermissionController provides methods for manipulating Permission
 # objects from the web interface.
 class PermissionController < ApplicationController
-  before_filter :authorize_action
+  before_filter :nor_authorized?
 end

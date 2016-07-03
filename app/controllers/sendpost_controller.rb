@@ -11,6 +11,7 @@ class SendpostController < ApplicationController
 
   def index
     exit 1 if params[:komment] && params[:komment] =~ /\w/
+    exit 0 if params[:reklame] && params[:reklame] =~ /\w/
     brukerip = request.env['HTTP_REFERER']
     @alarm = nil
     @alarm = "Skjemaet er laget feil:epostg (e-post gruppe) mangler" unless params.include?(:epostg)

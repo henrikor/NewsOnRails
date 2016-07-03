@@ -4,6 +4,7 @@ soppel: [ spam@sos-rasisme.no, tthorb@gmail.com]
 
 test: [ henrik@domene.no, henrik.ormasen@domene.no ]
 testgruppe2: [ henrik@domene.no ]
+<<<<<<< HEAD
 llk: [ ou@sos-rasisme.no, au@sos-rasisme.no, bjarne.stokke@sos-rasisme.no, trond.thorbjornsen@sos-rasisme.no, baard.frantzen@sos-rasisme.no, kenneth.fuglemsmo@sos-rasisme.no, henrik.ormasen@sos-rasisme.no ]
 innmeldingsskjema: [ medlemskap.liste@sos-rasisme.no ]
 
@@ -64,3 +65,9 @@ populus: [ henrik.ormasen@sos-rasisme.no ]
 populus2: [ henrik.ormasen@sos-rasisme.no ] 
 aktivistno: [ henrik.ormasen@sos-rasisme.no, joakim.langvand@sos-rasisme.no ] 
 
+=======
+ledelsen: [ post@tjen-folket.no ]
+materiell: [ per@tjen-folket.no, post@tjen-folket.no ]
+sommerleir: [ sommerleir2010@tjen-folket.no, post@tjen-folket.no ]
+rapport: [ isak@tjen-folket.no, glenn@tjen-folket.no, asbjorn@tjen-folket.no, alfred@tjen-folket.no, andre@tjen-folket.no ]
+>>>>>>> d855e6e56203cc9a8c33d77148a72495b842a6e3

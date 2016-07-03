@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class GroupGroupsController < ApplicationController
-  before_filter :authorize_action
+  before_filter :nor_authorized?
   def index
     list
     render :action => 'list'

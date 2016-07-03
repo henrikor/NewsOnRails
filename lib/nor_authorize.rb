@@ -1,7 +1,8 @@
 # -*- encoding : utf-8 -*-
 # Methods added to this helper will be available to all templates in the application.
 module NorAuthorize
-  #  include AuthenticatedSystem
+#    include AuthenticatedSystem
+#  include SessionsHelper
 
   def nor_logged_in?
     redirect_back_or_default(:controller => '/account', :action => 'index') unless logged_in? # || Noruser.count > 0 
@@ -11,7 +12,7 @@ module NorAuthorize
     !session[:noruser].nil?
   end
   
-  def noruser
+  def self.noruser
     if session && session[:noruser] && !session[:noruser].nil?
       noruser = Noruser.find(session[:noruser])
     else
@@ -39,6 +40,10 @@ module NorAuthorize
       access_denied
     end
   end
+  def access_denied(default = "")
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
 
   def nor_authf(accessarr)
     if logged_in?
@@ -52,6 +57,7 @@ module NorAuthorize
         raise "finner ikke index action og gjeldende action == nil eller ikke eksisterende i authorized.yml" if !fil[controller]["index"]
         access_text = fil[controller]["index"]
       end
+#      return true if current_user.has_role?("Admin", current_user.id)
       return true if current_user.has_role?("Admin")
 
 
@@ -107,5 +113,9 @@ module NorAuthorize
     #    end
   end
 
+    def redirect_back_or_default(default)
+      session[:return_to] ? redirect_to_url(session[:return_to]) : redirect_to(default)
+      session[:return_to] = nil
+    end
 
 end
