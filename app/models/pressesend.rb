@@ -104,8 +104,16 @@ class Pressesend < ActionMailer::Base
     # Net::SMTP.start('localhost') do |smtp|
     #   smtp.send_message msg, from, to
     end 
-    mail.delivery_method :sendmail 
-    mail.deliver!
+#    mail.delivery_method :sendmail 
+#    mail.delivery_method :sendmail, :location => "/usr/sbin/sendmail -t -i"
+    mail.delivery_method :smtp, address: "127.0.0.1", port: 25, :openssl_verify_mode  => 'none'
+#    mail.delivery_method :smtp, address: "mx.node3301.gplhost.com", port: 25
+#    mail.delivery_method :smtp, address: "localhost", port: 25
+    mail.deliver
+#    Mail.defaults do
+#      delivery_method :smtp, address: "127.0.0.1", port: 25
+#    end
+
    end
   
 end
