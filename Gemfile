@@ -6,43 +6,23 @@ source 'http://rubygems.org'
 #gem 'rails', '= 3.0.0'
 #gem 'rails', '= 3.1.3'
 #gem 'rails', '>= 3.2.0'
-gem 'rails', '>= 4.0.2'
+gem 'rails', '4.2.3'
 gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 
 # Gems used only for assets and not required
 # in production environments by default.
-<<<<<<< HEAD
 group :assets do
-=======
-#group :assets do
->>>>>>> d855e6e56203cc9a8c33d77148a72495b842a6e3
 #  gem 'sass-rails', "  ~> 3.2.3"
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem 'autoprefixer-rails'
 
-<<<<<<< HEAD
-gem 'sprockets-rails', '=2.0.0.backport1'
-#gem 'sprockets', '=2.2.2.backport2'
-gem 'sprockets', github: 'tessi/sprockets', branch: '2_2_2_backport2'
-gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
-
-  gem 'coffee-rails', "~> 3.2.1"
-  gem 'uglifier', '>=1.0.3'
+  gem 'sass-rails', '5.0.3' #, '4.0.1'
+  gem 'bootstrap-sass', '3.3.5.1'
+  gem 'autoprefixer-rails', '5.2.1.1'
+  gem 'coffee-rails', "4.1.0"
+  gem 'uglifier', '2.7.1'
 end
-=======
-#  gem 'sprockets-rails', '=2.0.0.backport1'
-#  gem 'sprockets', '=2.2.2.backport2'
-#  gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
-  gem 'sass-rails'#, '4.0.1'
-  gem 'bootstrap-sass'#, '~> 3.2.0'
-  gem 'autoprefixer-rails'
-  gem 'coffee-rails'#, "~> 3.2.1"
-  gem 'uglifier'#, ' >=1.0.3'
-#end
->>>>>>> d855e6e56203cc9a8c33d77148a72495b842a6e3
 
 group :development do
   gem 'better_errors'
@@ -52,8 +32,8 @@ end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'sqlite3'
-gem 'mysql2'
+#gem 'sqlite3'
+gem 'mysql2', '~> 0.3.18'
 #gem 'version_fu'
 gem 'dynamic_form'
 
@@ -121,8 +101,6 @@ gem 'gon'
 gem 'mail'
 gem 'iconv'
 
-<<<<<<< HEAD
-=======
 gem 'auto_complete', :git => "https://github.com/Agiley/auto_complete.git"
 gem 'verification', :git => "https://github.com/sikachu/verification.git"
 gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
@@ -133,9 +111,7 @@ gem 'highline'
 # gem 'gcloud/storage'
 # gem 'highline/import'
 
-
 #gem "authorization", github: "rufo/rails-authorization-plugin"
->>>>>>> d855e6e56203cc9a8c33d77148a72495b842a6e3
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem 'autoprefixer-rails'
 
