@@ -1,0 +1,3 @@
+[submodule "app/assets/nyesos_css"]
+	path = app/assets/nyesos_css
+	url = git@gitlab.com:henrik.ormasen/nyesos_css.git
